@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademicAssistanceSystem">
-        <activity android:name="comp3350.AAS.presentation.Calendar"></activity>
-        <activity android:name="comp3350.AAS.presentation.Quizzes" />
-        <activity android:name="comp3350.AAS.presentation.cardList" />
-        <activity android:name="comp3350.AAS.presentation.folderList" />
-        <activity android:name="comp3350.AAS.presentation.FlashCards" />
+        <activity android:name="comp3350.AAS.presentation.CalendarActivity"></activity>
+        <activity android:name="comp3350.AAS.presentation.QuizActivity" />
+        <activity android:name="comp3350.AAS.presentation.CardListActivity" />
+        <activity android:name="comp3350.AAS.presentation.FolderListActivity" />
+        <activity android:name="comp3350.AAS.presentation.FlashCardActivity" />
         <activity android:name="comp3350.AAS.presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

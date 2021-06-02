@@ -13,7 +13,7 @@ import comp3350.AAS.database.*;
 import comp3350.AAS.application.*;
 import com.example.academicassistancesystem.R;
 
-public class FlashCards extends AppCompatActivity {
+public class FlashCardActivity extends AppCompatActivity {
     private String cardTitle, cardDescription,folderName;
     private EditText titleInput, descriptionInput,folderNameInput;
 
@@ -70,11 +70,11 @@ public class FlashCards extends AppCompatActivity {
     }
 
     public void openFolders(){
-        Intent intent = new Intent(this,folderList.class);
+        Intent intent = new Intent(this, FolderListActivity.class);
         startActivity(intent);
     }
 
     private void showToast(String text){
-        Toast.makeText(FlashCards.this,text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(FlashCardActivity.this,text, Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,13 +6,11 @@ import android.os.Bundle;
 
 import com.example.academicassistancesystem.R;
 
-public class Quizzes extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizzes);
-
-
+        setContentView(R.layout.activity_calendar);
     }
 }

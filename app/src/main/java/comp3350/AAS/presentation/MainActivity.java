@@ -31,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openFlashCards(){
-        Intent intent = new Intent(this,FlashCards.class);
+        Intent intent = new Intent(this, FlashCardActivity.class);
         startActivity(intent);
     }
 
     public void openQuizzes(){
-        Intent intent = new Intent(this, Quizzes.class);
+        Intent intent = new Intent(this, QuizActivity.class);
         startActivity(intent);
     }
 
     public void openCalendar(){
-        Intent intent = new Intent(this, Calendar.class);
+        Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
     }
 }

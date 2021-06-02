@@ -12,7 +12,7 @@ import android.widget.ListView;
 import comp3350.AAS.application.*;
 import com.example.academicassistancesystem.R;
 
-public class folderList extends AppCompatActivity {
+public class FolderListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class folderList extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                cardList.folderIndex = position;
+                CardListActivity.folderIndex = position;
                 openCardList();
             }
         });
@@ -38,7 +38,7 @@ public class folderList extends AppCompatActivity {
     }
 
     public void openCardList(){
-        Intent intent = new Intent(this, cardList.class);
+        Intent intent = new Intent(this, CardListActivity.class);
         startActivity(intent);
     }
 }

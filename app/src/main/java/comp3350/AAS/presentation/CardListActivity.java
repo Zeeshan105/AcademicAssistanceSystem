@@ -18,7 +18,7 @@ import comp3350.AAS.object.cardFolder;
 
 import java.util.ArrayList;
 
-public class cardList extends AppCompatActivity {
+public class CardListActivity extends AppCompatActivity {
     static int folderIndex = -1;
 
     @Override
@@ -45,7 +45,7 @@ public class cardList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(cardList.this);
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(CardListActivity.this);
                 builder1.setMessage(descriptions[position]);
                 builder1.setCancelable(true);
 
