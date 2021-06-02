@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.academicassistancesystem">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AcademicAssistanceSystem">
+        <activity android:name="comp3350.AAS.presentation.Calendar"></activity>
+        <activity android:name="comp3350.AAS.presentation.Quizzes" />
+        <activity android:name="comp3350.AAS.presentation.cardList" />
+        <activity android:name="comp3350.AAS.presentation.folderList" />
+        <activity android:name="comp3350.AAS.presentation.FlashCards" />
+        <activity android:name="comp3350.AAS.presentation.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
