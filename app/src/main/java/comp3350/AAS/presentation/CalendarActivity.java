@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.academicassistancesystem.R;
+import comp3350.ASS.R;
 
 public class CalendarActivity extends AppCompatActivity {
 

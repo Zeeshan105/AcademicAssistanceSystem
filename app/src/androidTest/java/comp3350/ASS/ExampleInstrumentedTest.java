@@ -1,4 +1,4 @@
-package com.example.academicassistancesystem;
+package comp3350.ASS;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.example.academicassistancesystem;
+package comp3350.ASS.QuizTests;
 
 import junit.framework.TestCase;
 import comp3350.AAS.object.Quiz;

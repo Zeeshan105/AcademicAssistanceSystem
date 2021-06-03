@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.academicassistancesystem.R;
+import comp3350.ASS.R;
 import comp3350.AAS.application.services;
 import comp3350.AAS.object.cardFolder;
 

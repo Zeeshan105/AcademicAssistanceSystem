@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.academicassistancesystem.R;
+import comp3350.ASS.R;
 
 public class MainActivity extends AppCompatActivity {
 

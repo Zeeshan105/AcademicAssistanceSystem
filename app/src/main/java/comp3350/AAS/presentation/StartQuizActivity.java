@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.academicassistancesystem.R;
+import comp3350.ASS.R;
 import java.util.ArrayList;
 
 import comp3350.AAS.database.QuizDatabase;

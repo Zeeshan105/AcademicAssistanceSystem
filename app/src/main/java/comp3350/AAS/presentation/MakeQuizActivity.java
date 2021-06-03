@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.academicassistancesystem.R;
+import comp3350.ASS.R;
 
 import comp3350.AAS.application.services;
 import comp3350.AAS.database.QuizDatabase;
