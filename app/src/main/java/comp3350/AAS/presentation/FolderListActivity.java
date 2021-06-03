@@ -23,8 +23,8 @@ public class FolderListActivity extends AppCompatActivity {
         CardDataBase database = services.createDataAccess("cardBase");
         String[] arr = database.getFolderNames();
 
-        ListView listview = (ListView) findViewById(R.id.folderListView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arr);
+        ListView listview = findViewById(R.id.folderListView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
