@@ -1,15 +1,24 @@
 package comp3350.AAS.application;
 
-import comp3350.AAS.database.cardDataBase;
+import comp3350.AAS.database.CardDataBase;
+import comp3350.AAS.database.QuizDatabase;
 
 public class services {
 
-    private static cardDataBase dataAccessService = null;
+    private static CardDataBase dataAccessService = null;
+    private static QuizDatabase quizDataAccessService = null;
 
-    public static cardDataBase createDataAccess(String name){
+    public static CardDataBase createDataAccess(String name){
         if(dataAccessService == null){
-            dataAccessService = new cardDataBase();
+            dataAccessService = new CardDataBase();
         }
         return dataAccessService;
+    }
+
+    public static QuizDatabase createQuizDataAccess(String name){
+        if(quizDataAccessService == null){
+            quizDataAccessService = new QuizDatabase();
+        }
+        return quizDataAccessService;
     }
 }

@@ -19,15 +19,19 @@ public class MainActivity extends AppCompatActivity {
         Button button1 = (Button) findViewById(R.id.Button1);
         button1.setOnClickListener(v -> openFlashCards());
 
+        //
+        Button button2 = (Button) findViewById(R.id.Button2);
+        button2.setOnClickListener(v -> createQuizzes());
+
         //setup the quizzes button
         //quizzes button
-        Button button2 = (Button) findViewById(R.id.Button2);
-        button2.setOnClickListener(v -> openQuizzes());
+        Button button3 = (Button) findViewById(R.id.Button3);
+        button3.setOnClickListener(v -> openQuizzes());
 
         //setup the Calendar button
         //Calendar button
-        Button button3 = (Button) findViewById(R.id.Button3);
-        button3.setOnClickListener(v -> openCalendar());
+        Button button4 = (Button) findViewById(R.id.Button4);
+        button4.setOnClickListener(v -> openCalendar());
     }
 
     public void openFlashCards(){
@@ -35,8 +39,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void createQuizzes(){
+        Intent intent = new Intent(this, MakeQuizActivity.class);
+        startActivity(intent);
+    }
+
     public void openQuizzes(){
-        Intent intent = new Intent(this, QuizActivity.class);
+        Intent intent = new Intent(this, StartQuizActivity.class);
         startActivity(intent);
     }
 

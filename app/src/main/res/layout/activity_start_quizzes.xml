@@ -7,7 +7,7 @@
     tools:context="comp3350.AAS.presentation.MainActivity">
 
     <TextView
-        android:id="@+id/word_text"
+        android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

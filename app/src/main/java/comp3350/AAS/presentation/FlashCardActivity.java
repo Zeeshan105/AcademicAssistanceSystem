@@ -44,7 +44,7 @@ public class FlashCardActivity extends AppCompatActivity {
                     //check if the folder already exists
                     System.out.println("yo1");
 
-                    cardDataBase database = services.createDataAccess("cardBase");
+                    CardDataBase database = services.createDataAccess("cardBase");
                     System.out.println("yo2");
                     database.addCard(cardTitle,cardDescription,folderName);
 

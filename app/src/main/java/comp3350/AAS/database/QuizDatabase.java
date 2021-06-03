@@ -7,13 +7,17 @@ public class QuizDatabase {
     private ArrayList<Quiz> quizList;
 
     public QuizDatabase(){
+        quizList=new ArrayList<Quiz>();
+    }
+
+    public void addQuiz(String question, String A, String B, String C, String key){
 
     }
 
     public void open(){
         Quiz quiz;
 
-        quizList=new ArrayList<Quiz>();
+
         quiz=new Quiz("1+1=?", "0", "1", "2", "2");
         quizList.add(quiz);
         quiz=new Quiz("1+2=?", "0", "3", "6", "3");

@@ -3,11 +3,11 @@ import comp3350.AAS.object.*;
 
 import java.util.ArrayList;
 
-public class cardDataBase {
+public class CardDataBase {
     ArrayList<cardFolder> listOfFolder;
     private static int folderIndex;
 
-    public cardDataBase(){
+    public CardDataBase(){
         listOfFolder = new ArrayList<>();
         folderIndex = -1;
     }
