@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Which city is the \ncapital of Canada?"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
     <RadioGroup
         android:id="@+id/choose_group"

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">AcademicAssistanceSystem</string>
+    <string name="your_folders">Your Folders</string>
+    <string name="folder_name">folder name</string>
+    <string name="create_a_flash_card">Create a Flash Card</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="view_folders">View Folders</string>
+    <string name="academic_assistance_system">Academic Assistance System</string>
+    <string name="flash_cards">Flash Cards</string>
+    <string name="create_quizzes">Create Quizzes</string>
+    <string name="start_quizzes">Start Quizzes</string>
+    <string name="calendar">Calendar</string>
+    <string name="create_a_quiz_question">Create a quiz question</string>
+    <string name="option_a">Option A</string>
+    <string name="option_b">Option B</string>
+    <string name="option_c">Option C</string>
+    <string name="the_key_to_this_quiz">The key to this quiz</string>
+    <string name="submit">Submit</string>
 </resources>
