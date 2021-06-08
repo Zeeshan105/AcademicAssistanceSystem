@@ -54,10 +54,4 @@ public class CardDataBase {
     public ArrayList<cardFolder> getFolders(){
         return listOfFolder;
     }
-
-    public void deleteFolder(int idx){
-        listOfFolder.remove(idx);
-    }
-
-
 }

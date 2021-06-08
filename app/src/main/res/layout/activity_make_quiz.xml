@@ -20,7 +20,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#616161" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_A"
@@ -34,7 +34,7 @@
         android:hint="Option A"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        android:textColorHint="#070707" />
+        android:textColorHint="#616161" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_B"
@@ -50,7 +50,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#616161" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_C"
@@ -66,7 +66,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#616161" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/key"
@@ -82,11 +82,11 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#616161" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submit_Button"
-        android:layout_width="601dp"
+        android:layout_width="600dp"
         android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -95,12 +95,12 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="500dp"
         android:layout_marginEnd="-1dp"
-        android:backgroundTint="#453F3F"
+        android:backgroundTint="#FFC400"
         android:gravity="center"
-        android:scaleX="0.5"
+        android:scaleX="0.75"
         android:scaleY="0.9"
         android:text="Submit"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp" />
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
 </RelativeLayout>

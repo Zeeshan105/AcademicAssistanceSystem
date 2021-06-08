@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import comp3350.ASS.R;
-
 import comp3350.AAS.application.services;
 import comp3350.AAS.database.QuizDatabase;
 
@@ -16,7 +14,6 @@ import comp3350.AAS.database.QuizDatabase;
 public class MakeQuizActivity extends AppCompatActivity {
     private String quizQuestion, optionA,optionB, optionC, answer;
     private EditText questionInput, firstOption, secondOption, thirdOption, keyOption;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,7 @@ public class MakeQuizActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //store the text into vars
+                //store the text into variables
                 quizQuestion = questionInput.getText().toString();
                 optionA = firstOption.getText().toString();
                 optionB = secondOption.getText().toString();
@@ -43,7 +40,6 @@ public class MakeQuizActivity extends AppCompatActivity {
                 if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("")){
                     showToast("Error! Must define a question and three options!");
                 }else{
-
                     QuizDatabase database= services.createQuizDataAccess("QuizBase");
                     database.addQuiz(quizQuestion, optionA, optionB, optionC, answer);
 
@@ -57,7 +53,6 @@ public class MakeQuizActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void showToast(String text){
