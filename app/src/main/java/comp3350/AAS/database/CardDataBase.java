@@ -5,23 +5,12 @@ import java.util.ArrayList;
 
 public class CardDataBase {
     ArrayList<cardFolder> listOfFolder;
-    private static int folderIndex;
 
     public CardDataBase(){
         listOfFolder = new ArrayList<>();
-        folderIndex = -1;
     }
 
-    public boolean contains(String name){
-        for(int i = 0; i < listOfFolder.size();i++){
-            cardFolder f = listOfFolder.get(i);
-            if(f.getFolderName().equals(name)){
-                folderIndex = i;
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public void addCard(String title,String desc, String folderName){
         int idx = -1;

@@ -16,7 +16,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Create a quiz question"
+        android:hint="@string/create_a_quiz_question"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -31,7 +31,7 @@
         android:layout_marginTop="240dp"
         android:backgroundTint="#453F3F"
         android:ems="10"
-        android:hint="Option A"
+        android:hint="@string/option_a"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#070707" />
@@ -46,7 +46,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Option B"
+        android:hint="@string/option_b"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -62,7 +62,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Option C"
+        android:hint="@string/option_c"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -78,7 +78,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="The key to this quiz"
+        android:hint="@string/the_key_to_this_quiz"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -99,8 +99,8 @@
         android:gravity="center"
         android:scaleX="0.5"
         android:scaleY="0.9"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="#FFFFFF"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
 </RelativeLayout>

@@ -2,15 +2,10 @@ package comp3350.AAS.presentation;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import comp3350.ASS.R;
@@ -43,37 +38,28 @@ public class CardListActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         //make the list clickable
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(CardListActivity.this);
-                builder1.setTitle(titles[position]);
-                builder1.setMessage(descriptions[position]);
-                builder1.setCancelable(true);
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(CardListActivity.this);
+            builder1.setTitle(titles[position]);
+            builder1.setMessage(descriptions[position]);
+            builder1.setCancelable(true);
 
-                builder1.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        folders.get(folderIndex).removeCard(position);
+            builder1.setNegativeButton("Delete", (dialog, which) -> {
+                folders.get(folderIndex).removeCard(position);
 
-                        Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);
-                    }
-                });
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            });
 
 
-                builder1.setNeutralButton("Edit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //edit the card
+            builder1.setNeutralButton("Edit", (dialog, which) -> {
+                //edit the card
 
 
-                    }
-                });
-                AlertDialog alert1 = builder1.create();
-                alert1.show();
-            }
+            });
+            AlertDialog alert1 = builder1.create();
+            alert1.show();
         });
     }
 
