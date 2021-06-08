@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         Button button3 = (Button) findViewById(R.id.Button3);
         button3.setOnClickListener(v -> openQuizzes());
 
-        //setup the Calendar button
-        //Calendar button
-        Button button4 = (Button) findViewById(R.id.Button4);
-        button4.setOnClickListener(v -> openCalendar());
     }
 
     public void openFlashCards(){
@@ -49,8 +45,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openCalendar(){
-        Intent intent = new Intent(this, CalendarActivity.class);
-        startActivity(intent);
-    }
 }

@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademicAssistanceSystem">
         <activity android:name="comp3350.AAS.presentation.MakeQuizActivity"></activity>
-        <activity android:name="comp3350.AAS.presentation.CalendarActivity" />
         <activity android:name="comp3350.AAS.presentation.StartQuizActivity" />
         <activity android:name="comp3350.AAS.presentation.CardListActivity" />
         <activity android:name="comp3350.AAS.presentation.FolderListActivity" />

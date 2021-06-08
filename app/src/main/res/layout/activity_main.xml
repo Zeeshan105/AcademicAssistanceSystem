@@ -80,23 +80,4 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Button4"
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="445dp"
-        android:layout_marginEnd="0dp"
-        android:backgroundTint="#453F3F"
-        android:gravity="center"
-        android:scaleX="0.7"
-        android:scaleY="0.9"
-        android:text="@string/calendar"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" />
-
 </RelativeLayout>
