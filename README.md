@@ -14,6 +14,12 @@
     - 
 
 
+Rules for code:
+1, use arraylist instead of array
+2, naming convention, camel case
+3, variable, first letter lowercase
+4, classes, first letter uppercase
+
 
 
 
