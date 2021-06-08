@@ -10,8 +10,6 @@ public class CardDataBase {
         listOfFolder = new ArrayList<>();
     }
 
-
-
     public void addCard(String title,String desc, String folderName){
         int idx = -1;
         for(int i = 0; i < listOfFolder.size();i++){
@@ -42,5 +40,9 @@ public class CardDataBase {
 
     public ArrayList<cardFolder> getFolders(){
         return listOfFolder;
+    }
+
+    public void deleteFolder(int idx) {
+        listOfFolder.remove(idx);
     }
 }
