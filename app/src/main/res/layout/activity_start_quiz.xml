@@ -50,12 +50,21 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="339dp"
-        android:layout_marginTop="761dp"
+        android:layout_marginTop="650dp"
         android:backgroundTint="#1390F1"
         android:gravity="center"
         android:text="Next Quiz"
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/quizScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="780dp"
+        android:layout_marginStart="100dp"
+        android:text=""
+        android:textSize="40sp"
+        />
 
 </RelativeLayout>

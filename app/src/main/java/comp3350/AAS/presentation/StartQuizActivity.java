@@ -2,6 +2,7 @@ package comp3350.AAS.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
@@ -19,34 +20,38 @@ import java.util.ArrayList;
 import comp3350.AAS.application.services;
 
 public class StartQuizActivity extends AppCompatActivity {
-    private TextView questionText;
     private RadioGroup radioGroup;
     private RadioButton button1, button2, button3;
 
     private int currIndex;
     static int currPosition;
-    private ArrayList<Quiz> quizArrayList;  // To store all quizzes
-    private ArrayList<Question> questionArrayList;  // To store all questions
+    private int numPassed;
+    private boolean isCorrect;
+    private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_quiz);
 
-        quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
-
-        questionArrayList=quizArrayList.get(currPosition).getQuestionList();
+        // To get all quizzes
+        ArrayList<Quiz> quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
+        // To get selected quiz list
+        questionArrayList= quizArrayList.get(currPosition).getQuestionList();
+        numPassed=0;
 
         if (questionArrayList.size()>0){
             currIndex=0;
-            generateQuiz();
+            generateQuestion();
         }
+        numPassed=0;
         currIndex=0;
     }
 
-    public void generateQuiz(){
+    // Generate a question for user to answer
+    public void generateQuestion(){
         // set id to the question and three buttons
-        questionText=(TextView) findViewById(R.id.question_text);
+        TextView questionText = (TextView) findViewById(R.id.question_text);
         radioGroup=(RadioGroup) findViewById(R.id.choose_group);
         button1=(RadioButton) findViewById(R.id.btn_1);
         button2=(RadioButton) findViewById(R.id.btn_2);
@@ -60,60 +65,52 @@ public class StartQuizActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(this::onCheckedChanged);
 
         Button nextQuizBtn = (Button) findViewById(R.id.next_quiz);
-        nextQuizBtn.setOnClickListener(v -> getNextQuiz());
-
+        nextQuizBtn.setOnClickListener(v -> getNextQuestion());
     }
 
-    public void onCheckedChanged(RadioGroup group, int checkedId){
+    // Track which button is clicked
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
         radioGroup.setClickable(false);
         switch (checkedId){
             case R.id.btn_1:
                 String msg1=button1.getText().toString();
-                setBtnColor(msg1, button1);
+                checkAnswer(msg1);
                 break;
             case R.id.btn_2:
                 String msg2=button2.getText().toString();
-                setBtnColor(msg2, button2);
+                checkAnswer(msg2);
                 break;
             case R.id.btn_3:
                 String msg3=button3.getText().toString();
-                setBtnColor(msg3, button3);
+                checkAnswer(msg3);
                 break;
         }
     }
 
-    private void setBtnColor(String msg, RadioButton btn){
+    // Check the button whether is correct
+    private void checkAnswer(String msg){
         if (msg.equals(questionArrayList.get(currIndex).getKey())){
-            questionText.setTextColor(Color.GREEN);
-            btn.setTextColor(Color.GREEN);
+            isCorrect=true;
         }else {
-            questionText.setTextColor(Color.RED);
-            btn.setTextColor(Color.RED);
+            isCorrect=false;
         }
     }
 
-    // restore color to black when access the new quiz
-    private void restoreTextColor(){
-        button1.setChecked(false);
-        button2.setChecked(false);
-        button3.setChecked(false);
-
-        questionText.setTextColor(Color.BLACK);
-        button1.setTextColor(Color.BLACK);
-        button2.setTextColor(Color.BLACK);
-        button3.setTextColor(Color.BLACK);
-    }
-
-    // go to the next quiz question
-    public void getNextQuiz(){
+    // Go to the next quiz question
+    public void getNextQuestion(){
+        if (isCorrect){
+            numPassed++;
+        }
         currIndex++;
 
         if (currIndex<questionArrayList.size()) {
-            restoreTextColor();
+            radioGroup.check(0);
             showToast("New question!");
-            generateQuiz();
+            generateQuestion();
         }else {
-            showToast("No more question to be test!");
+            TextView score = (TextView) findViewById(R.id.quizScore);
+            score.setText("You final score is "+numPassed+"/"+questionArrayList.size());
+            showToast("No more question to be tested!");
         }
     }
 

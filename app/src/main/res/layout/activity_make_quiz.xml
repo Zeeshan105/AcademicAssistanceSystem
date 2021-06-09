@@ -29,11 +29,11 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="create_a_question for quiz"
+        android:hint="Type your question"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_A"
@@ -47,7 +47,7 @@
         android:hint="@string/option_a"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        android:textColorHint="#070707" />
+        android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_B"
@@ -63,7 +63,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_C"
@@ -79,7 +79,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/key"
@@ -91,11 +91,22 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="The_key_to_this_question"
+        android:hint="The key"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#989898" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="520dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="You will send this question above to the quiz list by given quiz name below:"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/quiz_index"
@@ -103,15 +114,15 @@
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="590dp"
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Which quiz name you want to add this question"
+        android:hint="Quiz name (eg. quiz1, quiz2...)"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#020202" />
+        android:textColorHint="#989898" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -123,14 +134,14 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="680dp"
         android:layout_marginEnd="-1dp"
-        android:backgroundTint="#453F3F"
+        android:backgroundTint="#FFC107"
         android:gravity="center"
-        android:scaleX="0.5"
+        android:scaleX="0.75"
         android:scaleY="0.9"
         android:text="@string/submit"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="30sp" />
 
 </RelativeLayout>
