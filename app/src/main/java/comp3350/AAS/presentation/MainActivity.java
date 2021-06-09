@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openQuizzes(){
-        Intent intent = new Intent(this, StartQuizActivity.class);
+        Intent intent = new Intent(this, SelectQuizActivity.class);
         startActivity(intent);
     }
 

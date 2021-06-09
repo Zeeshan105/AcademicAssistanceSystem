@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
     private int currIndex;
     private ArrayList<Quiz> quizArrayList;  // To store all quizzes
+    private ArrayList<Question> questionArrayList;  // To store all questions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,11 @@ public class StartQuizActivity extends AppCompatActivity {
 
         quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
 
-        if (quizArrayList.size()>0){
+        //TODO this is not a fix number in get(?). It can be changed when user select different button on quiz list
+        questionArrayList=quizArrayList.get(0).getQuestionList();
+
+
+        if (questionArrayList.size()>0){
             currIndex=0;
             generateQuiz();
         }
@@ -47,13 +53,16 @@ public class StartQuizActivity extends AppCompatActivity {
         button2=(RadioButton) findViewById(R.id.btn_2);
         button3=(RadioButton) findViewById(R.id.btn_3);
 
-        questionText.setText(quizArrayList.get(currIndex).getQuizQuestion());
-        button1.setText(quizArrayList.get(currIndex).getQuizOption1());
-        button2.setText(quizArrayList.get(currIndex).getQuizOption2());
-        button3.setText(quizArrayList.get(currIndex).getQuizOption3());
+        questionText.setText(questionArrayList.get(currIndex).getQuestion());
+        button1.setText(questionArrayList.get(currIndex).getOption1());
+        button2.setText(questionArrayList.get(currIndex).getOption2());
+        button3.setText(questionArrayList.get(currIndex).getOption3());
 
         radioGroup.setOnCheckedChangeListener(this::onCheckedChanged);
-        nextQuizButton();
+
+        Button nextQuizBtn = (Button) findViewById(R.id.next_quiz);
+        nextQuizBtn.setOnClickListener(v -> getNextQuiz());
+
     }
 
     public void onCheckedChanged(RadioGroup group, int checkedId){
@@ -75,7 +84,7 @@ public class StartQuizActivity extends AppCompatActivity {
     }
 
     private void setBtnColor(String msg, RadioButton btn){
-        if (msg.equals(quizArrayList.get(currIndex).getQuizKey())){
+        if (msg.equals(questionArrayList.get(currIndex).getKey())){
             questionText.setTextColor(Color.GREEN);
             btn.setTextColor(Color.GREEN);
         }else {
@@ -97,20 +106,15 @@ public class StartQuizActivity extends AppCompatActivity {
     }
 
     // go to the next quiz question
-    public void nextQuizButton(){
-        Button nextQuizBtn = (Button) findViewById(R.id.next_quiz);
-        nextQuizBtn.setOnClickListener(v -> getNextQuiz());
-    }
-
     public void getNextQuiz(){
         currIndex++;
 
-        if (currIndex<quizArrayList.size()) {
+        if (currIndex<questionArrayList.size()) {
             restoreTextColor();
-            showToast("New quiz!");
+            showToast("New question!");
             generateQuiz();
         }else {
-            showToast("No more quiz to be test!");
+            showToast("No more question to be test!");
         }
     }
 

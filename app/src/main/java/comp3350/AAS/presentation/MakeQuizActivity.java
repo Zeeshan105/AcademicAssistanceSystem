@@ -6,14 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import comp3350.AAS.object.Question;
+import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
 import comp3350.AAS.application.services;
 import comp3350.AAS.database.QuizDatabase;
 
 
 public class MakeQuizActivity extends AppCompatActivity {
-    private String quizQuestion, optionA,optionB, optionC, answer;
-    private EditText questionInput, firstOption, secondOption, thirdOption, keyOption;
+    private String quizQuestion, optionA,optionB, optionC, answer, quizName;
+    private EditText questionInput, firstOption, secondOption, thirdOption, keyOption, quizIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class MakeQuizActivity extends AppCompatActivity {
         secondOption=(EditText) findViewById(R.id.option_B);
         thirdOption=(EditText) findViewById(R.id.option_C);
         keyOption=(EditText) findViewById(R.id.key);
+        quizIndex=(EditText) findViewById(R.id.quiz_index);
 
         Button submitButton = (Button) findViewById(R.id.submit_Button);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -36,12 +40,16 @@ public class MakeQuizActivity extends AppCompatActivity {
                 optionB = secondOption.getText().toString();
                 optionC = thirdOption.getText().toString();
                 answer = keyOption.getText().toString();
+                quizName = quizIndex.getText().toString();
 
-                if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("")){
+                if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")){
                     showToast("Error! Must define a question and three options!");
                 }else{
+
+                    Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
+
                     QuizDatabase database= services.createQuizDataAccess("QuizBase");
-                    database.addQuiz(quizQuestion, optionA, optionB, optionC, answer);
+                    database.addQuiz(newQuestion, quizName);
 
                     //reset the "EditText" fields
                     questionInput.setText("");
@@ -49,7 +57,8 @@ public class MakeQuizActivity extends AppCompatActivity {
                     secondOption.setText("");
                     thirdOption.setText("");
                     keyOption.setText("");
-                    showToast("Quiz Added!");
+                    quizIndex.setText("");
+                    showToast("Question Added!");
                 }
             }
         });
