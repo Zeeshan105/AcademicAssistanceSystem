@@ -1,5 +1,6 @@
 package comp3350.AAS.presentation;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,16 @@ public class SelectQuizActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            startQuiz();
+            AlertDialog.Builder builder = new AlertDialog.Builder(SelectQuizActivity.this);
+
+            builder.setNegativeButton("Start this quiz", (dialog, which) -> {
+                StartQuizActivity.currPosition = position;
+                startQuiz();
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
         });
     }
 

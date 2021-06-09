@@ -24,6 +24,7 @@ public class StartQuizActivity extends AppCompatActivity {
     private RadioButton button1, button2, button3;
 
     private int currIndex;
+    static int currPosition;
     private ArrayList<Quiz> quizArrayList;  // To store all quizzes
     private ArrayList<Question> questionArrayList;  // To store all questions
 
@@ -34,9 +35,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
         quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
 
-        //TODO this is not a fix number in get(?). It can be changed when user select different button on quiz list
-        questionArrayList=quizArrayList.get(0).getQuestionList();
-
+        questionArrayList=quizArrayList.get(currPosition).getQuestionList();
 
         if (questionArrayList.size()>0){
             currIndex=0;
