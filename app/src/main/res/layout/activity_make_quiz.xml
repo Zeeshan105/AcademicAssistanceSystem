@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +14,7 @@
         android:layout_marginTop="30dp"
         android:background="#D32401"
         android:gravity="center"
-        android:text="Create a Question for Quiz"
+        android:text="@string/create_a_question_for_quiz"
         android:textColor="#FFFFFF"
         android:textSize="45sp" />
 
@@ -29,7 +28,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Type your question"
+        android:hint="@string/type_your_question"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -91,7 +90,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="The key"
+        android:hint="@string/the_key"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
@@ -103,7 +102,7 @@
         android:layout_marginTop="520dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:text="You will send this question above to the quiz list by given quiz name below:"
+        android:text="@string/you_will_send_this_question_above_to_the_quiz_list_by_given_quiz_name_below"
         android:textColor="#000000"
         android:textSize="25sp"
         />
@@ -118,7 +117,7 @@
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="Quiz name (eg. quiz1, quiz2...)"
+        android:hint="@string/quiz_name_eg_quiz1_quiz2"
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
