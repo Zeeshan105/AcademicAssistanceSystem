@@ -6,13 +6,16 @@ import comp3350.AAS.object.Question;
 
 
 public class QuestionTest extends TestCase{
+    Question q;
+
     public QuestionTest(String arg0){
         super(arg0);
     }
 
     public void testNullInput(){
-        Question q=new Question(null, null, null, null, null);
+        q=new Question(null, null, null, null, null);
 
+        assertNotNull(q);
         assertNull(q.getQuestion());
         assertNull(q.getOption1());
         assertNull(q.getOption2());
@@ -21,8 +24,9 @@ public class QuestionTest extends TestCase{
     }
 
     public void testEmptyInput(){
-        Question q=new Question("", "", "", "", "");
+        q=new Question("", "", "", "", "");
 
+        assertNotNull(q);
         assertEquals("", q.getQuestion());
         assertEquals("", q.getQuestion());
         assertEquals("", q.getQuestion());
@@ -31,8 +35,9 @@ public class QuestionTest extends TestCase{
     }
 
     public void testNotEmptyInput(){
-        Question q=new Question("1+1=", "1", "2", "3", "2");
+        q=new Question("1+1=", "1", "2", "3", "2");
 
+        assertNotNull(q);
         assertEquals("1+1=", q.getQuestion());
         assertEquals("1", q.getOption1());
         assertEquals("2", q.getOption2());
@@ -41,39 +46,48 @@ public class QuestionTest extends TestCase{
     }
 
     public void testKeyMatchButton1(){
-        Question q=new Question("1+1=", "2", "1", "3", "2");
+        q=new Question("1+1=", "2", "1", "3", "2");
+
+        assertNotNull(q);
         assertEquals(q.getOption1(), q.getKey());
     }
 
     public void testKeyMatchButton2(){
-        Question q=new Question("1+1=", "1", "2", "3", "2");
+        q=new Question("1+1=", "1", "2", "3", "2");
+
+        assertNotNull(q);
         assertEquals(q.getOption2(), q.getKey());
     }
 
     public void testKeyMatchButton3(){
-        Question q=new Question("1+1=", "1", "3", "2", "2");
+        q=new Question("1+1=", "1", "3", "2", "2");
+
+        assertNotNull(q);
         assertEquals(q.getOption3(), q.getKey());
     }
 
     public void testInvalidKey(){
-        Question q=new Question("1+1=?", "1", "2", "3", "-1");
+        q=new Question("1+1=?", "1", "2", "3", "-1");
 
+        assertNotNull(q);
         Assert.assertNotEquals(q.getOption1(), q.getKey());
         Assert.assertNotEquals(q.getOption2(), q.getKey());
         Assert.assertNotEquals(q.getOption3(), q.getKey());
     }
 
     public void testNullKey(){
-        Question q=new Question("1+1=?", "1", "2", "3", null);
+        q=new Question("1+1=?", "1", "2", "3", null);
 
+        assertNotNull(q);
         Assert.assertNotEquals(q.getOption1(), q.getKey());
         Assert.assertNotEquals(q.getOption2(), q.getKey());
         Assert.assertNotEquals(q.getOption3(), q.getKey());
     }
 
     public void testNullOption(){
-        Question q=new Question("1+1=?", null, null, null, "2");
+        q=new Question("1+1=?", null, null, null, "2");
 
+        assertNotNull(q);
         Assert.assertNotEquals(q.getOption1(), q.getKey());
         Assert.assertNotEquals(q.getOption2(), q.getKey());
         Assert.assertNotEquals(q.getOption3(), q.getKey());
