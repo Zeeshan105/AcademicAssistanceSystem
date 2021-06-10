@@ -22,12 +22,12 @@ public class FlashCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flash_cards);
 
         //get the "EditText" fields
-        titleInput = (EditText) findViewById(R.id.editTextTitle);
-        descriptionInput = (EditText) findViewById(R.id.editTextDescription);
-        folderNameInput = (EditText) findViewById(R.id.editTextFolderName);
+        titleInput = findViewById(R.id.editTextTitle);
+        descriptionInput = findViewById(R.id.editTextDescription);
+        folderNameInput = findViewById(R.id.editTextFolderName);
 
         //initialize the submit button
-        Button submitButton = (Button) findViewById(R.id.submitButton);
+        Button submitButton = findViewById(R.id.submitButton);
         submitButton.setOnClickListener(v -> {
             //store the text into vars
             cardTitle = titleInput.getText().toString();
@@ -35,14 +35,11 @@ public class FlashCardActivity extends AppCompatActivity {
             folderName = folderNameInput.getText().toString();
 
             //check if they gave a folder
-            if(folderName.equals("")){
-                showToast("Error! Must define a folder name");
+            if(folderName.equals("") || cardTitle.equals("") || cardDescription.equals("")){
+                showToast("Error! Fields cannot be empty!");
             }else{
-                //check if the folder already exists
-                System.out.println("yo1");
 
                 CardDataBase database = services.createDataAccess("cardBase");
-                System.out.println("yo2");
                 database.addCard(cardTitle,cardDescription,folderName);
 
                 //reset the "EditText" fields
@@ -51,11 +48,10 @@ public class FlashCardActivity extends AppCompatActivity {
                 folderNameInput.setText("");
                 showToast("Card Added!");
             }
-
         });
 
         //initialize the view folders button
-        Button viewFolders = (Button) findViewById(R.id.viewFoldersButton);
+        Button viewFolders = findViewById(R.id.viewFoldersButton);
         viewFolders.setOnClickListener(v -> openFolders());
 
     }

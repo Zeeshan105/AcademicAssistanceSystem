@@ -26,7 +26,7 @@ public class CardListActivity extends AppCompatActivity {
         ArrayList<cardFolder> folders = services.createDataAccess("cardBase").getFolders();
 
         //change the name of the text view
-        TextView textview = (TextView) findViewById(R.id.textViewFolderName);
+        TextView textview = findViewById(R.id.textViewFolderName);
         textview.setText(folders.get(folderIndex).getFolderName());
 
         //get all the card info
@@ -34,7 +34,7 @@ public class CardListActivity extends AppCompatActivity {
         String[] descriptions = folders.get(folderIndex).getCardDescription();
 
         //connect the cards to the list view
-        ListView listView = (ListView)findViewById(R.id.cardListVIew);
+        ListView listView = findViewById(R.id.cardListVIew);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,titles);
         listView.setAdapter(adapter);
 

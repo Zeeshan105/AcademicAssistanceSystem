@@ -16,16 +16,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //flash cards button
-        Button button1 = (Button) findViewById(R.id.Button1);
+        Button button1 = findViewById(R.id.Button1);
         button1.setOnClickListener(v -> openFlashCards());
 
         //
-        Button button2 = (Button) findViewById(R.id.Button2);
+        Button button2 = findViewById(R.id.Button2);
         button2.setOnClickListener(v -> createQuizzes());
 
         //setup the quizzes button
         //quizzes button
-        Button button3 = (Button) findViewById(R.id.Button3);
+        Button button3 = findViewById(R.id.Button3);
         button3.setOnClickListener(v -> openQuizzes());
 
     }
