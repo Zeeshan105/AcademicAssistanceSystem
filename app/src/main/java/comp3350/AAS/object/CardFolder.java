@@ -2,11 +2,11 @@ package comp3350.AAS.object;
 
 import java.util.ArrayList;
 
-public class cardFolder {
-    ArrayList<flashCard> cardList;
+public class CardFolder {
+    ArrayList<FlashCard> cardList;
     private String folderName;
 
-    public cardFolder(String name){
+    public CardFolder(String name){
         this.folderName = name;
         cardList = new ArrayList<>();
     }
@@ -16,7 +16,7 @@ public class cardFolder {
     }
 
     public void addCard(String title, String desc){
-        flashCard card = new flashCard(title,desc);
+        FlashCard card = new FlashCard(title,desc);
         cardList.add(card);
     }
 

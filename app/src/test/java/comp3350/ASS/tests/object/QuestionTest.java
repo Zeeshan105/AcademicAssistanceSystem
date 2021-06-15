@@ -1,4 +1,4 @@
-package comp3350.ASS.QuizTests;
+package comp3350.ASS.tests.object;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -6,7 +6,7 @@ import comp3350.AAS.object.Question;
 
 
 public class QuestionTest extends TestCase{
-    Question q;
+    private Question q;
 
     public QuestionTest(String arg0){
         super(arg0);
@@ -28,10 +28,10 @@ public class QuestionTest extends TestCase{
 
         assertNotNull(q);
         assertEquals("", q.getQuestion());
-        assertEquals("", q.getQuestion());
-        assertEquals("", q.getQuestion());
-        assertEquals("", q.getQuestion());
-        assertEquals("", q.getQuestion());
+        assertEquals("", q.getOption1());
+        assertEquals("", q.getOption2());
+        assertEquals("", q.getOption3());
+        assertEquals("", q.getKey());
     }
 
     public void testNotEmptyInput(){

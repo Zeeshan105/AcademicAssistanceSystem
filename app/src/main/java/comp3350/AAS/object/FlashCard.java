@@ -1,10 +1,10 @@
 package comp3350.AAS.object;
 
-public class flashCard {
+public class FlashCard {
     private String title;
     private String description;
 
-    public flashCard(String title,String description){
+    public FlashCard(String title, String description){
         this.title = title;
         this.description = description;
     }

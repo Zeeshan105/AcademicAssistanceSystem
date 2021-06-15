@@ -4,7 +4,7 @@ import comp3350.AAS.object.*;
 import java.util.ArrayList;
 
 public class CardDataBase {
-    ArrayList<cardFolder> listOfFolder;
+    ArrayList<CardFolder> listOfFolder;
 
     public CardDataBase(){
         listOfFolder = new ArrayList<>();
@@ -20,7 +20,7 @@ public class CardDataBase {
         }
 
         if(idx == -1){
-            cardFolder f = new cardFolder(folderName);
+            CardFolder f = new CardFolder(folderName);
             f.addCard(title,desc);
             listOfFolder.add(f);
 
@@ -38,7 +38,7 @@ public class CardDataBase {
         return names;
     }
 
-    public ArrayList<cardFolder> getFolders(){
+    public ArrayList<CardFolder> getFolders(){
         return listOfFolder;
     }
 
