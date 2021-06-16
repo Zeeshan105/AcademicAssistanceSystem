@@ -19,14 +19,17 @@ public class MainActivity extends AppCompatActivity {
         Button button1 = findViewById(R.id.Button1);
         button1.setOnClickListener(v -> openFlashCards());
 
-        //
+        //create the quizzes button
         Button button2 = findViewById(R.id.Button2);
         button2.setOnClickListener(v -> createQuizzes());
 
-        //setup the quizzes button
-        //quizzes button
+        //start quizzes button
         Button button3 = findViewById(R.id.Button3);
         button3.setOnClickListener(v -> openQuizzes());
+
+        //view stats button
+        Button button4 = findViewById(R.id.Button4);
+        button4.setOnClickListener(v -> openStats());
 
     }
 
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openQuizzes(){
         Intent intent = new Intent(this, SelectQuizActivity.class);
+        startActivity(intent);
+    }
+
+    public void openStats(){
+        Intent intent = new Intent(this, ViewStatsActivity.class);
         startActivity(intent);
     }
 

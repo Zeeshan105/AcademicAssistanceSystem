@@ -3,6 +3,7 @@ package comp3350.AAS.presentation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
 import java.util.ArrayList;
 
+import comp3350.AAS.business.Calculate;
+
 import comp3350.AAS.application.services;
 
 public class StartQuizActivity extends AppCompatActivity {
@@ -28,6 +31,9 @@ public class StartQuizActivity extends AppCompatActivity {
     private int numPassed;
     private boolean isCorrect;
     private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
+    private Quiz selectedQuiz;  // To store all questions on a quiz list
+    private Calculate cal = new Calculate();
+    String selectedAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,8 @@ public class StartQuizActivity extends AppCompatActivity {
         // To get all quizzes
         ArrayList<Quiz> quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
         // To get selected quiz list
-        questionArrayList= quizArrayList.get(currPosition).getQuestionList();
+        selectedQuiz = quizArrayList.get(currPosition);
+        questionArrayList = quizArrayList.get(currPosition).getQuestionList();
         numPassed=0;
 
         if (questionArrayList.size()>0){
@@ -73,44 +80,35 @@ public class StartQuizActivity extends AppCompatActivity {
         radioGroup.setClickable(false);
         switch (checkedId){
             case R.id.btn_1:
-                String msg1=button1.getText().toString();
-                checkAnswer(msg1);
+                selectedAnswer=button1.getText().toString();
                 break;
             case R.id.btn_2:
-                String msg2=button2.getText().toString();
-                checkAnswer(msg2);
+                selectedAnswer=button2.getText().toString();
                 break;
             case R.id.btn_3:
-                String msg3=button3.getText().toString();
-                checkAnswer(msg3);
+                selectedAnswer=button3.getText().toString();
                 break;
         }
     }
 
-    // Check the button whether is correct
-    private void checkAnswer(String msg){
-        if (msg.equals(questionArrayList.get(currIndex).getKey())){
-            isCorrect=true;
-        }else {
-            isCorrect=false;
-        }
-    }
+
 
     // Go to the next quiz question
     public void getNextQuestion(){
-        if (isCorrect){
-            numPassed++;
-        }
+        cal.updateGrade(selectedQuiz,selectedQuiz.getQuestionList().get(currIndex),selectedAnswer);
         currIndex++;
-
         if (currIndex<questionArrayList.size()) {
             radioGroup.check(0);
             showToast("New question!");
             generateQuestion();
-        }else {
+        }
+        else  {
             TextView score = (TextView) findViewById(R.id.quizScore);
-            score.setText("You final score is "+numPassed+"/"+questionArrayList.size());
+            score.setText("You final score is "+selectedQuiz.getQuizResult()+"/"+selectedQuiz.getQuizSize());
             showToast("No more question to be tested!");
+            selectedQuiz.setCompleteStatus(true);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

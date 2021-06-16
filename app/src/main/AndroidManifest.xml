@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademicAssistanceSystem">
         <activity android:name="comp3350.AAS.presentation.SelectQuizActivity"></activity>
+        <activity android:name="comp3350.AAS.presentation.ViewStatsActivity"></activity>
         <activity android:name="comp3350.AAS.presentation.MakeQuizActivity" />
         <activity android:name="comp3350.AAS.presentation.StartQuizActivity" />
         <activity android:name="comp3350.AAS.presentation.CardListActivity" />
