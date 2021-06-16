@@ -5,20 +5,19 @@
 - Group member:   Wen Qianyi, Sherba Daniel, Lui Ho, Javed Zeeshan, Chen Huayi
 - Description:  
 - Logs:  
-- Environment:  
+- Environment:  Android 6.0 (Marshmallow, API level 23)
 
 - Contents
     - Flashcard
-    - Calendar
     - Quizzes
-    - 
+    - Status
 
 
 Rules for code:
-1. use arraylist instead of array
-2. naming convention, camel case
-3. variable, first letter lowercase
-4. classes, first letter uppercase
+1. Use arraylist to keep data
+2. Naming convention, camel case
+3. Variable, first letter lowercase
+4. Classes, first letter uppercase
 
 
 
