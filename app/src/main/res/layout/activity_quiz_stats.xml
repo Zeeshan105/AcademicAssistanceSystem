@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="comp3350.AAS.presentation.SelectQuizActivity">
+
+    <!-- The name of quiz list-->
+
+    <TextView
+        android:id="@+id/lowest_grade"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="251dp"
+        android:layout_marginBottom="193dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#3F51B5"
+        android:text=" Completed Quizzes"
+        android:textColor="#000000"
+        android:textSize="34sp" />
+
+    <ListView
+        android:id="@+id/quizListView"
+        android:layout_width="match_parent"
+        android:layout_height="469dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:id="@+id/average_grade_text"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="316dp"
+        android:text="Average Grade:"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/completed_quizzes_text"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="378dp"
+        android:text="Completed Quizzes:"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/lowest_grade_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="195dp"
+        android:text="Lowest Grade:"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/highest_grade_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="256dp"
+        android:text="Highest Grade:"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/completed_quizzes"
+        android:layout_width="259dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="333dp"
+        android:layout_marginBottom="363dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/average_grade"
+        android:layout_width="291dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="301dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="311dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/highest_grade"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="259dp"
+        android:layout_marginBottom="255dp"
+        android:textSize="25sp" />
+
+</RelativeLayout>
