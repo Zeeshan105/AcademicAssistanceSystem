@@ -1,4 +1,4 @@
-package comp3350.ASS.tests.object;
+package comp3350.ASS.QuizTests;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -6,7 +6,7 @@ import comp3350.AAS.object.Question;
 
 
 public class QuestionTest extends TestCase{
-    private Question q;
+    Question q;
 
     public QuestionTest(String arg0){
         super(arg0);
@@ -22,42 +22,16 @@ public class QuestionTest extends TestCase{
         assertNull(q.getOption3());
         assertNull(q.getKey());
     }
-    public void testMultSameInput(){
-        q=new Question("1+1=", "2", "2", "3", "2");
-        assertNotNull(q);
-        assertEquals("1+1=", q.getQuestion());
-        assertEquals("2", q.getOption1());
-        assertEquals("2", q.getOption2());
-        assertEquals("3", q.getOption3());
-        assertEquals("2", q.getKey());
-    }
-    public void testAllRightInput(){
-        q=new Question("1+1=", "2", "2", "2", "2");
-        assertNotNull(q);
-        assertEquals("1+1=", q.getQuestion());
-        assertEquals("2", q.getOption1());
-        assertEquals("2", q.getOption2());
-        assertEquals("2", q.getOption3());
-        assertEquals("2", q.getKey());
-    }
-    public void testLargeNumberInput(){
-        q=new Question("100000+1000000=", "110000", "11000", "1100000", "1100000");
-        assertNotNull(q);
-        assertEquals("100000+1000000=", q.getQuestion());
-        assertEquals("110000", q.getOption1());
-        assertEquals("11000", q.getOption2());
-        assertEquals("1100000", q.getOption3());
-        assertEquals("1100000", q.getKey());
-    }
+
     public void testEmptyInput(){
         q=new Question("", "", "", "", "");
 
         assertNotNull(q);
         assertEquals("", q.getQuestion());
-        assertEquals("", q.getOption1());
-        assertEquals("", q.getOption2());
-        assertEquals("", q.getOption3());
-        assertEquals("", q.getKey());
+        assertEquals("", q.getQuestion());
+        assertEquals("", q.getQuestion());
+        assertEquals("", q.getQuestion());
+        assertEquals("", q.getQuestion());
     }
 
     public void testNotEmptyInput(){
@@ -70,17 +44,6 @@ public class QuestionTest extends TestCase{
         assertEquals("3", q.getOption3());
         assertEquals("2", q.getKey());
     }
-    public void testAllNegativeInput(){
-        q=new Question("-1-1=", "-1", "-2", "-3", "-2");
-
-        assertNotNull(q);
-        assertEquals("-1-1=", q.getQuestion());
-        assertEquals("-1", q.getOption1());
-        assertEquals("-2", q.getOption2());
-        assertEquals("-3", q.getOption3());
-        assertEquals("-2", q.getKey());
-    }
-
 
     public void testKeyMatchButton1(){
         q=new Question("1+1=", "2", "1", "3", "2");
