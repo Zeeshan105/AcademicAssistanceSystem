@@ -1,11 +1,10 @@
 package comp3350.AAS.database;
-
 import comp3350.AAS.object.*;
 
 import java.util.ArrayList;
 
 public class CardDataBase {
-    ArrayList<CardFolder> listOfFolder;
+    ArrayList<cardFolder> listOfFolder;
 
     public CardDataBase(){
         listOfFolder = new ArrayList<>();
@@ -21,7 +20,7 @@ public class CardDataBase {
         }
 
         if(idx == -1){
-            CardFolder f = new CardFolder(folderName);
+            cardFolder f = new cardFolder(folderName);
             f.addCard(title,desc);
             listOfFolder.add(f);
 
@@ -39,7 +38,7 @@ public class CardDataBase {
         return names;
     }
 
-    public ArrayList<CardFolder> getFolders(){
+    public ArrayList<cardFolder> getFolders(){
         return listOfFolder;
     }
 

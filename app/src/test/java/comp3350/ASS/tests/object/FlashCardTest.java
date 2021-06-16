@@ -50,5 +50,12 @@ public class FlashCardTest extends TestCase{
         assertEquals("My Flashcard Title", flashCard.getTitle());
         assertEquals("Here is a description.", flashCard.getDescription());
     }
+    public void testMessyCode(){
+        flashCard=new FlashCard("$%^&*((@#$%^&*(#$%^&*(PSKD:PX{CZ", ")*@_)#_SKLSDM MKWSO)DPW()@_# +:::ASD");
+
+        assertNotNull(flashCard);
+        assertEquals("$%^&*((@#$%^&*(#$%^&*(PSKD:PX{CZ", flashCard.getTitle());
+        assertEquals(")*@_)#_SKLSDM MKWSO)DPW()@_# +:::ASD", flashCard.getDescription());
+    }
 
 }
