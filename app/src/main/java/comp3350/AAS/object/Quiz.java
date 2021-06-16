@@ -5,10 +5,14 @@ import java.util.ArrayList;
 public class Quiz {
     private ArrayList<Question> questionList;
     private String quizName;
+    private double quizResult;
+    private boolean quizCompleted;
 
     public Quiz(String name){
         questionList=new ArrayList<>();
         quizName=name;
+        quizResult = 0;
+        quizCompleted = false;
     }
 
     public void addQuestion(Question question){
@@ -19,8 +23,22 @@ public class Quiz {
         return questionList;
     }
 
+    public int getQuestionCount() { return questionList.size(); }
+
     public String getQuizName() {
         return quizName;
     }
+
+    public int getQuizSize() { return questionList.size(); }
+
+    public void setQuizResult(double result) { quizResult = result; }
+
+    public double getQuizResult() { return quizResult; }
+
+    public void setCompleteStatus(boolean completed) { quizCompleted = completed; }
+
+    public boolean isComplete() { return quizCompleted; }
+
+
 
 }
