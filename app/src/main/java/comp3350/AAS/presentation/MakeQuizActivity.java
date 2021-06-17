@@ -41,8 +41,10 @@ public class MakeQuizActivity extends AppCompatActivity {
                 answer = keyOption.getText().toString();
                 quizName = quizIndex.getText().toString();
 
-                if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")){
+                if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")) {
                     showToast("Error! Must define a question and three options!");
+                } else if ( !(answer.equals(optionA) || answer.equals(optionB) || answer.equals(optionC)) ){
+                    showToast("Error! Must define a valid answer!");
                 }else{
 
                     Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
