@@ -17,7 +17,6 @@ public class Calculate {
         if (selectedAnswer.equals(question.getKey())) {
             isCorrect = true;
         }
-
         return isCorrect;
     }
 
@@ -82,7 +81,7 @@ public class Calculate {
                 highestGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
             }
         }
-        String rounded = String.format("%.2f", highestGrade* 100.0);
+        String rounded = String.format("%.2f", highestGrade * 100.0);
         return rounded + "%";
     }
 }

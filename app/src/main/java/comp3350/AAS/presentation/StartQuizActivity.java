@@ -1,8 +1,10 @@
 package comp3350.AAS.presentation;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
 import java.util.ArrayList;
+import androidx.appcompat.app.AlertDialog;
 
 import comp3350.AAS.business.Calculate;
 
@@ -96,6 +99,7 @@ public class StartQuizActivity extends AppCompatActivity {
     // Go to the next quiz question
     public void getNextQuestion(){
         cal.updateGrade(selectedQuiz,selectedQuiz.getQuestionList().get(currIndex),selectedAnswer);
+        AlertDialog.Builder builder = new AlertDialog.Builder(StartQuizActivity.this);
         currIndex++;
         if (currIndex<questionArrayList.size()) {
             radioGroup.check(0);
@@ -103,12 +107,14 @@ public class StartQuizActivity extends AppCompatActivity {
             generateQuestion();
         }
         else  {
-            TextView score = (TextView) findViewById(R.id.quizScore);
-            score.setText("You final score is "+selectedQuiz.getQuizResult()+"/"+selectedQuiz.getQuizSize());
-            showToast("No more question to be tested!");
             selectedQuiz.setCompleteStatus(true);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
+                    .setPositiveButton("Close", (dialog, which) -> {
+                        Intent intent = new Intent(this, MainActivity.class);
+                        startActivity(intent);
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
     }
 

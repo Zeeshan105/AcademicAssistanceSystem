@@ -31,10 +31,11 @@ public class ViewStatsActivity extends AppCompatActivity{
 
     public void init() {
         QuizDatabase quizDatabase = services.createQuizDataAccess("QuizBase");
-        ArrayList<String> names = quizDatabase.generateQuizGradesList();
+        ArrayList<String> completedQuizzesList = quizDatabase.generateQuizGradesList();
+
         ListView listView= findViewById(R.id.quizListView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, completedQuizzesList);
         listView.setAdapter(adapter);
 
         TextView completedQuizzes = (TextView) findViewById(R.id.completed_quizzes);
