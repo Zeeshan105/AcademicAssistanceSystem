@@ -5,14 +5,14 @@ import comp3350.AAS.database.QuizDatabase;
 
 public class Services {
 
-    private static CardDataBase dataAccessService = null;
+    private static CardDataBase cardDataAccessService = null;
     private static QuizDatabase quizDataAccessService = null;
 
     public static CardDataBase createDataAccess(String name){
-        if(dataAccessService == null){
-            dataAccessService = new CardDataBase();
+        if(cardDataAccessService == null){
+            cardDataAccessService = new CardDataBase();
         }
-        return dataAccessService;
+        return cardDataAccessService;
     }
 
     public static QuizDatabase createQuizDataAccess(String name){

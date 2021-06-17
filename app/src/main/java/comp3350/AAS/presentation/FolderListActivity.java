@@ -1,5 +1,6 @@
 package comp3350.AAS.presentation;
 
+import java.util.ArrayList;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.AAS.database.*;
@@ -19,10 +20,10 @@ public class FolderListActivity extends AppCompatActivity {
 
         //get the list of folder from the data base
         CardDataBase database = Services.createDataAccess("cardBase");
-        String[] arr = database.getFolderNames();
+        ArrayList<String> folderNames = database.getFolderNames();
 
         ListView listview = findViewById(R.id.folderListView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, folderNames);
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener((parent, view, position, id) -> {

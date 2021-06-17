@@ -24,43 +24,43 @@ public class CardFolderTest extends TestCase {
     }
 
     public void testCardTitle(){
-        assertEquals("title", cardFolder.getCardTitles()[0]);
-        assertEquals("123", cardFolder.getCardTitles()[1]);
-        assertEquals("", cardFolder.getCardTitles()[2]);
-        assertEquals(null, cardFolder.getCardTitles()[3]);
-        assertEquals("", cardFolder.getCardTitles()[4]);
-        assertEquals(null, cardFolder.getCardTitles()[5]);
+        assertEquals("title", cardFolder.getCardTitles().get(0));
+        assertEquals("123", cardFolder.getCardTitles().get(1));
+        assertEquals("", cardFolder.getCardTitles().get(2));
+        assertEquals(null, cardFolder.getCardTitles().get(3));
+        assertEquals("", cardFolder.getCardTitles().get(4));
+        assertEquals(null, cardFolder.getCardTitles().get(5));
     }
 
     public void testCardDescription(){
-        assertEquals("description", cardFolder.getCardDescription()[0]);
-        assertEquals("123456", cardFolder.getCardDescription()[1]);
-        assertEquals("", cardFolder.getCardDescription()[2]);
-        assertEquals("", cardFolder.getCardDescription()[3]);
-        assertEquals(null, cardFolder.getCardDescription()[4]);
-        assertEquals(null, cardFolder.getCardDescription()[5]);
+        assertEquals("description", cardFolder.getCardDescription().get(0));
+        assertEquals("123456", cardFolder.getCardDescription().get(1));
+        assertEquals("", cardFolder.getCardDescription().get(2));
+        assertEquals("", cardFolder.getCardDescription().get(3));
+        assertEquals(null, cardFolder.getCardDescription().get(4));
+        assertEquals(null, cardFolder.getCardDescription().get(5));
     }
 
     public void testRemoveCard(){
         cardFolder.removeCard(0);
-        assertEquals("123", cardFolder.getCardTitles()[0]);
-        assertEquals("123456", cardFolder.getCardDescription()[0]);
+        assertEquals("123", cardFolder.getCardTitles().get(0));
+        assertEquals("123456", cardFolder.getCardDescription().get(0));
 
         cardFolder.removeCard(0);
-        assertEquals("", cardFolder.getCardTitles()[0]);
-        assertEquals("", cardFolder.getCardDescription()[0]);
+        assertEquals("", cardFolder.getCardTitles().get(0));
+        assertEquals("", cardFolder.getCardDescription().get(0));
 
         cardFolder.removeCard(0);
-        assertEquals(null, cardFolder.getCardTitles()[0]);
-        assertEquals("", cardFolder.getCardDescription()[0]);
+        assertEquals(null, cardFolder.getCardTitles().get(0));
+        assertEquals("", cardFolder.getCardDescription().get(0));
 
         cardFolder.removeCard(0);
-        assertEquals("", cardFolder.getCardTitles()[0]);
-        assertEquals(null, cardFolder.getCardDescription()[0]);
+        assertEquals("", cardFolder.getCardTitles().get(0));
+        assertEquals(null, cardFolder.getCardDescription().get(0));
 
         cardFolder.removeCard(0);
-        assertEquals(null, cardFolder.getCardTitles()[0]);
-        assertEquals(null, cardFolder.getCardDescription()[0]);
+        assertEquals(null, cardFolder.getCardTitles().get(0));
+        assertEquals(null, cardFolder.getCardDescription().get(0));
     }
 
     public void testFolderName(){

@@ -30,19 +30,19 @@ public class CardListActivity extends AppCompatActivity {
         textview.setText(folders.get(folderIndex).getFolderName());
 
         //get all the card info
-        String[] titles = folders.get(folderIndex).getCardTitles();
-        String[] descriptions = folders.get(folderIndex).getCardDescription();
+        ArrayList<String> cardTitles = folders.get(folderIndex).getCardTitles();
+        ArrayList<String> cardDescriptions = folders.get(folderIndex).getCardDescription();
 
         //connect the cards to the list view
         ListView listView = findViewById(R.id.cardListVIew);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,titles);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cardTitles);
         listView.setAdapter(adapter);
 
         //make the list clickable
         listView.setOnItemClickListener((parent, view, position, id) -> {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(CardListActivity.this);
-            builder1.setTitle(titles[position]);
-            builder1.setMessage(descriptions[position]);
+            builder1.setTitle(cardTitles.get(position));
+            builder1.setMessage(cardDescriptions.get(position));
             builder1.setCancelable(true);
 
             builder1.setNegativeButton("Delete", (dialog, which) -> {

@@ -1,5 +1,6 @@
 package comp3350.AAS.presentation;
 
+import java.util.ArrayList;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -23,10 +24,10 @@ public class SelectQuizActivity extends AppCompatActivity {
 
     public void init(){
         QuizDatabase database= Services.createQuizDataAccess("QuizBase");
-        String[] names = database.getAllQuizName();
+        ArrayList<String> quizNames = database.getAllQuizName();
         ListView listView= findViewById(R.id.quizListView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quizNames);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener((parent, view, position, id) -> {

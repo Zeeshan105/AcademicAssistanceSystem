@@ -248,6 +248,7 @@ public class CalculateTest extends TestCase{
     }
 
     public void testIsCorrectQuestion(){
+
         question=new Question("1+1=?", "0", "1", "2", "2");
         assertTrue(calculate.isCorrectAnswer(question, "2"));
 
@@ -256,6 +257,7 @@ public class CalculateTest extends TestCase{
 
         question=new Question("(-1)+1=?", "0", "2", "4", "0");
         assertTrue(calculate.isCorrectAnswer(question, "0"));
+
     }
 
     public void testUpdateGradeAllCorrect(){

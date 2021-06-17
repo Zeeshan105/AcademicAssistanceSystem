@@ -3,11 +3,12 @@ package comp3350.AAS.object;
 import java.util.ArrayList;
 
 public class CardFolder {
+
     private ArrayList<FlashCard> cardList;
     private String folderName;
 
-    public CardFolder(String name){
-        this.folderName = name;
+    public CardFolder(String folderName){
+        this.folderName = folderName;
         cardList = new ArrayList<>();
     }
 
@@ -20,28 +21,30 @@ public class CardFolder {
         cardList.add(card);
     }
 
-    public String[] getCardTitles(){
-        String[] temp = new String[cardList.size()];
+    public ArrayList<String> getCardTitles(){
 
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = cardList.get(i).getTitle();
+        ArrayList<String> cardTitles = new ArrayList<>();
+
+        for (int i = 0; i < cardList.size(); i++) {
+            cardTitles.add(cardList.get(i).getTitle());
         }
 
-        return temp;
+        return cardTitles;
     }
 
-    public String[] getCardDescription(){
-        String[] temp = new String[cardList.size()];
+    public ArrayList<String> getCardDescription(){
 
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = cardList.get(i).getDescription();
+        ArrayList<String> cardDescriptions = new ArrayList<>();
+
+        for (int i = 0; i < cardList.size(); i++) {
+            cardDescriptions.add(cardList.get(i).getDescription());
         }
 
-        return temp;
+        return cardDescriptions;
     }
 
-    public void removeCard(int idx){
-        cardList.remove(idx);
+    public void removeCard(int index){
+        cardList.remove(index);
     }
 
 }

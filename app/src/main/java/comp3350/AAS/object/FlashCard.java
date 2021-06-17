@@ -1,6 +1,7 @@
 package comp3350.AAS.object;
 
 public class FlashCard {
+
     private String title;
     private String description;
 

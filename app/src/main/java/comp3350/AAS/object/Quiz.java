@@ -3,6 +3,7 @@ package comp3350.AAS.object;
 import java.util.ArrayList;
 
 public class Quiz {
+
     private ArrayList<Question> questionList;
     private String quizName;
     private double quizResult;
@@ -30,10 +31,12 @@ public class Quiz {
     }
 
     public void setQuizResult(double result) {
+
         if (result<0){
             result=0;
         }
         quizResult = result;
+
     }
 
     public double getQuizResult() { return quizResult; }

@@ -5,6 +5,7 @@ import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 
 public class QuizDatabase {
+
     private ArrayList<Quiz> quizList;
     private int completedQuizzes;
 
@@ -14,34 +15,39 @@ public class QuizDatabase {
     }
 
     public void addQuiz(Question question, String name){
-        int index=-1;
+
+        int index=-1; // Place holder index to check if the question belongs to an existing or new quiz.
+
         for (int i = 0; i < quizList.size(); i++) {
-            if (quizList.get(i).getQuizName().compareTo(name)==0) {
+            Quiz selectedQuiz = quizList.get(i);
+            if (selectedQuiz.getQuizName().compareTo(name)==0) {
                 index=i;
                 break;
             }
         }
 
-        if (index==-1){
+        if (index==-1) {
             Quiz quiz = new Quiz(name);
             quiz.addQuestion(question);
             quizList.add(quiz);
-        }else {
+        }
+        else {
             Quiz quiz = quizList.get(index);
             quiz.addQuestion(question);
         }
+
     }
 
     public ArrayList<Quiz> getQuizList() {
         return quizList;
     }
 
-    public String[] getAllQuizName(){
-        String [] names=new String[quizList.size()];
+    public ArrayList<String> getAllQuizName(){
+        ArrayList<String> quizNames = new ArrayList<>();
         for (int i = 0; i < quizList.size(); i++) {
-            names[i] = quizList.get(i).getQuizName();
+            quizNames.add(quizList.get(i).getQuizName());
         }
-        return names;
+        return quizNames;
     }
 
     public ArrayList<String> generateQuizGradesList(){

@@ -12,38 +12,43 @@ public class CardDataBase {
     }
 
     public void addCard(String title,String desc, String folderName){
-        int idx = -1;
+
+        int index = -1; // Place holder index to check if the flashcard belongs to an existing or new flashcard folder.
+
         for(int i = 0; i < listOfFolder.size();i++){
             if(listOfFolder.get(i).getFolderName().equals(folderName)){
-                idx = i;
+                index = i;
                 break;
             }
         }
 
-        if(idx == -1){
-            CardFolder f = new CardFolder(folderName);
-            f.addCard(title,desc);
-            listOfFolder.add(f);
+        if(index == -1){
+            CardFolder newFolder = new CardFolder(folderName);
+            newFolder.addCard(title,desc);
+            listOfFolder.add(newFolder);
 
-        }else {
-            listOfFolder.get(idx).addCard(title, desc);
+        } else {
+            listOfFolder.get(index).addCard(title, desc);
         }
 
     }
 
-    public String[] getFolderNames(){
-        String[] names = new String[listOfFolder.size()];
+    public ArrayList<String> getFolderNames(){
+
+        ArrayList<String> folderNames = new ArrayList<>();
+
         for (int i = 0; i < listOfFolder.size(); i++) {
-            names[i] = listOfFolder.get(i).getFolderName();
+            folderNames.add(listOfFolder.get(i).getFolderName());
         }
-        return names;
+        return folderNames;
+
     }
 
     public ArrayList<CardFolder> getFolders(){
         return listOfFolder;
     }
 
-    public void deleteFolder(int idx) {
-        listOfFolder.remove(idx);
+    public void deleteFolder(int index) {
+        listOfFolder.remove(index);
     }
 }
