@@ -1,16 +1,23 @@
 # COMP3350 Project
 ### Project name: Academic Assistance System
 - GitHub repo link: https://github.com/Zeeshan105/AcademicAssistanceSystem
+- The logs are provided in the logs.txt file in the .zip folder
 
-- Group member:   Wen Qianyi, Sherba Daniel, Lui Ho, Javed Zeeshan, Chen Huayi
-- Description:  
-- Logs:  
+- Group member:   Wen Qianyi, Sherba Daniel, Lui Ho, Javed Zeeshan, Chen Huayi 
 - Environment:  Android 6.0 (Marshmallow, API level 23)
+- Simulator: Nexus 7 tablet
 
-- Contents
-    - Flashcard
-    - Quizzes
-    - Status
+- Major Features
+    - Flashcard - Can be accessed from the home page when you open the app
+    - Quizzes - Can be accessed from the home page when you open the app
+    - Stats - Can be accessed from the home page when you open the app
+    
+- Packages
+    - application
+    - business
+    - database
+    - object
+    - presentation
 
 
 Rules for code:
@@ -20,9 +27,3 @@ Rules for code:
 4. Classes, first letter uppercase
 
 
-
-
-
-
-
-**Do not forget to invite *John Braico*.**
