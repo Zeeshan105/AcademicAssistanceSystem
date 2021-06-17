@@ -18,18 +18,21 @@ public class Question {
     public String getQuestion() {
         return question;
     }
+
     public String getOption1() {
         return option1;
     }
+
     public String getOption2() {
         return option2;
     }
+
     public String getOption3() {
         return option3;
     }
+
     public String getKey() {
         return key;
     }
-
 
 }

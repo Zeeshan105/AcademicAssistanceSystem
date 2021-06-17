@@ -1,7 +1,6 @@
 package comp3350.AAS.database;
 
 import java.util.ArrayList;
-
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 

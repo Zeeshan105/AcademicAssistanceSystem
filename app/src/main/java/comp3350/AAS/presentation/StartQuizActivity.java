@@ -3,10 +3,7 @@ package comp3350.AAS.presentation;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -15,28 +12,23 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import comp3350.AAS.application.Services;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
 import java.util.ArrayList;
-import androidx.appcompat.app.AlertDialog;
 
 import comp3350.AAS.business.Calculate;
-
-import comp3350.AAS.application.services;
 
 public class StartQuizActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton button1, button2, button3;
-
     private int currIndex;
     static int currPosition;
-    private int numPassed;
-    private boolean isCorrect;
     private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
     private Quiz selectedQuiz;  // To store all questions on a quiz list
     private Calculate cal = new Calculate();
-    String selectedAnswer;
+    private String selectedAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +36,15 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         // To get all quizzes
-        ArrayList<Quiz> quizArrayList = services.createQuizDataAccess("QuizBase").getQuizList();
+        ArrayList<Quiz> quizArrayList = Services.createQuizDataAccess("QuizBase").getQuizList();
         // To get selected quiz list
         selectedQuiz = quizArrayList.get(currPosition);
         questionArrayList = quizArrayList.get(currPosition).getQuestionList();
-        numPassed=0;
 
         if (questionArrayList.size()>0){
             currIndex=0;
             generateQuestion();
         }
-        numPassed=0;
         currIndex=0;
     }
 
@@ -94,8 +84,6 @@ public class StartQuizActivity extends AppCompatActivity {
         }
     }
 
-
-
     // Go to the next quiz question
     public void getNextQuestion(){
         cal.updateGrade(selectedQuiz,selectedQuiz.getQuestionList().get(currIndex),selectedAnswer);
@@ -105,8 +93,7 @@ public class StartQuizActivity extends AppCompatActivity {
             radioGroup.check(0);
             showToast("New question!");
             generateQuestion();
-        }
-        else  {
+        } else  {
             selectedQuiz.setCompleteStatus(true);
             builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
                     .setPositiveButton("Close", (dialog, which) -> {

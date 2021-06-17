@@ -22,33 +22,7 @@ public class QuestionTest extends TestCase{
         assertNull(q.getOption3());
         assertNull(q.getKey());
     }
-    public void testMultSameInput(){
-        q=new Question("1+1=", "2", "2", "3", "2");
-        assertNotNull(q);
-        assertEquals("1+1=", q.getQuestion());
-        assertEquals("2", q.getOption1());
-        assertEquals("2", q.getOption2());
-        assertEquals("3", q.getOption3());
-        assertEquals("2", q.getKey());
-    }
-    public void testAllRightInput(){
-        q=new Question("1+1=", "2", "2", "2", "2");
-        assertNotNull(q);
-        assertEquals("1+1=", q.getQuestion());
-        assertEquals("2", q.getOption1());
-        assertEquals("2", q.getOption2());
-        assertEquals("2", q.getOption3());
-        assertEquals("2", q.getKey());
-    }
-    public void testLargeNumberInput(){
-        q=new Question("100000+1000000=", "110000", "11000", "1100000", "1100000");
-        assertNotNull(q);
-        assertEquals("100000+1000000=", q.getQuestion());
-        assertEquals("110000", q.getOption1());
-        assertEquals("11000", q.getOption2());
-        assertEquals("1100000", q.getOption3());
-        assertEquals("1100000", q.getKey());
-    }
+
     public void testEmptyInput(){
         q=new Question("", "", "", "", "");
 
@@ -130,5 +104,36 @@ public class QuestionTest extends TestCase{
         Assert.assertNotEquals(q.getOption3(), q.getKey());
     }
 
+    public void testMultSameInput(){
+        q=new Question("1+1=", "2", "2", "3", "2");
+
+        assertNotNull(q);
+        assertEquals("1+1=", q.getQuestion());
+        assertEquals("2", q.getOption1());
+        assertEquals("2", q.getOption2());
+        assertEquals("3", q.getOption3());
+        assertEquals("2", q.getKey());
+    }
+
+    public void testAllRightInput(){
+        q=new Question("1+1=", "2", "2", "2", "2");
+
+        assertNotNull(q);
+        assertEquals("1+1=", q.getQuestion());
+        assertEquals("2", q.getOption1());
+        assertEquals("2", q.getOption2());
+        assertEquals("2", q.getOption3());
+        assertEquals("2", q.getKey());
+    }
+
+    public void testLargeNumberInput(){
+        q=new Question("100000+1000000=", "110000", "11000", "1100000", "1100000");
+        assertNotNull(q);
+        assertEquals("100000+1000000=", q.getQuestion());
+        assertEquals("110000", q.getOption1());
+        assertEquals("11000", q.getOption2());
+        assertEquals("1100000", q.getOption3());
+        assertEquals("1100000", q.getKey());
+    }
 
 }

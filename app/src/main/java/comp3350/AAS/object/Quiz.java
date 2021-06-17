@@ -29,16 +29,17 @@ public class Quiz {
         return quizName;
     }
 
-    public int getQuizSize() { return questionList.size(); }
-
-    public void setQuizResult(double result) { quizResult = result; }
+    public void setQuizResult(double result) {
+        if (result<0){
+            result=0;
+        }
+        quizResult = result;
+    }
 
     public double getQuizResult() { return quizResult; }
 
     public void setCompleteStatus(boolean completed) { quizCompleted = completed; }
 
     public boolean isComplete() { return quizCompleted; }
-
-
 
 }

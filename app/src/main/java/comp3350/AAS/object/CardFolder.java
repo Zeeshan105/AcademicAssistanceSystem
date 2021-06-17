@@ -3,7 +3,7 @@ package comp3350.AAS.object;
 import java.util.ArrayList;
 
 public class CardFolder {
-    ArrayList<FlashCard> cardList;
+    private ArrayList<FlashCard> cardList;
     private String folderName;
 
     public CardFolder(String name){

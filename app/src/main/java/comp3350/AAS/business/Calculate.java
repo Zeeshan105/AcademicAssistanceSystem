@@ -2,14 +2,14 @@ package comp3350.AAS.business;
 
 import java.util.ArrayList;
 
-import comp3350.AAS.application.services;
+import comp3350.AAS.application.Services;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
 
-    private QuizDatabase db = services.createQuizDataAccess("QuizBase");;
+    private QuizDatabase db = Services.createQuizDataAccess("QuizBase");;
 
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {
         boolean isCorrect = false;

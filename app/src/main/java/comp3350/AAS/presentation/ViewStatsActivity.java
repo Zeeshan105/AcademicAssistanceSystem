@@ -2,17 +2,15 @@ package comp3350.AAS.presentation;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.os.Bundle;
+
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import comp3350.AAS.application.services;
+import comp3350.AAS.application.Services;
 import comp3350.AAS.business.Calculate;
 import comp3350.AAS.database.QuizDatabase;
 import comp3350.ASS.R;
@@ -30,7 +28,7 @@ public class ViewStatsActivity extends AppCompatActivity{
     }
 
     public void init() {
-        QuizDatabase quizDatabase = services.createQuizDataAccess("QuizBase");
+        QuizDatabase quizDatabase = Services.createQuizDataAccess("QuizBase");
         ArrayList<String> completedQuizzesList = quizDatabase.generateQuizGradesList();
 
         ListView listView= findViewById(R.id.quizListView);

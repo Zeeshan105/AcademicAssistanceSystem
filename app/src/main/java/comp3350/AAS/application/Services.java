@@ -3,7 +3,7 @@ package comp3350.AAS.application;
 import comp3350.AAS.database.CardDataBase;
 import comp3350.AAS.database.QuizDatabase;
 
-public class services {
+public class Services {
 
     private static CardDataBase dataAccessService = null;
     private static QuizDatabase quizDataAccessService = null;

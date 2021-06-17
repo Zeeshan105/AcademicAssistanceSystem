@@ -39,7 +39,7 @@ public class FlashCardActivity extends AppCompatActivity {
                 showToast("Error! Fields cannot be empty!");
             }else{
 
-                CardDataBase database = services.createDataAccess("cardBase");
+                CardDataBase database = Services.createDataAccess("cardBase");
                 database.addCard(cardTitle,cardDescription,folderName);
 
                 //reset the "EditText" fields

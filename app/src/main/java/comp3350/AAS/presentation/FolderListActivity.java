@@ -18,7 +18,7 @@ public class FolderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_folder_list);
 
         //get the list of folder from the data base
-        CardDataBase database = services.createDataAccess("cardBase");
+        CardDataBase database = Services.createDataAccess("cardBase");
         String[] arr = database.getFolderNames();
 
         ListView listview = findViewById(R.id.folderListView);

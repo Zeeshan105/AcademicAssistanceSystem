@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import comp3350.AAS.application.services;
+import comp3350.AAS.application.Services;
 import comp3350.AAS.database.QuizDatabase;
 import comp3350.ASS.R;
 
@@ -22,7 +22,7 @@ public class SelectQuizActivity extends AppCompatActivity {
     }
 
     public void init(){
-        QuizDatabase database= services.createQuizDataAccess("QuizBase");
+        QuizDatabase database= Services.createQuizDataAccess("QuizBase");
         String[] names = database.getAllQuizName();
         ListView listView= findViewById(R.id.quizListView);
 
