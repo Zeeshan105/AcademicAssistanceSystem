@@ -3,7 +3,7 @@ package comp3350.ASS.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import comp3350.ASS.tests.business.temp;
+import comp3350.ASS.tests.business.CalculateTest;
 import comp3350.ASS.tests.object.CardFolderTest;
 import comp3350.ASS.tests.object.FlashCardTest;
 import comp3350.ASS.tests.object.QuestionTest;
@@ -15,7 +15,7 @@ public class AllTests {
     public static Test suite() {
         suite = new TestSuite("All tests");
         testObjects();
-//        testBusiness();
+        testBusiness();
         return suite;
     }
 
@@ -27,7 +27,7 @@ public class AllTests {
     }
 
     private static void testBusiness() {
-        suite.addTestSuite(temp.class);
+        suite.addTestSuite(CalculateTest.class);
     }
 
 }

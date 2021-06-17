@@ -8,7 +8,6 @@ import comp3350.AAS.object.Question;
 import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
-
     private QuizDatabase db = Services.createQuizDataAccess("QuizBase");;
 
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {
@@ -63,25 +62,32 @@ public class Calculate {
         return rounded + "%";
     }
 
+    public String getHighestGrade(ArrayList<Quiz> allQuizzes) {
+        double highestGrade = Double.NEGATIVE_INFINITY;
+
+        for (int i = 0; i < allQuizzes.size(); i++) {
+            double newGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
+
+            if (allQuizzes.get(i).isComplete() && newGrade > highestGrade) {
+                highestGrade = newGrade;
+            }
+        }
+        String rounded = String.format("%.2f", highestGrade * 100.0);
+        return rounded + "%";
+    }
+
     public String getLowestGrade(ArrayList<Quiz> allQuizzes) {
         double lowestGrade = Double.POSITIVE_INFINITY;
+
         for (int i = 0; i < allQuizzes.size(); i++) {
-            if (allQuizzes.get(i).isComplete() && allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount() < lowestGrade) {
-                lowestGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
+            double newGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
+
+            if (allQuizzes.get(i).isComplete() && newGrade < lowestGrade) {
+                lowestGrade = newGrade;
             }
         }
         String rounded = String.format("%.2f", lowestGrade * 100.0);
         return rounded + "%";
     }
 
-    public String getHighestGrade(ArrayList<Quiz> allQuizzes) {
-        double highestGrade = Double.NEGATIVE_INFINITY;
-        for (int i = 0; i < allQuizzes.size(); i++) {
-            if (allQuizzes.get(i).isComplete() && allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount() > highestGrade) {
-                highestGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
-            }
-        }
-        String rounded = String.format("%.2f", highestGrade * 100.0);
-        return rounded + "%";
-    }
 }

@@ -86,7 +86,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
     // Go to the next quiz question
     public void getNextQuestion(){
-        cal.updateGrade(selectedQuiz,selectedQuiz.getQuestionList().get(currIndex),selectedAnswer);
+        cal.updateGrade(selectedQuiz, selectedQuiz.getQuestionList().get(currIndex), selectedAnswer);
         AlertDialog.Builder builder = new AlertDialog.Builder(StartQuizActivity.this);
         currIndex++;
         if (currIndex<questionArrayList.size()) {
