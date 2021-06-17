@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import comp3350.AAS.application.services;
 import comp3350.AAS.business.Calculate;
 import comp3350.AAS.database.QuizDatabase;
@@ -29,6 +31,11 @@ public class ViewStatsActivity extends AppCompatActivity{
 
     public void init() {
         QuizDatabase quizDatabase = services.createQuizDataAccess("QuizBase");
+        ArrayList<String> names = quizDatabase.generateQuizGradesList();
+        ListView listView= findViewById(R.id.quizListView);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
+        listView.setAdapter(adapter);
 
         TextView completedQuizzes = (TextView) findViewById(R.id.completed_quizzes);
         TextView averageGrade = (TextView) findViewById(R.id.average_grade);
@@ -36,8 +43,10 @@ public class ViewStatsActivity extends AppCompatActivity{
         TextView lowestGrade = (TextView) findViewById(R.id.lowest_grade);
 
         completedQuizzes.setText(cal.numberCompletedQuizzes(quizDatabase.getQuizList()));
-        averageGrade.setText(cal.getAverageGrade(quizDatabase.getQuizList()));
-        highestGrade.setText(cal.getHighestGrade(quizDatabase.getQuizList()));;
-        lowestGrade.setText(cal.getLowestGrade(quizDatabase.getQuizList()));
+        if (quizDatabase.getCompletedQuizzes() > 0) {
+            averageGrade.setText(cal.getAverageGrade(quizDatabase.getQuizList()));
+            highestGrade.setText(cal.getHighestGrade(quizDatabase.getQuizList()));
+            lowestGrade.setText(cal.getLowestGrade(quizDatabase.getQuizList()));
+        }
     }
 }

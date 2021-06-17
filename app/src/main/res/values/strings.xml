@@ -25,4 +25,8 @@
     <string name="create_a_question_for_quiz">Create a Question for Quiz</string>
     <string name="quiz_list">Quiz List</string>
     <string name="view_stats">View Stats</string>
+    <string name="highest_grade">Highest Quiz Grade:</string>
+    <string name="lowest_grade">Lowest Quiz Grade:</string>
+    <string name="completed_quizzes">Number of Completed Quizzes:</string>
+    <string name="average_grade">Average Quiz Grade:</string>
 </resources>

@@ -1,16 +1,15 @@
 package comp3350.AAS.business;
 
 import java.util.ArrayList;
+
+import comp3350.AAS.application.services;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.object.Question;
+import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
-    double quizGrade;
 
-
-//    public double calculateGrade (){
-//
-//    }
+    private QuizDatabase db = services.createQuizDataAccess("QuizBase");;
 
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {
         boolean isCorrect = false;
@@ -47,6 +46,7 @@ public class Calculate {
                 numberCompleted++;
             }
         }
+        db.setCompletedQuizzes(numberCompleted);
         return "" + numberCompleted;
     }
 
@@ -59,8 +59,9 @@ public class Calculate {
                 numCompleted++;
             }
         }
-        double averageGrade = totalGrade / numCompleted;
-        return "" + averageGrade * 100;
+        double averageGrade = (totalGrade / numCompleted) * 100.0;
+        String rounded = String.format("%.2f", averageGrade);
+        return rounded + "%";
     }
 
     public String getLowestGrade(ArrayList<Quiz> allQuizzes) {
@@ -70,7 +71,8 @@ public class Calculate {
                 lowestGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
             }
         }
-        return "" + lowestGrade * 100;
+        String rounded = String.format("%.2f", lowestGrade * 100.0);
+        return rounded + "%";
     }
 
     public String getHighestGrade(ArrayList<Quiz> allQuizzes) {
@@ -80,6 +82,7 @@ public class Calculate {
                 highestGrade = allQuizzes.get(i).getQuizResult() / allQuizzes.get(i).getQuestionCount();
             }
         }
-        return "" + highestGrade * 100;
+        String rounded = String.format("%.2f", highestGrade* 100.0);
+        return rounded + "%";
     }
 }
