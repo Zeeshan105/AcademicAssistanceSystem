@@ -25,6 +25,12 @@ public class SelectQuizActivity extends AppCompatActivity {
     public void init(){
         QuizDatabase database= Services.createQuizDataAccess("QuizBase");
         ArrayList<String> quizNames = database.getAllQuizName();
+
+        ArrayList<String> remainQuizList=new ArrayList<>();
+        for (int i=0; i<quizNames.size(); i++) {
+            remainQuizList.add(i+"");
+        }
+
         ListView listView= findViewById(R.id.quizListView);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quizNames);
@@ -33,14 +39,18 @@ public class SelectQuizActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(SelectQuizActivity.this);
 
-            builder.setNegativeButton("Start this quiz", (dialog, which) -> {
-                StartQuizActivity.currPosition = position;
-                startQuiz();
-            });
+            if (remainQuizList.contains(position+"")) {
+                builder.setNegativeButton("Start this quiz", (dialog, which) -> {
+                    StartQuizActivity.currPosition = position;
+                    remainQuizList.remove(position + "");
+                    startQuiz();
+                });
+            }else {
+                builder.setNegativeButton("This quiz is done!", (dialog, which) -> {});
+            }
 
             AlertDialog alert = builder.create();
             alert.show();
-
         });
     }
 

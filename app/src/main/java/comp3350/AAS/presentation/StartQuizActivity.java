@@ -89,16 +89,17 @@ public class StartQuizActivity extends AppCompatActivity {
         cal.updateGrade(selectedQuiz, selectedQuiz.getQuestionList().get(currIndex), selectedAnswer);
         AlertDialog.Builder builder = new AlertDialog.Builder(StartQuizActivity.this);
         currIndex++;
+
         if (currIndex<questionArrayList.size()) {
             radioGroup.check(0);
             showToast("New question!");
             generateQuestion();
         } else  {
             selectedQuiz.setCompleteStatus(true);
+
             builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
                     .setPositiveButton("Close", (dialog, which) -> {
-                        Intent intent = new Intent(this, MainActivity.class);
-                        startActivity(intent);
+                        StartQuizActivity.this.finish();
                     });
             AlertDialog alert = builder.create();
             alert.show();
