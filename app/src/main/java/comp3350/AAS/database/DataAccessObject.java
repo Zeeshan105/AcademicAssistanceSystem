@@ -81,21 +81,26 @@ public class DataAccessObject implements DataAccess {
         String values;
 
         result = null;
-        try
-        {
-            values = "'"+question.getQuestion()
-                    +"', '" +question.getOption1()
-                    +"', '" +question.getOption2()
-                    +"', '" +question.getOption3()
-                    +"', '" +question.getKey()
-                    +"'";
-            cmdString = "INSERT INTO QUESTION" +" Values(" +values +")";
-            //System.out.println(cmdString);
+        try {            // add question to db
+            values = "'" + question.getQuestion()
+                    + "', '" + question.getOption1()
+                    + "', '" + question.getOption2()
+                    + "', '" + question.getOption3()
+                    + "', '" + question.getKey()
+                    + "'";
+            cmdString = "INSERT INTO QUESTION" + " Values(" + values + ")";
+            System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
         }
-        catch (Exception e)
-        {
+        try {         // link with quiz
+            cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "')";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        } catch (Exception e) {
             result = processSQLError(e);
         }
     }
