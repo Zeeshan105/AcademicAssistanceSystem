@@ -12,10 +12,10 @@ import comp3350.AAS.database.DataAccess;
 public class DataAccessStub implements DataAccess {
     private String dbName;
     private String dbType = "stub";
-    private ArrayList<Quiz> quiz;
-    private ArrayList<CardFolder> cardFolder;
-    private ArrayList<FlashCard> flashCard;
-    private ArrayList<Question> question;
+    private ArrayList<Quiz> quizzes;
+    private ArrayList<CardFolder> cardFolders;
+    private ArrayList<FlashCard> flashCards;
+    private ArrayList<Question> questions;
 
     public DataAccessStub(String dbName)
     {
@@ -28,6 +28,35 @@ public class DataAccessStub implements DataAccess {
     }
 
     public void open(String string) {
+        Quiz quiz;
+        CardFolder cardFolder;
+        Question question;
+        FlashCard flashCard;
+
+        quizzes = new ArrayList<Quiz>();
+        quiz = new Quiz("Quiz 1");
+        quizzes.add(quiz);
+        quiz = new Quiz("Quiz 2");
+        quizzes.add(quiz);
+        quiz = new Quiz("Quiz 3");
+        quizzes.add(quiz);
+        quiz = new Quiz("Quiz 4");
+        quizzes.add(quiz);
+        quiz = new Quiz("Quiz 5");
+        quizzes.add(quiz);
+
+        questions = new ArrayList<Question>();
+        question = new Question("Q1","1","2","3","1");
+        questions.add(question);
+        question = new Question("Q2","2","2","1","2");
+        questions.add(question);
+        question = new Question("Q3","3","2","1","1");
+        questions.add(question);
+        question = new Question("Q4","1","2","3","4");
+        questions.add(question);
+        question = new Question("Q5","1","1","3","1");
+        questions.add(question);
+
 
     }
     public void close() {
