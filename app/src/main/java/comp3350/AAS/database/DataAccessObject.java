@@ -13,7 +13,7 @@ import comp3350.AAS.object.*;
 public class DataAccessObject implements DataAccess {
     private Statement st1, st2, st3;
     private Connection c1;
-    private ResultSet rs2, rs3, rs4, rs5;
+    private ResultSet rs1,rs2, rs3, rs4;
 
     private String dbName;
     private String dbType;
@@ -93,7 +93,7 @@ public class DataAccessObject implements DataAccess {
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
-            result = processSQLError(e);
+            System.out.println(processSQLError(e));
         }
         try {         // link with quiz
             cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "')";
@@ -101,12 +101,43 @@ public class DataAccessObject implements DataAccess {
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
-            result = processSQLError(e);
+            System.out.println(processSQLError(e));
         }
     }
 
     public ArrayList<Quiz> getQuizList() {
-        return null;
+        ArrayList<Quiz> quizList = new ArrayList<>();
+        ArrayList<String> existingQuiz = new ArrayList<>();
+
+        try {   // create all question objects
+            cmdString = "SELECT * FROM QUESTION JOIN QUIZ ON QUESTION.QUESTIONCONTENT = QUIZ.QUESTIONCONTENT";
+            rs1 = st1.executeQuery(cmdString);
+            while (rs1.next()){
+                String content = rs1.getString("QUESTIONCONTENT");
+                String option1 = rs1.getString("OPTION1");
+                String option2 = rs1.getString("OPTION2");
+                String option3 = rs1.getString("OPTION3");
+                String key = rs1.getString("ANSWER");
+                String quizName = rs1.getString("QUIZNAME");
+                Question newQuestion = new Question(content,option1,option2,option3,key);
+                if( existingQuiz.contains(quizName)){
+                    for( Quiz quiz : quizList) {
+                        if( quiz.getQuizName().equals(quizName)){
+                           quiz.addQuestion(newQuestion);
+                        }
+                    }
+                }
+                else {
+                    Quiz newQuiz = new Quiz(quizName);
+                    newQuiz.addQuestion(newQuestion);
+                    quizList.add(newQuiz);
+                    existingQuiz.add(quizName);
+                }
+            }
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return quizList;
     }
 
     public ArrayList<String> getAllQuizName() {

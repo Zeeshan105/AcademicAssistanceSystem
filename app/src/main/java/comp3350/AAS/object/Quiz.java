@@ -1,5 +1,7 @@
 package comp3350.AAS.object;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 
 public class Quiz {
@@ -45,4 +47,11 @@ public class Quiz {
 
     public boolean isComplete() { return quizCompleted; }
 
+    public String toString(){
+        String result = quizName;
+       for( Question quest : questionList){
+          result = result.concat(" " + quest.toString());
+       }
+       return result;
+    }
 }

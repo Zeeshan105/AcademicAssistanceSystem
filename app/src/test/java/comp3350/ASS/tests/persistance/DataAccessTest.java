@@ -2,6 +2,7 @@ package comp3350.ASS.tests.persistance;
 
 import junit.framework.TestCase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +39,6 @@ public class DataAccessTest extends TestCase {
     }
 
     public void test1() {
-        Question testQ = new Question("this is a test, working?","Yes","No","Maybe","Yes");
-        dataAccess.addQuiz(testQ,"Historical");
 
     }
 }

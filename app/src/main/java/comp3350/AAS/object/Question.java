@@ -35,4 +35,9 @@ public class Question {
         return key;
     }
 
+    public String toString(){
+        String result = question + ", " + option1 +", " + option2 + ", " + option3 + ", " + key + ", ";
+        return result;
+    }
+
 }
