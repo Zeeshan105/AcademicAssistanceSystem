@@ -8,6 +8,7 @@ import comp3350.ASS.tests.object.CardFolderTest;
 import comp3350.ASS.tests.object.FlashCardTest;
 import comp3350.ASS.tests.object.QuestionTest;
 import comp3350.ASS.tests.object.QuizTest;
+import comp3350.ASS.tests.persistance.DataAccessTest;
 
 public class AllTests {
     public static TestSuite suite;
@@ -16,6 +17,7 @@ public class AllTests {
         suite = new TestSuite("All tests");
         testObjects();
         testBusiness();
+        testPersistence();
         return suite;
     }
 
@@ -30,4 +32,8 @@ public class AllTests {
         suite.addTestSuite(CalculateTest.class);
     }
 
+    private static void testPersistence() {
+        suite.addTestSuite(DataAccessTest.class);
+    }
 }
+

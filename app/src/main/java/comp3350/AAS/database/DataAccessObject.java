@@ -78,7 +78,26 @@ public class DataAccessObject implements DataAccess {
     }
 
     public void addQuiz(Question question, String name) {
+        String values;
 
+        result = null;
+        try
+        {
+            values = "'"+question.getQuestion()
+                    +"', '" +question.getOption1()
+                    +"', '" +question.getOption2()
+                    +"', '" +question.getOption3()
+                    +"', '" +question.getKey()
+                    +"'";
+            cmdString = "INSERT INTO QUESTION" +" Values(" +values +")";
+            //System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
     }
 
     public ArrayList<Quiz> getQuizList() {
@@ -101,6 +120,29 @@ public class DataAccessObject implements DataAccess {
 
     }
 
+    public String checkWarning(Statement st, int updateCount)
+    {
+        String result;
+
+        result = null;
+        try
+        {
+            SQLWarning warning = st.getWarnings();
+            if (warning != null)
+            {
+                result = warning.getMessage();
+            }
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        if (updateCount != 1)
+        {
+            result = "Tuple not inserted correctly.";
+        }
+        return result;
+    }
 
     public String processSQLError(Exception e) {
         String result = "*** SQL Error: " + e.getMessage();
