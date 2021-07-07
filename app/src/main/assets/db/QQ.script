@@ -1,0 +1,21 @@
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+CREATE MEMORY TABLE QUIZ( QUIZNAME VARCHAR(50) NOT NULL, QUESTIONCONTENT VARCHAR(50) NOT NULL, CONSTRAINT CONSTRAINT1 PRIMARY KEY(QUIZNAME,QUESTIONCONTENT), CONSTRAINT CONSTRAINT2 FOREIGN KEY(QUESTIONCONTENT) REFERENCES QUESTION(QUESTIONCONTENT))
+CREATE MEMORY TABLE QUESTION( QUESTIONCONTENT VARCHAR(200) NOT NULL PRIMARY KEY, OPTIONA VARCHAR(50), OPTIONB VARCHAR(50), OPTIONC VARCHAR(50), ANSWER VARCHAR(50))
+CREATE USER SA PASSWORD ""
+GRANT DBA TO SA
+SET WRITE_DELAY 20
+SET SCHEMA PUBLIC
+INSERT INTO QUESTION VALUES('What is the capital city of Canada?', 'Vancouver', 'Ottawa', 'Toronto', 'Ottawa')
+INSERT INTO QUESTION VALUES('What is the area of Canada in square kilometers?', '9.98 million', '9.60 million', '9.37 million', '9.98 million')
+INSERT INTO QUESTION VALUES('What year was the founding of Canada?', '1867', '1887', '1787', '1867')
+INSERT INTO QUESTION VALUES('Number of Canadians participating in World War II', '0.5 million', '1 million', '2 million', '1 million')
+INSERT INTO QUESTION VALUES('Which aircraft manufacture belong to Canada?', 'Airbus', 'Boeing', 'Bombardier', 'Bombardier')
+INSERT INTO QUESTION VALUES('What is the result of 1+1?', '0', '1', '2', '2')
+INSERT INTO QUESTION VALUES('What is the positive result of square root of 36?', '3', '6', '9', '6')
+INSERT INTO QUIZ VALUES('Geographic', 'What is the capital city of Canada?')
+INSERT INTO QUIZ VALUES('Geographic', 'What is the area of Canada in square kilometers?')
+INSERT INTO QUIZ VALUES('Historical', 'What year was the founding of Canada?')
+INSERT INTO QUIZ VALUES('Historical', 'Number of Canadians participating in World War II')
+INSERT INTO QUIZ VALUES('Historical', 'Which aircraft manufacture belong to Canada?')
+INSERT INTO QUIZ VALUES('Math', 'What is the result of 1+1?')
+INSERT INTO QUIZ VALUES('Math', 'What is the positive result of square root of 36?')
