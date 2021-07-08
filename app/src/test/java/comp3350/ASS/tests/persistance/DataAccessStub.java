@@ -13,19 +13,16 @@ public class DataAccessStub implements DataAccess {
     private String dbName;
     private String dbType = "stub";
     private ArrayList<Quiz> quizList;
-    private ArrayList<Question> questionList;
     private ArrayList<CardFolder> listOfFolder;
     private ArrayList<FlashCard> flashCards;
     private int completedQuizzes;
 
 
-    public DataAccessStub(String dbName)
-    {
+    public DataAccessStub(String dbName) {
         this.dbName = dbName;
     }
 
-    public DataAccessStub()
-    {
+    public DataAccessStub() {
         this(Main.dbName);
     }
 
@@ -37,39 +34,45 @@ public class DataAccessStub implements DataAccess {
         CardFolder folder;
         FlashCard card;
 
-
         quizList = new ArrayList<Quiz>();
-        quiz = new Quiz("Geographic");
-        quizList.add(quiz);
         quiz = new Quiz("Historical");
+        quizList.add(quiz);
+        quiz = new Quiz("Geographic");
         quizList.add(quiz);
         quiz = new Quiz("Math");
         quizList.add(quiz);
 
-        questionList = new ArrayList<Question>();
-        question = new Question("What is the capital city of Canada?","Vancouver","Ottawa","Toronto","Ottawa");
-        questionList.add(question);
-        question = new Question("What is the area of Canada in square kilometers?","9.98 million","9.60 million","9.37 million","9.98 million");
-        questionList.add(question);
-        question = new Question("What year was the founding of Canada?", "1867", "1887", "1787", "1867");
-        questionList.add(question);
         question = new Question("Number of Canadians participating in World War II", "0.5 million", "1 million", "2 million", "1 million");
-        questionList.add(question);
+        addQuiz(question, "Historical");
+        question = new Question("What year was the founding of Canada?", "1867", "1887", "1787", "1867");
+        addQuiz(question, "Historical");
         question = new Question("Which aircraft manufacture belong to Canada?", "Airbus", "Boeing", "Bombardier", "Bombardier");
-        questionList.add(question);
-        question = new Question("What is the result of 1+1?", "0", "1", "2", "2");
-        questionList.add(question);
+        addQuiz(question, "Historical");
+
+        question = new Question("What is the area of Canada in square kilometers?","9.98 million","9.60 million","9.37 million","9.98 million");
+        addQuiz(question, "Geographic");
+        question = new Question("What is the capital city of Canada?","Vancouver","Ottawa","Toronto","Ottawa");
+        addQuiz(question, "Geographic");
+
         question = new Question("What is the positive result of square root of 36?", "3", "6", "9", "6");
-        questionList.add(question);
+        addQuiz(question, "Math");
+        question = new Question("What is the result of 1+1?", "0", "1", "2", "2");
+        addQuiz(question, "Math");
 
 
         listOfFolder=new ArrayList<>();
-        //TODO
+
+        addCard("Calculate square root", "sqrt(1)=+-1, sqrt(16)=+-4, sqrt(36)=+-6, sqrt(-1)=undefined", "Math Practice");
+        addCard("Addition and subtraction within 10", "1+1=2, 2+2=4", "Math Practice");
+        addCard("First World War", "The World War I break out in 1914", "Historical Event");
+        addCard("Second World War", "The World War II break out in 1939", "Historical Event");
+        addCard("National Land Area Descending Order", "Russia>Canada>China>America>Brazil...", "Geographic Knowledge");
+        addCard("Temperature Distribute", "Decreasing from low latitude to high latitude", "Geographic Knowledge");
 
     }
 
     public void close() {
-        System.out.println("already Closed " +dbType +" database " +dbName);
+        System.out.println("Already Closed " +dbType +" database " +dbName);
     }
 
     public void addCard(String title, String desc, String folderName) {

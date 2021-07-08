@@ -13,52 +13,40 @@ public class Calculate {
 
     // Helper method for updateGrade to update grades according to users answer.
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {
-
         boolean isCorrect = false;
 
         if (selectedAnswer.equals(question.getKey())) {
             isCorrect = true;
         }
-
         return isCorrect;
-
     }
 
     public void updateGrade(Quiz selectedQuiz, Question selectedQuestion, String selectedAnswer) {
-
         double currentGrade = selectedQuiz.getQuizResult();
 
         if (isCorrectAnswer(selectedQuestion, selectedAnswer)) {
             currentGrade++;
         }
-
         selectedQuiz.setQuizResult(currentGrade);
-
     }
 
     public ArrayList<String> getCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
-
         ArrayList<String> completedQuizzes = new ArrayList<>();
 
         for (int i = 0; i < allQuizzes.size(); i++) {
-
             Quiz selectedQuiz = allQuizzes.get(i);
 
             if (selectedQuiz.isComplete()) {
                 completedQuizzes.add(selectedQuiz.getQuizName());
             }
         }
-
         return completedQuizzes;
-
     }
 
     public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
-
         int numberCompleted = 0;
 
         for (int i = 0; i < allQuizzes.size(); i++) {
-
             Quiz selectedQuiz = allQuizzes.get(i);
 
             if (selectedQuiz.isComplete()) {
@@ -68,16 +56,13 @@ public class Calculate {
 
         quizDatabase.setCompletedQuizzes(numberCompleted);
         return "" + numberCompleted;
-
     }
 
     public String getAverageGrade(ArrayList<Quiz> allQuizzes) {
-
         double totalGrade = 0;
         int quizzesCompleted = 0;
 
         for (int i = 0; i < allQuizzes.size(); i++) {
-
             Quiz selectedQuiz = allQuizzes.get(i);
 
             if (selectedQuiz.isComplete()) {
@@ -89,15 +74,12 @@ public class Calculate {
         double averageGrade = (totalGrade / quizzesCompleted) * 100.0;
         String rounded = String.format("%.2f", averageGrade);
         return rounded + "%";
-
     }
 
     public String getHighestGrade(ArrayList<Quiz> allQuizzes) {
-
         double highestGrade = Double.NEGATIVE_INFINITY; // Place holder value that is updated if there is a completed quiz.
 
         for (int i = 0; i < allQuizzes.size(); i++) {
-
             Quiz selectedQuiz = allQuizzes.get(i);
             double newGrade = selectedQuiz.getQuizResult() / selectedQuiz.getQuestionCount();
 
@@ -108,15 +90,12 @@ public class Calculate {
 
         String rounded = String.format("%.2f", highestGrade * 100.0);
         return rounded + "%";
-
     }
 
     public String getLowestGrade(ArrayList<Quiz> allQuizzes) {
-
         double lowestGrade = Double.POSITIVE_INFINITY; // Place holder value that is updated if there is a completed quiz.
 
         for (int i = 0; i < allQuizzes.size(); i++) {
-
             Quiz selectedQuiz = allQuizzes.get(i);
             double newGrade = selectedQuiz.getQuizResult() / selectedQuiz.getQuestionCount();
 
@@ -127,7 +106,6 @@ public class Calculate {
 
         String rounded = String.format("%.2f", lowestGrade * 100.0);
         return rounded + "%";
-
     }
 
 }
