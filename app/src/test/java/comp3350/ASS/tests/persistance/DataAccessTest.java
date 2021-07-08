@@ -16,6 +16,7 @@ import comp3350.AAS.database.DataAccessObject;
 
 public class DataAccessTest extends TestCase {
     private DataAccess dataAccess;
+    private ArrayList<Quiz> quizList;
 
     public DataAccessTest(String arg0) {
         super(arg0);
@@ -29,6 +30,8 @@ public class DataAccessTest extends TestCase {
         System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
          dataAccess = new DataAccessObject(Main.dbName);
          dataAccess.open(Main.getDBPathName());
+
+        quizList = dataAccess.getQuizList();
     }
 
     public void tearDown() {
@@ -38,157 +41,85 @@ public class DataAccessTest extends TestCase {
         System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
     }
 
-//    INSERT INTO QUESTION VALUES('this is a test, working?','Yes','No','Maybe','Yes')
-//    INSERT INTO QUIZ VALUES('Historical','this is a test, working?')
 
     public void testQuizName(){
-        System.out.println("\tStart test quiz name...");
         ArrayList<String> quizNameList = dataAccess.getAllQuizName();
 
         assertEquals("Historical", quizNameList.get(0));
         assertEquals("Geographic", quizNameList.get(1));
         assertEquals("Math", quizNameList.get(2));
 
-        System.out.println("\tPASS!");
+        System.out.println("\tPASS test quiz name!");
     }
 
-    public void testQuestionContent() {
-        System.out.println("\tStart test all question content...");
-        ArrayList<Quiz> quizList = dataAccess.getQuizList();
-        ArrayList<String> questionContent = new ArrayList<>();
+    public void testFirstQuiz(){
+        ArrayList<Question> questions = quizList.get(0).getQuestionList();
+        Question question;
 
-        // First quiz
-        ArrayList<Question> firstQuestionList = quizList.get(0).getQuestionList();
+        question=questions.get(0);
+        assertEquals("Number of Canadians participating in World War II", question.getQuestion());
+        assertEquals("0.5 million", question.getOption1());
+        assertEquals("1 million", question.getOption2());
+        assertEquals("2 million", question.getOption3());
+        assertEquals("1 million", question.getKey());
 
-        for (int i = 0; i < firstQuestionList.size(); i++) {
-            questionContent.add(firstQuestionList.get(i).getQuestion());
-        }
+        question=questions.get(1);
+        assertEquals("What year was the founding of Canada?", question.getQuestion());
+        assertEquals("1867", question.getOption1());
+        assertEquals("1887", question.getOption2());
+        assertEquals("1787", question.getOption3());
+        assertEquals("1867", question.getKey());
 
-        assertEquals("Number of Canadians participating in World War II", questionContent.get(0));
-        assertEquals("What year was the founding of Canada?", questionContent.get(1));
-        assertEquals("Which aircraft manufacture belong to Canada?", questionContent.get(2));
-        questionContent.clear();
+        question=questions.get(2);
+        assertEquals("Which aircraft manufacture belong to Canada?", question.getQuestion());
+        assertEquals("Airbus", question.getOption1());
+        assertEquals("Boeing", question.getOption2());
+        assertEquals("Bombardier", question.getOption3());
+        assertEquals("Bombardier", question.getKey());
 
-        // Second quiz
-        ArrayList<Question> secondQuestionList = quizList.get(1).getQuestionList();
-
-        for (int i = 0; i < secondQuestionList.size(); i++) {
-            questionContent.add(secondQuestionList.get(i).getQuestion());
-        }
-
-        assertEquals("What is the area of Canada in square kilometers?", questionContent.get(0));
-        assertEquals("What is the capital city of Canada?", questionContent.get(1));
-        questionContent.clear();
-
-        // Third quiz
-        ArrayList<Question> thirdQuestionList = quizList.get(2).getQuestionList();
-
-        for (int i = 0; i < thirdQuestionList.size(); i++) {
-            questionContent.add(thirdQuestionList.get(i).getQuestion());
-        }
-
-        assertEquals("What is the positive result of square root of 36?", questionContent.get(0));
-        assertEquals("What is the result of 1+1?", questionContent.get(1));
-        questionContent.clear();
-
-        System.out.println("\tPASS!");
+        System.out.println("\tPASS test 1st quiz!");
     }
 
-    public void testQuestionOptionInFirstQuiz() {
-        System.out.println("\tStart test 1st quiz with its questions' options and key...");
-        ArrayList<Quiz> quizList = dataAccess.getQuizList();
-        ArrayList<String> option = new ArrayList<>();
-        int index=0;
+    public void testSecondQuiz(){
+        ArrayList<Question> questions = quizList.get(1).getQuestionList();
+        Question question;
 
-        ArrayList<Question> questionList = quizList.get(0).getQuestionList();
+        question=questions.get(0);
+        assertEquals("What is the area of Canada in square kilometers?", question.getQuestion());
+        assertEquals("9.98 million", question.getOption1());
+        assertEquals("9.60 million", question.getOption2());
+        assertEquals("9.37 million", question.getOption3());
+        assertEquals("9.98 million", question.getKey());
 
-        for (int i = 0; i < questionList.size(); i++) {
-            option.add(questionList.get(i).getOption1());
-            option.add(questionList.get(i).getOption2());
-            option.add(questionList.get(i).getOption3());
-            option.add(questionList.get(i).getKey());
-        }
+        question=questions.get(1);
+        assertEquals("What is the capital city of Canada?", question.getQuestion());
+        assertEquals("Vancouver", question.getOption1());
+        assertEquals("Ottawa", question.getOption2());
+        assertEquals("Toronto", question.getOption3());
+        assertEquals("Ottawa", question.getKey());
 
-        // First question options and key
-        assertEquals("0.5 million", option.get(index++));
-        assertEquals("1 million", option.get(index++));
-        assertEquals("2 million", option.get(index++));
-        assertEquals("1 million", option.get(index++));
-
-        // Second question options and key
-        assertEquals("1867", option.get(index++));
-        assertEquals("1887", option.get(index++));
-        assertEquals("1787", option.get(index++));
-        assertEquals("1867", option.get(index++));
-
-        // Third question options and key
-        assertEquals("Airbus", option.get(index++));
-        assertEquals("Boeing", option.get(index++));
-        assertEquals("Bombardier", option.get(index++));
-        assertEquals("Bombardier", option.get(index));
-
-        System.out.println("\tPASS!");
+        System.out.println("\tPASS test 2nd quiz!");
     }
 
-    public void testQuestionOptionInSecondQuiz() {
-        System.out.println("\tStart test 2nd quiz with its questions' options and key...");
-        ArrayList<Quiz> quizList = dataAccess.getQuizList();
-        ArrayList<String> option = new ArrayList<>();
-        int index=0;
+    public void testThirdQuiz(){
+        ArrayList<Question> questions = quizList.get(2).getQuestionList();
+        Question question;
 
-        ArrayList<Question> questionList = quizList.get(1).getQuestionList();
+        question=questions.get(0);
+        assertEquals("What is the positive result of square root of 36?", question.getQuestion());
+        assertEquals("3", question.getOption1());
+        assertEquals("6", question.getOption2());
+        assertEquals("9", question.getOption3());
+        assertEquals("6", question.getKey());
 
-        for (int i = 0; i < questionList.size(); i++) {
-            option.add(questionList.get(i).getOption1());
-            option.add(questionList.get(i).getOption2());
-            option.add(questionList.get(i).getOption3());
-            option.add(questionList.get(i).getKey());
-        }
+        question=questions.get(1);
+        assertEquals("What is the result of 1+1?", question.getQuestion());
+        assertEquals("0", question.getOption1());
+        assertEquals("1", question.getOption2());
+        assertEquals("2", question.getOption3());
+        assertEquals("2", question.getKey());
 
-        // First question options and key
-        assertEquals("9.98 million", option.get(index++));
-        assertEquals("9.60 million", option.get(index++));
-        assertEquals("9.37 million", option.get(index++));
-        assertEquals("9.98 million", option.get(index++));
-
-        // Second question options and key
-        assertEquals("Vancouver", option.get(index++));
-        assertEquals("Ottawa", option.get(index++));
-        assertEquals("Toronto", option.get(index++));
-        assertEquals("Ottawa", option.get(index));
-
-        System.out.println("\tPASS!");
+        System.out.println("\tPASS test 3rd quiz!");
     }
-
-    public void testQuestionOptionInThirdQuiz() {
-        System.out.println("\tStart test 3rd quiz with its questions' options and key...");
-        ArrayList<Quiz> quizList = dataAccess.getQuizList();
-        ArrayList<String> option = new ArrayList<>();
-        int index=0;
-
-        ArrayList<Question> questionList = quizList.get(2).getQuestionList();
-
-        for (int i = 0; i < questionList.size(); i++) {
-            option.add(questionList.get(i).getOption1());
-            option.add(questionList.get(i).getOption2());
-            option.add(questionList.get(i).getOption3());
-            option.add(questionList.get(i).getKey());
-        }
-
-        // First question options and key
-        assertEquals("3", option.get(index++));
-        assertEquals("6", option.get(index++));
-        assertEquals("9", option.get(index++));
-        assertEquals("6", option.get(index++));
-
-        // Second question options and key
-        assertEquals("0", option.get(index++));
-        assertEquals("1", option.get(index++));
-        assertEquals("2", option.get(index++));
-        assertEquals("2", option.get(index));
-
-        System.out.println("\tPASS!");
-    }
-
 
 }
