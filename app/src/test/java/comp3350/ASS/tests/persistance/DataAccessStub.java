@@ -69,7 +69,7 @@ public class DataAccessStub implements DataAccess {
     }
 
     public void close() {
-
+        System.out.println("already Closed " +dbType +" database " +dbName);
     }
 
     public void addCard(String title, String desc, String folderName) {
