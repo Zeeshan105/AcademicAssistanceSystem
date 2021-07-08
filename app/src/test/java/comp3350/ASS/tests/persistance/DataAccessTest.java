@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import comp3350.AAS.application.Main;
@@ -23,13 +24,13 @@ public class DataAccessTest extends TestCase {
     }
 
     public void setUp() {
-        System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        dataAccess = new DataAccessStub();
-        dataAccess.open("Stub");
+        //System.out.println("\nStarting Persistence test DataAccess (using stub)");
+        //dataAccess = new DataAccessStub();
+        //dataAccess.open("Stub");
 
-//        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-//         dataAccess = new DataAccessObject(Main.dbName);
-//         dataAccess.open(Main.getDBPathName());
+        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
+         dataAccess = new DataAccessObject(Main.dbName);
+         dataAccess.open(Main.getDBPathName());
 
         quizList = dataAccess.getQuizList();
     }
@@ -122,8 +123,8 @@ public class DataAccessTest extends TestCase {
         System.out.println("\tPASS test 3rd quiz!");
     }
 
-    public void testFlashCard(){
-
+    public void testCompleteQuiz(){
+       System.out.println("completed:" +  dataAccess.getCompletedQuizzes());
     }
 
 }

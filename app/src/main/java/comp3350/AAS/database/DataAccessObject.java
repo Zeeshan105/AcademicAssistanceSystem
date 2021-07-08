@@ -165,13 +165,36 @@ public class DataAccessObject implements DataAccess {
     }
 
     public ArrayList<String> generateQuizGradesList() {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> gradeList = new ArrayList<>();
+        try {
+            cmdString = "SELECT COUNT(QUESTIONCONTENT) AS COUNTS, QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY QUIZNAME, COMPLETE, RESULT HAVING COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
+            while(rs1.next()){
+                String count = rs1.getString("COUNTS");
+                String name = rs1.getString("QUIZNAME");
+                String result = rs1.getString("RESULT");
+                gradeList.add(name + "\nMark: " + result + "/" + count);
+            }
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
 
-        return list;
+        return gradeList;
     }
 
     public int getCompletedQuizzes() {
-        return 0;
+        int result = 0;
+        try{
+            cmdString = "SELECT COUNT(*) AS ANSWER FROM (SELECT COUNT(*) AS COUNTS, COUNT(QUIZNAME) AS QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY COMPLETE, RESULT HAVING COMPLETE = TRUE)";
+            rs1 = st1.executeQuery(cmdString);
+            while(rs1.next()){
+               result = rs1.getInt("ANSWER");
+            }
+
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return result;
     }
 
     public void setCompletedQuizzes(int numCompleted) {
