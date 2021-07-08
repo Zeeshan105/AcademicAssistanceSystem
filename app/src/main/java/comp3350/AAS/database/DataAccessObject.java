@@ -79,8 +79,8 @@ public class DataAccessObject implements DataAccess {
 
     public void addQuiz(Question question, String name) {
         String values;
-
         result = null;
+
         try {            // add question to db
             values = "'" + question.getQuestion()
                     + "', '" + question.getOption1()
@@ -95,6 +95,7 @@ public class DataAccessObject implements DataAccess {
         } catch (Exception e) {
             System.out.println(processSQLError(e));
         }
+
         try {         // link with quiz
             cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "')";
             System.out.println(cmdString);
@@ -112,6 +113,7 @@ public class DataAccessObject implements DataAccess {
         try {   // create all question objects
             cmdString = "SELECT * FROM QUESTION JOIN QUIZ ON QUESTION.QUESTIONCONTENT = QUIZ.QUESTIONCONTENT";
             rs1 = st1.executeQuery(cmdString);
+
             while (rs1.next()){
                 String content = rs1.getString("QUESTIONCONTENT");
                 String option1 = rs1.getString("OPTION1");
@@ -120,20 +122,21 @@ public class DataAccessObject implements DataAccess {
                 String key = rs1.getString("ANSWER");
                 String quizName = rs1.getString("QUIZNAME");
                 Question newQuestion = new Question(content,option1,option2,option3,key);
+
                 if( existingQuiz.contains(quizName)){
                     for( Quiz quiz : quizList) {
                         if( quiz.getQuizName().equals(quizName)){
                            quiz.addQuestion(newQuestion);
                         }
                     }
-                }
-                else {
+                } else {
                     Quiz newQuiz = new Quiz(quizName);
                     newQuiz.addQuestion(newQuestion);
                     quizList.add(newQuiz);
                     existingQuiz.add(quizName);
                 }
             }
+
         }catch (Exception e){
             System.out.println(processSQLError(e));
         }
@@ -141,11 +144,30 @@ public class DataAccessObject implements DataAccess {
     }
 
     public ArrayList<String> getAllQuizName() {
-        return null;
+        ArrayList<String> quizNameList = new ArrayList<>();
+
+        try {
+            cmdString = "SELECT QUIZNAME FROM QUESTION JOIN QUIZ ON QUESTION.QUESTIONCONTENT = QUIZ.QUESTIONCONTENT";
+            rs1 = st1.executeQuery(cmdString);
+
+            while (rs1.next()){
+                String quizName = rs1.getString("QUIZNAME");
+
+                if(!quizNameList.contains(quizName)){
+                    quizNameList.add(quizName);
+                }
+            }
+
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return quizNameList;
     }
 
     public ArrayList<String> generateQuizGradesList() {
-        return null;
+        ArrayList<String> list = new ArrayList<>();
+
+        return list;
     }
 
     public int getCompletedQuizzes() {
@@ -156,25 +178,20 @@ public class DataAccessObject implements DataAccess {
 
     }
 
-    public String checkWarning(Statement st, int updateCount)
-    {
-        String result;
+    public String checkWarning(Statement st, int updateCount) {
+        String result = null;
 
-        result = null;
-        try
-        {
+        try {
             SQLWarning warning = st.getWarnings();
-            if (warning != null)
-            {
+
+            if (warning != null) {
                 result = warning.getMessage();
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             result = processSQLError(e);
         }
-        if (updateCount != 1)
-        {
+
+        if (updateCount != 1) {
             result = "Tuple not inserted correctly.";
         }
         return result;
