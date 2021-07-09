@@ -165,19 +165,30 @@ public class DataAccessObject implements DataAccess {
                     + "', '" + question.getKey()
                     + "'";
             cmdString = "INSERT INTO QUESTION" + " Values(" + values + ")";
-            System.out.println(cmdString);
+            System.out.println(cmdString + "in dataaccessobject");
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
             System.out.println(processSQLError(e));
-            System.out.println(result);
         }
 
         try {         // link with quiz
-            cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "')";
-            System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1, updateCount);
+            cmdString = "SELECT * FROM QUIZ WHERE QUIZNAME = '" + name +"'";
+            rs2 = st2.executeQuery(cmdString);
+            if(rs2.next()) {
+                String status = rs2.getString("COMPLETE");
+                String mark = rs2.getString("RESULT");
+                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "'," + status + "," + mark+")";
+                System.out.println(cmdString);
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
+            else {
+                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "', TRUE, 0.0)";
+                System.out.println(cmdString);
+                updateCount = st1.executeUpdate(cmdString);
+                result = checkWarning(st1, updateCount);
+            }
         } catch (Exception e) {
             System.out.println(processSQLError(e));
             System.out.println(result);

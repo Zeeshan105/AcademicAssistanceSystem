@@ -189,5 +189,8 @@ public class DataAccessTest extends TestCase {
         quiz.setCompleteStatus(true);
 
     }
+    public void testAddQuiz() {
+       //TODO
+    }
 
 }
