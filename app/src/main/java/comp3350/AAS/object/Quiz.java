@@ -26,30 +26,37 @@ public class Quiz {
         return questionList;
     }
 
-    public int getQuestionCount() { return questionList.size(); }
+    public int getQuestionCount() {
+        return questionList.size();
+    }
 
     public String getQuizName() {
         return quizName;
     }
 
     public void setQuizResult(double result) {
-
         if (result<0){
             result=0;
         }
         quizResult = result;
-
     }
 
-    public double getQuizResult() { return quizResult; }
+    public double getQuizResult() {
+        return quizResult;
+    }
 
-    public void setCompleteStatus(boolean completed) { quizCompleted = completed; }
+    public void setCompleteStatus(boolean isCompleted) {
+        quizCompleted = isCompleted;
+    }
 
-    public boolean isComplete() { return quizCompleted; }
+    public boolean isComplete() {
+        return quizCompleted;
+    }
 
     public String toString(){
         String result = quizName;
-       for( Question quest : questionList){
+
+        for( Question quest : questionList){
           result = result.concat(" " + quest.toString());
        }
        return result;

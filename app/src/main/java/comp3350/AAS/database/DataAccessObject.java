@@ -18,10 +18,6 @@ public class DataAccessObject implements DataAccess {
     private String dbName;
     private String dbType;
 
-//    private ArrayList<Quiz> students;
-//    private ArrayList<Question> courses;
-//    private ArrayList<FlashCard> scs;
-
     private String cmdString;
     private int updateCount;
     private String result;
@@ -62,20 +58,100 @@ public class DataAccessObject implements DataAccess {
 
 
     public void addCard(String title, String desc, String folderName){
+        String values;
+        result = null;
 
+        try {
+            // add flash card to db
+            values = "'" + title
+                    + "', '" + desc
+                    + "'";
+            cmdString = "INSERT INTO FLASHCARD VALUES(" + values + ")";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        } catch (Exception e) {
+            System.out.println(processSQLError(e));
+        }
+
+        try {
+            // link with Folder
+            cmdString = "INSERT INTO FOLDER VALUES('" + folderName + "','" + title + "')";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        } catch (Exception e) {
+            System.out.println(processSQLError(e));
+        }
     }
 
     public ArrayList<String> getFolderNames(){
-        return null;
+        ArrayList<String> folderNameList = new ArrayList<>();
+
+        try {
+            cmdString = "SELECT FOLDERNAME FROM FLASHCARD JOIN FOLDER ON FLASHCARD.TITLE = FOLDER.TITLE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while (rs1.next()){
+                String folderName = rs1.getString("FOLDERNAME");
+
+                if(!folderNameList.contains(folderName)){
+                    folderNameList.add(folderName);
+                }
+            }
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return folderNameList;
     }
 
     public ArrayList<CardFolder> getFolders(){
-        return null;
+        ArrayList<CardFolder> folderList = new ArrayList<>();
+        ArrayList<String> existingFolder = new ArrayList<>();
+
+        try {   // create all folders objects
+            cmdString = "SELECT * FROM FOLDER JOIN FLASHCARD ON FLASHCARD.TITLE = FOLDER.TITLE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while (rs1.next()){
+                String folderName = rs1.getString("FOLDERNAME");
+                String title = rs1.getString("TITLE");
+                String description = rs1.getString("DESCRIPTION");
+
+                if(existingFolder.contains(folderName)){
+                    for(CardFolder folder : folderList) {
+                        if(folder.getFolderName().equals(folderName)){
+                            folder.addCard(title, description);
+                        }
+                    }
+                } else {
+                    CardFolder newFolder = new CardFolder(folderName);
+                    newFolder.addCard(title, description);
+                    folderList.add(newFolder);
+                    existingFolder.add(folderName);
+                }
+            }
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return folderList;
     }
 
     public void deleteFolder(int index){
+        String folderName;
+        result = null;
 
+        try {
+            folderName = getFolderNames().get(index);
+            cmdString = "DELETE FROM FOLDER WHERE FOLDERNAME=" +folderName;
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        } catch (Exception e) {
+            System.out.println(processSQLError(e));
+            System.out.println(result);
+        }
     }
+
 
     public void addQuiz(Question question, String name) {
         String values;
@@ -94,6 +170,7 @@ public class DataAccessObject implements DataAccess {
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
             System.out.println(processSQLError(e));
+            System.out.println(result);
         }
 
         try {         // link with quiz
@@ -103,6 +180,7 @@ public class DataAccessObject implements DataAccess {
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
             System.out.println(processSQLError(e));
+            System.out.println(result);
         }
     }
 
@@ -166,9 +244,11 @@ public class DataAccessObject implements DataAccess {
 
     public ArrayList<String> generateQuizGradesList() {
         ArrayList<String> gradeList = new ArrayList<>();
+
         try {
             cmdString = "SELECT COUNT(QUESTIONCONTENT) AS COUNTS, QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY QUIZNAME, COMPLETE, RESULT HAVING COMPLETE = TRUE";
             rs1 = st1.executeQuery(cmdString);
+
             while(rs1.next()){
                 String count = rs1.getString("COUNTS");
                 String name = rs1.getString("QUIZNAME");
@@ -183,18 +263,20 @@ public class DataAccessObject implements DataAccess {
     }
 
     public int getCompletedQuizzes() {
-        int result = 0;
+        int numCompleted = 0;
+
         try{
             cmdString = "SELECT COUNT(*) AS ANSWER FROM (SELECT COUNT(*) AS COUNTS, COUNT(QUIZNAME) AS QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY COMPLETE, RESULT HAVING COMPLETE = TRUE)";
             rs1 = st1.executeQuery(cmdString);
-            while(rs1.next()){
-               result = rs1.getInt("ANSWER");
-            }
 
+            while(rs1.next()){
+                numCompleted = rs1.getInt("ANSWER");
+            }
         }catch(Exception e){
             System.out.println(processSQLError(e));
         }
-        return result;
+
+        return numCompleted;
     }
 
     public void setCompletedQuizzes(int numCompleted) {

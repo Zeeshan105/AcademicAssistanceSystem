@@ -17,6 +17,7 @@ import comp3350.AAS.database.DataAccessObject;
 
 public class DataAccessTest extends TestCase {
     private DataAccess dataAccess;
+    private ArrayList<CardFolder> folderList;
     private ArrayList<Quiz> quizList;
 
     public DataAccessTest(String arg0) {
@@ -24,22 +25,81 @@ public class DataAccessTest extends TestCase {
     }
 
     public void setUp() {
-        System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        dataAccess = new DataAccessStub();
-        dataAccess.open("Stub");
+//        System.out.println("\nStarting Persistence test DataAccess (using stub)");
+//        dataAccess = new DataAccessStub();
+//        dataAccess.open("Stub");
+        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
+        dataAccess = new DataAccessObject(Main.dbName);
+        dataAccess.open(Main.getDbPathName());
 
-        //System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-         //dataAccess = new DataAccessObject(Main.dbName);
-         //dataAccess.open(Main.getDBPathName());
-
+        folderList = dataAccess.getFolders();
         quizList = dataAccess.getQuizList();
     }
 
     public void tearDown() {
         dataAccess.close();
+//        System.out.println("Finished Persistence test DataAccess (using stub)");
+        System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
+    }
 
-        System.out.println("Finished Persistence test DataAccess (using stub)");
-//        System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
+
+    public void testFirstFolder(){
+        ArrayList<FlashCard> flashCards = folderList.get(0).getCardList();
+        assertEquals("Geographic Knowledge", folderList.get(0).getFolderName());
+
+        FlashCard flashCard;
+
+        flashCard=flashCards.get(0);
+        assertEquals("National Land Area Descending Order", flashCard.getTitle());
+        assertEquals("Russia>Canada>China>America>Brazil...", flashCard.getDescription());
+
+        flashCard=flashCards.get(1);
+        assertEquals("Temperature Distributed", flashCard.getTitle());
+        assertEquals("Decreasing from low latitude to high latitude", flashCard.getDescription());
+
+        System.out.println("\tPASS test 1st folder!");
+    }
+
+    public void testSecondFolder(){
+        ArrayList<FlashCard> flashCards = folderList.get(1).getCardList();
+        assertEquals("Historical Event", folderList.get(1).getFolderName());
+
+        FlashCard flashCard;
+
+        flashCard=flashCards.get(0);
+        assertEquals("First World War", flashCard.getTitle());
+        assertEquals("The World War I break out in 1914", flashCard.getDescription());
+
+        flashCard=flashCards.get(1);
+        assertEquals("Second World War", flashCard.getTitle());
+        assertEquals("The World War II break out in 1939", flashCard.getDescription());
+
+        System.out.println("\tPASS test 2nd folder!");
+    }
+
+    public void testThirdFolder(){
+        ArrayList<FlashCard> flashCards = folderList.get(2).getCardList();
+        assertEquals("Math Practice", folderList.get(2).getFolderName());
+
+        FlashCard flashCard;
+
+        flashCard=flashCards.get(0);
+        assertEquals("Addition and subtraction within 10", flashCard.getTitle());
+        assertEquals("1+1=2, 2+2=4", flashCard.getDescription());
+
+        flashCard=flashCards.get(1);
+        assertEquals("Calculate square root", flashCard.getTitle());
+        assertEquals("sqrt(1)=+-1, sqrt(16)=+-4, sqrt(36)=+-6, sqrt(-1)=undefined", flashCard.getDescription());
+
+        System.out.println("\tPASS test 3rd folder!");
+    }
+
+    public void testDeleteFolder(){
+        assertEquals("Geographic Knowledge", folderList.remove(0).getFolderName());
+        assertEquals("Historical Event", folderList.remove(0).getFolderName());
+        assertEquals("Math Practice", folderList.remove(0).getFolderName());
+
+        System.out.println("\tPASS test delete folder!");
     }
 
 
@@ -123,7 +183,11 @@ public class DataAccessTest extends TestCase {
         System.out.println("\tPASS test 3rd quiz!");
     }
 
-    public void testCompleteQuiz(){
+    public void testCompletedQuiz(){
+        //TODO
+        Quiz quiz = quizList.get(0);
+        quiz.setCompleteStatus(true);
+
     }
 
 }

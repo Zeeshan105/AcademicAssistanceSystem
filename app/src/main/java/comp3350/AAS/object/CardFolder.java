@@ -22,7 +22,6 @@ public class CardFolder {
     }
 
     public ArrayList<String> getCardTitles(){
-
         ArrayList<String> cardTitles = new ArrayList<>();
 
         for (int i = 0; i < cardList.size(); i++) {
@@ -33,7 +32,6 @@ public class CardFolder {
     }
 
     public ArrayList<String> getCardDescription(){
-
         ArrayList<String> cardDescriptions = new ArrayList<>();
 
         for (int i = 0; i < cardList.size(); i++) {
@@ -41,6 +39,10 @@ public class CardFolder {
         }
 
         return cardDescriptions;
+    }
+
+    public ArrayList<FlashCard> getCardList() {
+        return cardList;
     }
 
     public void removeCard(int index){
