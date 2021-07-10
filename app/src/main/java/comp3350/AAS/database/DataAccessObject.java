@@ -139,13 +139,25 @@ public class DataAccessObject implements DataAccess {
 
     public void deleteFolder(int index){
         String folderName;
+        ArrayList<String> titles;
         result = null;
 
         try {
             folderName = getFolderNames().get(index);
-            cmdString = "DELETE FROM FOLDER WHERE FOLDERNAME=" +folderName;
+            titles = getFolders().get(index).getCardTitles();
+
+            cmdString = "DELETE FROM FOLDER WHERE FOLDERNAME='" +folderName+"'";
+            System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
+
+            for (int i = 0; i < titles.size(); i++) {
+                cmdString = "DELETE FROM FLASHCARD WHERE TITLE='" +titles.get(i)+"'";
+                System.out.println(cmdString);
+                updateCount = st1.executeUpdate(cmdString);
+            }
+            result = checkWarning(st1, updateCount);
+
         } catch (Exception e) {
             System.out.println(processSQLError(e));
             System.out.println(result);
