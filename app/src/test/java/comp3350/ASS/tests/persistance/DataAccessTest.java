@@ -101,6 +101,16 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("\tPASS test delete folder!");
     }
+    public void testAddFolder(){
+        folderList.add(3,new CardFolder("add New folder A"));
+        folderList.get(3).addCard("11","22");
+
+        assertEquals("add New folder A",folderList.get(3).getFolderName());
+        assertEquals("11",folderList.get(3).getCardTitles().get(0));
+        assertEquals("22",folderList.get(3).getCardDescription().get(0));
+
+        System.out.println("\tPASS test add folder!");
+    }
 
 
     public void testQuizName(){
@@ -184,13 +194,43 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testCompletedQuiz(){
-        //TODO
-        Quiz quiz = quizList.get(0);
+        boolean complete;
+        Quiz quiz;
+        quiz = quizList.get(0);
         quiz.setCompleteStatus(true);
+        complete = quiz.isComplete();
+        assertTrue(complete);
 
+        quiz = quizList.get(1);
+        quiz.setCompleteStatus(false);
+        complete = quiz.isComplete();
+        assertFalse(complete);
+        System.out.println("\tPASS Completed quiz!");
     }
     public void testAddQuiz() {
-       //TODO
+        quizList.add(new Quiz("add new Quiz"));
+        assertEquals("add new Quiz",quizList.get(3).getQuizName());
+
+        System.out.println("\tPASS test add Quiz!");
     }
+    public void testAddQuestion() {
+        quizList.add(new Quiz("add new Quiz 2"));
+        quizList.get(3).addQuestion(new Question("What is the population of Canada?","3759","3800","4059","3759"));
+        quizList.get(3).addQuestion(new Question("When Canada was founded?","1868","1867","1888","1867"));
+        assertEquals("What is the population of Canada?",quizList.get(3).getQuestionList().get(0).getQuestion());
+        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getOption1());
+        assertEquals("3800",quizList.get(3).getQuestionList().get(0).getOption2());
+        assertEquals("4059",quizList.get(3).getQuestionList().get(0).getOption3());
+        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getKey());
+
+        assertEquals("When Canada was founded?",quizList.get(3).getQuestionList().get(1).getQuestion());
+        assertEquals("1868",quizList.get(3).getQuestionList().get(1).getOption1());
+        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getOption2());
+        assertEquals("1888",quizList.get(3).getQuestionList().get(1).getOption3());
+        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getKey());
+
+        System.out.println("\tPASS test add Quiz!");
+    }
+
 
 }

@@ -3,7 +3,6 @@ package comp3350.AAS.presentation;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -27,7 +26,7 @@ public class StartQuizActivity extends AppCompatActivity {
     static int currPosition;
     private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
     private Quiz selectedQuiz;  // To store all questions on a quiz list
-    private Calculate cal = new Calculate();
+    private final Calculate cal = new Calculate();
     private String selectedAnswer;
 
     @Override
@@ -51,11 +50,11 @@ public class StartQuizActivity extends AppCompatActivity {
     // Generate a question for user to answer
     public void generateQuestion(){
         // set id to the question and three buttons
-        TextView questionText = (TextView) findViewById(R.id.question_text);
-        radioGroup=(RadioGroup) findViewById(R.id.choose_group);
-        button1=(RadioButton) findViewById(R.id.btn_1);
-        button2=(RadioButton) findViewById(R.id.btn_2);
-        button3=(RadioButton) findViewById(R.id.btn_3);
+        TextView questionText = findViewById(R.id.question_text);
+        radioGroup=findViewById(R.id.choose_group);
+        button1= findViewById(R.id.btn_1);
+        button2=findViewById(R.id.btn_2);
+        button3=findViewById(R.id.btn_3);
 
         questionText.setText(questionArrayList.get(currIndex).getQuestion());
         button1.setText(questionArrayList.get(currIndex).getOption1());
@@ -64,7 +63,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
         radioGroup.setOnCheckedChangeListener(this::onCheckedChanged);
 
-        Button nextQuizBtn = (Button) findViewById(R.id.next_quiz);
+        Button nextQuizBtn =findViewById(R.id.next_quiz);
         nextQuizBtn.setOnClickListener(v -> getNextQuestion());
     }
 
@@ -98,9 +97,7 @@ public class StartQuizActivity extends AppCompatActivity {
             selectedQuiz.setCompleteStatus(true);
 
             builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
-                    .setPositiveButton("Close", (dialog, which) -> {
-                        StartQuizActivity.this.finish();
-                    });
+                    .setPositiveButton("Close", (dialog, which) -> StartQuizActivity.this.finish());
             AlertDialog alert = builder.create();
             alert.show();
         }

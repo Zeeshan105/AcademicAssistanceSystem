@@ -1,11 +1,11 @@
 package comp3350.AAS.object;
 
 public class Question {
-    private String question;
-    private String option1;
-    private String option2;
-    private String option3;
-    private String key;
+    private final String question;
+    private final String option1;
+    private final String option2;
+    private final String option3;
+    private final String key;
 
     public Question(String question, String option1, String option2, String option3, String key){
         this.question=question;

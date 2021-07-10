@@ -17,7 +17,7 @@ import comp3350.ASS.R;
 
 public class ViewStatsActivity extends AppCompatActivity{
 
-    private Calculate cal = new Calculate();
+    private final Calculate cal = new Calculate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,10 @@ public class ViewStatsActivity extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, completedQuizzesList);
         listView.setAdapter(adapter);
 
-        TextView completedQuizzes = (TextView) findViewById(R.id.completed_quizzes);
-        TextView averageGrade = (TextView) findViewById(R.id.average_grade);
-        TextView highestGrade = (TextView) findViewById(R.id.highest_grade);
-        TextView lowestGrade = (TextView) findViewById(R.id.lowest_grade);
+        TextView completedQuizzes = findViewById(R.id.completed_quizzes);
+        TextView averageGrade =  findViewById(R.id.average_grade);
+        TextView highestGrade =  findViewById(R.id.highest_grade);
+        TextView lowestGrade = findViewById(R.id.lowest_grade);
 
         completedQuizzes.setText(cal.numberCompletedQuizzes(quizDatabase.getQuizList()));
         if (quizDatabase.getCompletedQuizzes() > 0) {

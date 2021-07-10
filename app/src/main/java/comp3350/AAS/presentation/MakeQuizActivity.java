@@ -2,7 +2,6 @@ package comp3350.AAS.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,45 +21,42 @@ public class MakeQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_quiz);
 
-        questionInput=(EditText) findViewById(R.id.question);
-        firstOption=(EditText) findViewById(R.id.option_A);
-        secondOption=(EditText) findViewById(R.id.option_B);
-        thirdOption=(EditText) findViewById(R.id.option_C);
-        keyOption=(EditText) findViewById(R.id.key);
-        quizIndex=(EditText) findViewById(R.id.quiz_index);
+        questionInput= findViewById(R.id.question);
+        firstOption= findViewById(R.id.option_A);
+        secondOption= findViewById(R.id.option_B);
+        thirdOption= findViewById(R.id.option_C);
+        keyOption= findViewById(R.id.key);
+        quizIndex= findViewById(R.id.quiz_index);
 
-        Button submitButton = (Button) findViewById(R.id.submit_Button);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //store the text into variables
-                quizQuestion = questionInput.getText().toString();
-                optionA = firstOption.getText().toString();
-                optionB = secondOption.getText().toString();
-                optionC = thirdOption.getText().toString();
-                answer = keyOption.getText().toString();
-                quizName = quizIndex.getText().toString();
+        Button submitButton = findViewById(R.id.submit_Button);
+        submitButton.setOnClickListener(v -> {
+            //store the text into variables
+            quizQuestion = questionInput.getText().toString();
+            optionA = firstOption.getText().toString();
+            optionB = secondOption.getText().toString();
+            optionC = thirdOption.getText().toString();
+            answer = keyOption.getText().toString();
+            quizName = quizIndex.getText().toString();
 
-                if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")) {
-                    showToast("Error! Must define a question and three options!");
-                } else if ( !(answer.equals(optionA) || answer.equals(optionB) || answer.equals(optionC)) ){
-                    showToast("Error! Must define a valid answer!");
-                }else{
+            if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")) {
+                showToast("Error! Must define a question and three options!");
+            } else if ( !(answer.equals(optionA) || answer.equals(optionB) || answer.equals(optionC)) ){
+                showToast("Error! Must define a valid answer!");
+            }else{
 
-                    Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
+                Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
 
-                    QuizDatabase database= Services.createQuizDataAccess("QuizBase");
-                    database.addQuiz(newQuestion, quizName);
+                QuizDatabase database= Services.createQuizDataAccess("QuizBase");
+                database.addQuiz(newQuestion, quizName);
 
-                    //reset the "EditText" fields
-                    questionInput.setText("");
-                    firstOption.setText("");
-                    secondOption.setText("");
-                    thirdOption.setText("");
-                    keyOption.setText("");
-                    quizIndex.setText("");
-                    showToast("Question Added!");
-                }
+                //reset the "EditText" fields
+                questionInput.setText("");
+                firstOption.setText("");
+                secondOption.setText("");
+                thirdOption.setText("");
+                keyOption.setText("");
+                quizIndex.setText("");
+                showToast("Question Added!");
             }
         });
     }
