@@ -27,6 +27,8 @@ public class CardListActivity extends AppCompatActivity {
 
         ArrayList<CardFolder> folders = Services.createDataAccess("cardBase").getFolders();
 
+        //DataAccess db = Services.getDataAccess("QQ");
+        //ArrayList<CardFolder> folders = db.getFolders();
 
         //change the name of the text view
         TextView textview = findViewById(R.id.textViewFolderName);
