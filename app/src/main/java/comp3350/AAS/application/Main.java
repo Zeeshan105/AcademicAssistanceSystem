@@ -13,9 +13,7 @@ public class Main {
     }
 
     public static void startUp(){
-        Services.TempDataAccess(dbName);
-        Services.createDataAccess("cardBase");
-        Services.createQuizDataAccess("QuizBase");
+        Services.createDataAccess(dbName);
     }
 
     public static void shutDown(){
