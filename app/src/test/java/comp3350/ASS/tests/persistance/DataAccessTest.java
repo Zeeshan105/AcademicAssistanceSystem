@@ -101,6 +101,17 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("\tPASS test delete folder!");
     }
+    public void testAddFolder(){
+        ArrayList<FlashCard> flashCards;
+        folderList.add(3,new CardFolder("add New folder A"));
+        folderList.get(3).addCard("11","22");
+
+        assertEquals("add New folder A",folderList.get(3).getFolderName());
+        assertEquals("11",folderList.get(3).getCardTitles().get(0));
+        assertEquals("22",folderList.get(3).getCardDescription().get(0));
+
+        System.out.println("\tPASS test add folder!");
+    }
 
 
     public void testQuizName(){
@@ -195,7 +206,7 @@ public class DataAccessTest extends TestCase {
         quiz.setCompleteStatus(false);
         complete = quiz.isComplete();
         assertFalse(complete);
-        //TODO
+        System.out.println("\tPASS Completed quiz!");
     }
     public void testAddQuiz() {
 
