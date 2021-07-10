@@ -184,12 +184,21 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testCompletedQuiz(){
-        //TODO
-        Quiz quiz = quizList.get(0);
+        boolean complete;
+        Quiz quiz;
+        quiz = quizList.get(0);
         quiz.setCompleteStatus(true);
+        complete = quiz.isComplete();
+        assertTrue(complete);
 
+        quiz = quizList.get(1);
+        quiz.setCompleteStatus(false);
+        complete = quiz.isComplete();
+        assertFalse(complete);
+        //TODO
     }
     public void testAddQuiz() {
+
        //TODO
     }
 
