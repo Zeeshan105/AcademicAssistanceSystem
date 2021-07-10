@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class CardFolder {
 
-    private ArrayList<FlashCard> cardList;
-    private String folderName;
+    private final ArrayList<FlashCard> cardList;
+    private final String folderName;
 
     public CardFolder(String folderName){
         this.folderName = folderName;

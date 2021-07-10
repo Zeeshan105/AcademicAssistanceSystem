@@ -13,7 +13,7 @@ public class Main {
 
     public static void startUp(){
         Services.createDataAccess(dbName);
-
+        Services.createDataAccess("QuizBase");
     }
 
     public static void shutDown(){
