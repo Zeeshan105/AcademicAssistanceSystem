@@ -26,9 +26,9 @@ public class CardListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_list);
 
-        ArrayList<CardFolder> folders = Services.getCardAccess().getFolders();
-//        DataAccess db = Services.getDataAccess(Main.dbName);
-//        ArrayList<CardFolder> folders = db.getFolders();
+        //ArrayList<CardFolder> folders = Services.getCardAccess().getFolders();
+        DataAccess db = Services.getDataAccess(Main.dbName);
+        ArrayList<CardFolder> folders = db.getFolders();
 
         //change the name of the text view
         TextView textview = findViewById(R.id.textViewFolderName);
