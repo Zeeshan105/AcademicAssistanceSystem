@@ -22,7 +22,8 @@ public class FolderListActivity extends AppCompatActivity {
         CardDataBase database = Services.createDataAccess("cardBase");
         ArrayList<String> folderNames = database.getFolderNames();
 
-
+        //DataAccess db = Services.getDataAccess("QQ");
+        //ArrayList<String> folderNames = db.getFolderNames();
 
         ListView listview = findViewById(R.id.folderListView);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, folderNames);
