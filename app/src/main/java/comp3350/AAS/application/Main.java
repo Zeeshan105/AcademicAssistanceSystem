@@ -8,11 +8,12 @@ public class Main {
 
     public static void main(String[] args){
         startUp();
-        shutDown();
+        System.out.println("Program started....");
+        //shutDown();
     }
 
     public static void startUp(){
-        Services.TempDataAccess("QQ");
+        Services.TempDataAccess(dbName);
         Services.createDataAccess("cardBase");
         Services.createQuizDataAccess("QuizBase");
     }

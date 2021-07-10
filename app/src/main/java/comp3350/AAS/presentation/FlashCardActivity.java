@@ -42,7 +42,7 @@ public class FlashCardActivity extends AppCompatActivity {
                 CardDataBase database = Services.createDataAccess("cardBase");
                 database.addCard(cardTitle,cardDescription,folderName);
 
-                //DataAccess db = Services.getDataAccess("QQ");
+                //DataAccess db = Services.getDataAccess(Main.dbName);
                 //db.addCard(cardTitle,cardDescription,folderName);
 
                 //reset the "EditText" fields
