@@ -2,14 +2,16 @@ package comp3350.AAS.business;
 
 import java.util.ArrayList;
 
+import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
+import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
-
-    private QuizDatabase quizDatabase = Services.createQuizDataAccess("QuizDatabase");
+    private QuizDatabase quizDatabase = Services.getQuizAccess();
+//    private DataAccess quizDatabase = Services.getDataAccess(Main.dbName);
 
     // Helper method for updateGrade to update grades according to users answer.
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {

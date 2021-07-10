@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
 import comp3350.AAS.business.Calculate;
+import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.database.QuizDatabase;
 import comp3350.ASS.R;
 
@@ -28,7 +30,9 @@ public class ViewStatsActivity extends AppCompatActivity{
     }
 
     public void init() {
-        QuizDatabase quizDatabase = Services.createQuizDataAccess("QuizBase");
+        QuizDatabase quizDatabase = Services.getQuizAccess();
+//        DataAccess quizDatabase= Services.getDataAccess(Main.dbName);
+
         ArrayList<String> completedQuizzesList = quizDatabase.generateQuizGradesList();
 
         ListView listView= findViewById(R.id.quizListView);

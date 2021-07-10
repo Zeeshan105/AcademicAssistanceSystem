@@ -7,25 +7,24 @@ import comp3350.AAS.database.DataAccessObject;
 
 public class Services {
     private static DataAccess dataAccessService = null;
-
     private static CardDataBase cardDataAccessService = null;
     private static QuizDatabase quizDataAccessService = null;
 
-    public static CardDataBase createDataAccess(String name){
+    public static CardDataBase getCardAccess(){
         if(cardDataAccessService == null){
             cardDataAccessService = new CardDataBase();
         }
         return cardDataAccessService;
     }
 
-    public static QuizDatabase createQuizDataAccess(String name){
+    public static QuizDatabase getQuizAccess(){
         if(quizDataAccessService == null){
             quizDataAccessService = new QuizDatabase();
         }
         return quizDataAccessService;
     }
 
-    public static DataAccess TempDataAccess(String dbName){
+    public static DataAccess createDataAccess(String dbName){
         if (dataAccessService == null) {
             dataAccessService = new DataAccessObject(dbName);
             dataAccessService.open(Main.getDbPathName());

@@ -47,10 +47,11 @@ public class MakeQuizActivity extends AppCompatActivity {
             } else if ( !(answer.equals(optionA) || answer.equals(optionB) || answer.equals(optionC)) ){
                 showToast("Error! Must define a valid answer!");
             }else{
-
                 Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
 
-                QuizDatabase database= Services.createQuizDataAccess("QuizBase");
+                QuizDatabase database= Services.getQuizAccess();
+//                DataAccess database= Services.getDataAccess(Main.dbName);
+
                 database.addQuiz(newQuestion, quizName);
 
                 //reset the "EditText" fields
