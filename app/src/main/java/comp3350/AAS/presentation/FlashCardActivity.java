@@ -38,12 +38,10 @@ public class FlashCardActivity extends AppCompatActivity {
             if(folderName.equals("") || cardTitle.equals("") || cardDescription.equals("")){
                 showToast("Error! Fields cannot be empty!");
             }else{
+                CardDataBase database = Services.getCardAccess();
+//                DataAccess database = Services.getDataAccess(Main.dbName);
 
-                CardDataBase database = Services.createDataAccess("cardBase");
                 database.addCard(cardTitle,cardDescription,folderName);
-
-                //DataAccess db = Services.getDataAccess(Main.dbName);
-                //db.addCard(cardTitle,cardDescription,folderName);
 
                 //reset the "EditText" fields
                 titleInput.setText("");

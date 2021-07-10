@@ -11,7 +11,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
+import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.ASS.R;
@@ -35,7 +37,9 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         // To get all quizzes
-        ArrayList<Quiz> quizArrayList = Services.createQuizDataAccess("QuizBase").getQuizList();
+        ArrayList<Quiz> quizArrayList = Services.getQuizAccess().getQuizList();
+//        ArrayList<Quiz> quizArrayList = Services.getDataAccess(Main.dbName).getQuizList();
+
         // To get selected quiz list
         selectedQuiz = quizArrayList.get(currPosition);
         questionArrayList = quizArrayList.get(currPosition).getQuestionList();
