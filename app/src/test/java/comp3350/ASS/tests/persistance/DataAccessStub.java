@@ -56,14 +56,14 @@ public class DataAccessStub implements DataAccess {
 
         folderList=new ArrayList<>();
 
-        addCard("National Land Area Descending Order", "Russia>Canada>China>America>Brazil...", "Geographic Knowledge");
-        addCard("Temperature Distributed", "Decreasing from low latitude to high latitude", "Geographic Knowledge");
+        addCard("National Land Area Descending Order", "Russia>Canada>China>America>Brazil...", "Geographic_Knowledge");
+        addCard("Temperature Distributed", "Decreasing from low latitude to high latitude", "Geographic_Knowledge");
 
-        addCard("First World War", "The World War I break out in 1914", "Historical Event");
-        addCard("Second World War", "The World War II break out in 1939", "Historical Event");
+        addCard("First World War", "The World War I break out in 1914", "Historical_Event");
+        addCard("Second World War", "The World War II break out in 1939", "Historical_Event");
 
-        addCard("Addition and subtraction within 10", "1+1=2, 2+2=4", "Math Practice");
-        addCard("Calculate square root", "sqrt(1)=+-1, sqrt(16)=+-4, sqrt(36)=+-6, sqrt(-1)=undefined", "Math Practice");
+        addCard("Addition and subtraction within 10", "1+1=2, 2+2=4", "Math_Practice");
+        addCard("Calculate square root", "sqrt(1)=+-1, sqrt(16)=+-4, sqrt(36)=+-6, sqrt(-1)=undefined", "Math_Practice");
 
     }
 

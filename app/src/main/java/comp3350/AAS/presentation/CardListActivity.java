@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import comp3350.AAS.application.Main;
 import comp3350.AAS.database.DataAccess;
 import comp3350.ASS.R;
 import comp3350.AAS.application.Services;
@@ -27,7 +28,7 @@ public class CardListActivity extends AppCompatActivity {
 
         ArrayList<CardFolder> folders = Services.createDataAccess("cardBase").getFolders();
 
-        //DataAccess db = Services.getDataAccess("QQ");
+        //DataAccess db = Services.getDataAccess(Main.dbName);
         //ArrayList<CardFolder> folders = db.getFolders();
 
         //change the name of the text view

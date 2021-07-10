@@ -22,7 +22,7 @@ public class FolderListActivity extends AppCompatActivity {
         CardDataBase database = Services.createDataAccess("cardBase");
         ArrayList<String> folderNames = database.getFolderNames();
 
-        //DataAccess db = Services.getDataAccess("QQ");
+        //DataAccess db = Services.getDataAccess(Main.dbName);
         //ArrayList<String> folderNames = db.getFolderNames();
 
         ListView listview = findViewById(R.id.folderListView);
