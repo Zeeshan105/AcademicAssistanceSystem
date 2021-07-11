@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         Button button2 = findViewById(R.id.Button2);
         button2.setOnClickListener(v -> openQuizPart());
     }
+    @Override
+    protected void onDestroy(){
+        Main.shutDown();
+        super.onDestroy();
+    }
 
     public void openFlashCards(){
         Intent intent = new Intent(this, FlashCardActivity.class);
