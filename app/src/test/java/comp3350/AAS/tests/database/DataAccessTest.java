@@ -4,6 +4,8 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
+import comp3350.AAS.application.Main;
+import comp3350.AAS.database.DataAccessObject;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.FlashCard;
 import comp3350.AAS.object.CardFolder;
@@ -20,12 +22,13 @@ public class DataAccessTest extends TestCase {
     }
 
     public void setUp() {
-        System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        dataAccess = new DataAccessStub();
-        dataAccess.open("Stub");
-//        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-//        dataAccess = new DataAccessObject(Main.dbName);
-//        dataAccess.open(Main.getDbPathName());
+        //System.out.println("\nStarting Persistence test DataAccess (using stub)");
+        //dataAccess = new DataAccessStub();
+        //dataAccess.open("Stub");
+
+        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
+        dataAccess = new DataAccessObject(Main.dbName);
+        dataAccess.open(Main.getDbPathName());
 
         folderList = dataAccess.getFolders();
         quizList = dataAccess.getQuizList();
