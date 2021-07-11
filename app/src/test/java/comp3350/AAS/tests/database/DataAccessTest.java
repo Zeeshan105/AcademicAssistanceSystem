@@ -3,10 +3,7 @@ package comp3350.AAS.tests.database;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
-import comp3350.AAS.application.Main;
-import comp3350.AAS.application.Services;
-import comp3350.AAS.database.DataAccessStub;
-import comp3350.AAS.database.DataAccessObject;
+
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.FlashCard;
 import comp3350.AAS.object.CardFolder;

@@ -1,4 +1,4 @@
-package comp3350.AAS.database;
+package comp3350.AAS.tests.database;
 
 import java.util.ArrayList;
 

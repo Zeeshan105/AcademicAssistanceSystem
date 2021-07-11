@@ -2,9 +2,8 @@ package comp3350.AAS.application;
 
 import comp3350.AAS.database.CardDataBase;
 import comp3350.AAS.database.DataAccess;
-import comp3350.AAS.database.QuizDatabase;
 import comp3350.AAS.database.DataAccessObject;
-import comp3350.AAS.database.DataAccessStub;
+import comp3350.AAS.database.QuizDatabase;
 
 public class Services {
     private static DataAccess dataAccessService = null;
@@ -27,8 +26,7 @@ public class Services {
 
     public static DataAccess createDataAccess(String dbName){
         if (dataAccessService == null) {
-//            dataAccessService = new DataAccessObject(dbName);
-            dataAccessService = new DataAccessStub(dbName);
+            dataAccessService = new DataAccessObject(dbName);
             dataAccessService.open(Main.getDbPathName());
         }
         return dataAccessService;
