@@ -7,8 +7,8 @@
     <string name="title">Title</string>
     <string name="view_folders">View Folders</string>
     <string name="academic_assistance_system">Academic Assistance System</string>
-    <string name="flash_cards">Flash Cards</string>
-    <string name="create_quizzes">Create Quizzes</string>
+    <string name="flash_cards">Flash Card</string>
+    <string name="quiz">Quiz</string>
     <string name="start_quizzes">Start Quizzes</string>
     <string name="calendar">Calendar</string>
     <string name="the_key_to_this_quiz">The key to this quiz</string>

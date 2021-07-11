@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademicAssistanceSystem">
-        <activity android:name="comp3350.AAS.presentation.SelectQuizActivity"></activity>
-        <activity android:name="comp3350.AAS.presentation.ViewStatsActivity"></activity>
-        <activity android:name="comp3350.AAS.presentation.MakeQuizActivity" />
-        <activity android:name="comp3350.AAS.presentation.StartQuizActivity" />
-        <activity android:name="comp3350.AAS.presentation.CardListActivity" />
-        <activity android:name="comp3350.AAS.presentation.FolderListActivity" />
-        <activity android:name="comp3350.AAS.presentation.FlashCardActivity" />
-        <activity android:name="comp3350.AAS.presentation.MainActivity">
+        <activity android:name=".presentation.ViewQuizAnswerActivity"></activity>
+        <activity android:name=".presentation.QuizHomeActivity" />
+        <activity android:name=".presentation.SelectQuizActivity" />
+        <activity android:name=".presentation.ViewStatsActivity" />
+        <activity android:name=".presentation.MakeQuizActivity" />
+        <activity android:name=".presentation.StartQuizActivity" />
+        <activity android:name=".presentation.CardListActivity" />
+        <activity android:name=".presentation.FolderListActivity" />
+        <activity android:name=".presentation.FlashCardActivity" />
+        <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
