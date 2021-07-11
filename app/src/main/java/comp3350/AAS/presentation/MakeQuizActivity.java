@@ -11,7 +11,6 @@ import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.R;
 import comp3350.AAS.application.Services;
-import comp3350.AAS.database.QuizDatabase;
 
 
 public class MakeQuizActivity extends AppCompatActivity {
@@ -47,9 +46,7 @@ public class MakeQuizActivity extends AppCompatActivity {
             }else{
                 Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
 
-//                QuizDatabase database= Services.getQuizAccess();
                 DataAccess database= Services.getDataAccess(Main.dbName);
-
                 database.addQuiz(newQuestion, quizName);
 
                 //reset the "EditText" fields

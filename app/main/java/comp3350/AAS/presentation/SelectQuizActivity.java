@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import comp3350.AAS.application.services;
-import comp3350.AAS.database.QuizDatabase;
 import comp3350.AAS.R;
 
 

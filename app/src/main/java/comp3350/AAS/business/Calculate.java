@@ -2,12 +2,8 @@ package comp3350.AAS.business;
 
 import java.util.ArrayList;
 
-import comp3350.AAS.application.Main;
-import comp3350.AAS.application.Services;
-import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.object.Question;
-import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
     // Helper method for updateGrade to update grades according to users answer.

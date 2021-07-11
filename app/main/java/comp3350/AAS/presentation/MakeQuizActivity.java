@@ -11,7 +11,6 @@ import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.R;
 import comp3350.AAS.application.services;
-import comp3350.AAS.database.QuizDatabase;
 
 
 public class MakeQuizActivity extends AppCompatActivity {

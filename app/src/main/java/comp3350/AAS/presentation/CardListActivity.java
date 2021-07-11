@@ -26,7 +26,6 @@ public class CardListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_list);
 
-        //ArrayList<CardFolder> folders = Services.getCardAccess().getFolders();
         DataAccess db = Services.getDataAccess(Main.dbName);
         ArrayList<CardFolder> folders = db.getFolders();
 

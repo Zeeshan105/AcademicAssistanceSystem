@@ -36,7 +36,6 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         // To get all quizzes
-//        ArrayList<Quiz> quizArrayList = Services.getQuizAccess().getQuizList();
         ArrayList<Quiz> quizArrayList = Services.getDataAccess(Main.dbName).getQuizList();
 
         // To get selected quiz list

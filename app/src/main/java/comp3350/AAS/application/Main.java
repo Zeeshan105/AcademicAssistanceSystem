@@ -1,7 +1,7 @@
 package comp3350.AAS.application;
 
 public class Main {
-    //public static final String dbName="cardBase";
+    public static final String dbUsage = "stub";   //which database to use, "real" or "stub"
     public static final String dbName = "DB";
     private static String dbPathName = "database/DB";
 
@@ -13,6 +13,7 @@ public class Main {
     }
 
     public static void startUp(){
+
         Services.createDataAccess(dbName);
     }
 

@@ -39,9 +39,6 @@ public class FlashCardActivity extends AppCompatActivity {
                 showToast("Error! Fields cannot be empty!");
             }else{
 
-                //CardDataBase database = Services.getCardAccess();
-                //database.addCard(cardTitle,cardDescription,folderName);
-
                 DataAccess db = Services.getDataAccess(Main.dbName);
                 db.addCard(cardTitle,cardDescription,folderName);
 
