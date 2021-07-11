@@ -1,4 +1,4 @@
-package comp3350.ASS.tests.business;
+package comp3350.AAS.tests.business;
 
 import junit.framework.TestCase;
 import java.util.ArrayList;
@@ -20,25 +20,6 @@ public class CalculateTest extends TestCase{
     public void setUp(){
         quizList = new ArrayList<>();
         calculate = new Calculate();
-    }
-
-    public void testCompletedQuiz(){
-        assertEquals("0", calculate.numberCompletedQuizzes(quizList));
-
-        quiz1=new Quiz("quiz1");
-        quiz1.setCompleteStatus(true);
-        quizList.add(quiz1);
-        assertEquals("1", calculate.numberCompletedQuizzes(quizList));
-
-        quiz2=new Quiz("quiz2");
-        quiz2.setCompleteStatus(true);
-        quizList.add(quiz2);
-        assertEquals("2", calculate.numberCompletedQuizzes(quizList));
-
-        quiz3=new Quiz("quiz3");
-        quiz3.setCompleteStatus(true);
-        quizList.add(quiz3);
-        assertEquals("3", calculate.numberCompletedQuizzes(quizList));
     }
 
     public void testOneZeroGrade(){

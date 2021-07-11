@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 import comp3350.AAS.application.Main;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // starting startup
-       Main.startUp();
+        // starting startup
+        Main.startUp();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

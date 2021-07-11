@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import comp3350.AAS.application.*;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 
 public class FolderListActivity extends AppCompatActivity {
 

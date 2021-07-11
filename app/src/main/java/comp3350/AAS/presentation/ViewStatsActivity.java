@@ -15,10 +15,9 @@ import comp3350.AAS.application.Services;
 import comp3350.AAS.business.Calculate;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.database.QuizDatabase;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 
 public class ViewStatsActivity extends AppCompatActivity{
-
     private final Calculate cal = new Calculate();
 
     @Override
@@ -30,8 +29,8 @@ public class ViewStatsActivity extends AppCompatActivity{
     }
 
     public void init() {
-        QuizDatabase quizDatabase = Services.getQuizAccess();
-//        DataAccess quizDatabase= Services.getDataAccess(Main.dbName);
+//        QuizDatabase quizDatabase = Services.getQuizAccess();
+        DataAccess quizDatabase= Services.getDataAccess(Main.dbName);
 
         ArrayList<String> completedQuizzesList = quizDatabase.generateQuizGradesList();
 
@@ -45,7 +44,8 @@ public class ViewStatsActivity extends AppCompatActivity{
         TextView highestGrade =  findViewById(R.id.highest_grade);
         TextView lowestGrade = findViewById(R.id.lowest_grade);
 
-        completedQuizzes.setText(cal.numberCompletedQuizzes(quizDatabase.getQuizList()));
+        completedQuizzes.setText(quizDatabase.numberCompletedQuizzes(quizDatabase.getQuizList()));
+
         if (quizDatabase.getCompletedQuizzes() > 0) {
             averageGrade.setText(cal.getAverageGrade(quizDatabase.getQuizList()));
             highestGrade.setText(cal.getHighestGrade(quizDatabase.getQuizList()));

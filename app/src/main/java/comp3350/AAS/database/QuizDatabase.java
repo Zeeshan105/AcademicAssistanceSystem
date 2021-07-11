@@ -62,7 +62,20 @@ public class QuizDatabase {
 
     public int getCompletedQuizzes() { return completedQuizzes; }
 
-    public void setCompletedQuizzes(int numCompleted) { completedQuizzes = numCompleted; }
+    public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes){
+        int numberCompleted = 0;
+
+        for (int i = 0; i < allQuizzes.size(); i++) {
+            Quiz selectedQuiz = allQuizzes.get(i);
+
+            if (selectedQuiz.isComplete()) {
+                numberCompleted++;
+            }
+        }
+
+        completedQuizzes = numberCompleted;
+        return "" + numberCompleted;
+    }
 
 }
 

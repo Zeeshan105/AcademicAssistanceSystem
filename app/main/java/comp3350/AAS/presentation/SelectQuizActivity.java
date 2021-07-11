@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import comp3350.AAS.application.services;
 import comp3350.AAS.database.QuizDatabase;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 
 
 public class SelectQuizActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package comp3350.ASS.QuizTests;
+package comp3350.AAS.QuizTests;
 
 import junit.framework.TestCase;
 import comp3350.AAS.object.Quiz;

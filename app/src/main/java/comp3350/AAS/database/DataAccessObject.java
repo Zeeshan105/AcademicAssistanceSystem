@@ -8,6 +8,7 @@ import java.sql.SQLWarning;
 import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 
+import comp3350.AAS.application.Services;
 import comp3350.AAS.object.*;
 
 public class DataAccessObject implements DataAccess {
@@ -302,8 +303,8 @@ public class DataAccessObject implements DataAccess {
         return numCompleted;
     }
 
-    public void setCompletedQuizzes(int numCompleted) {
-
+    public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
+        return null;
     }
 
     public String checkWarning(Statement st, int updateCount) {

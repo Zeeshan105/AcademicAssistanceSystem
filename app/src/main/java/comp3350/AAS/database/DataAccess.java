@@ -24,5 +24,5 @@ public interface DataAccess {
     ArrayList<String> getAllQuizName();
     ArrayList<String> generateQuizGradesList();
     int getCompletedQuizzes();
-    void setCompletedQuizzes(int numCompleted);
+    String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes);
 }

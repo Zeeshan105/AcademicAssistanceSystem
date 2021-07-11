@@ -12,7 +12,7 @@ import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.database.QuizDatabase;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 
 
 public class SelectQuizActivity extends AppCompatActivity {
@@ -26,8 +26,8 @@ public class SelectQuizActivity extends AppCompatActivity {
     }
 
     public void init(){
-        QuizDatabase database= Services.getQuizAccess();
-//        DataAccess database= Services.getDataAccess(Main.dbName);
+//        QuizDatabase database= Services.getQuizAccess();
+        DataAccess database= Services.getDataAccess(Main.dbName);
 
         ArrayList<String> quizNames = database.getAllQuizName();
 

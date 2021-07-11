@@ -1,4 +1,4 @@
-package comp3350.ASS;
+package comp3350.AAS;
 
 import android.content.Context;
 

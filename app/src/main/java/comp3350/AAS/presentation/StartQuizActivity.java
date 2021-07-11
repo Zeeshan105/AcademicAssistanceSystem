@@ -13,10 +13,9 @@ import android.widget.Toast;
 
 import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
-import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 import java.util.ArrayList;
 
 import comp3350.AAS.business.Calculate;
@@ -37,8 +36,8 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         // To get all quizzes
-        ArrayList<Quiz> quizArrayList = Services.getQuizAccess().getQuizList();
-//        ArrayList<Quiz> quizArrayList = Services.getDataAccess(Main.dbName).getQuizList();
+//        ArrayList<Quiz> quizArrayList = Services.getQuizAccess().getQuizList();
+        ArrayList<Quiz> quizArrayList = Services.getDataAccess(Main.dbName).getQuizList();
 
         // To get selected quiz list
         selectedQuiz = quizArrayList.get(currPosition);

@@ -6,12 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.net.ServerSocket;
-
 import comp3350.AAS.application.Main;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 import comp3350.AAS.application.Services;
 import comp3350.AAS.database.QuizDatabase;
 
@@ -49,8 +47,8 @@ public class MakeQuizActivity extends AppCompatActivity {
             }else{
                 Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
 
-                QuizDatabase database= Services.getQuizAccess();
-//                DataAccess database= Services.getDataAccess(Main.dbName);
+//                QuizDatabase database= Services.getQuizAccess();
+                DataAccess database= Services.getDataAccess(Main.dbName);
 
                 database.addQuiz(newQuestion, quizName);
 

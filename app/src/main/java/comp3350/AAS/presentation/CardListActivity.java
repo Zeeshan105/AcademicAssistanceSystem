@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import comp3350.AAS.application.Main;
 import comp3350.AAS.database.DataAccess;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 import comp3350.AAS.application.Services;
 import comp3350.AAS.object.CardFolder;
 

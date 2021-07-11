@@ -10,9 +10,6 @@ import comp3350.AAS.object.Question;
 import comp3350.AAS.database.QuizDatabase;
 
 public class Calculate {
-    private QuizDatabase quizDatabase = Services.getQuizAccess();
-//    private DataAccess quizDatabase = Services.getDataAccess(Main.dbName);
-
     // Helper method for updateGrade to update grades according to users answer.
     public boolean isCorrectAnswer(Question question, String selectedAnswer) {
         boolean isCorrect = false;
@@ -32,33 +29,18 @@ public class Calculate {
         selectedQuiz.setQuizResult(currentGrade);
     }
 
-    public ArrayList<String> getCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
-        ArrayList<String> completedQuizzes = new ArrayList<>();
-
-        for (int i = 0; i < allQuizzes.size(); i++) {
-            Quiz selectedQuiz = allQuizzes.get(i);
-
-            if (selectedQuiz.isComplete()) {
-                completedQuizzes.add(selectedQuiz.getQuizName());
-            }
-        }
-        return completedQuizzes;
-    }
-
-    public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
-        int numberCompleted = 0;
-
-        for (int i = 0; i < allQuizzes.size(); i++) {
-            Quiz selectedQuiz = allQuizzes.get(i);
-
-            if (selectedQuiz.isComplete()) {
-                numberCompleted++;
-            }
-        }
-
-        quizDatabase.setCompletedQuizzes(numberCompleted);
-        return "" + numberCompleted;
-    }
+//    public ArrayList<String> getCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
+//        ArrayList<String> completedQuizzes = new ArrayList<>();
+//
+//        for (int i = 0; i < allQuizzes.size(); i++) {
+//            Quiz selectedQuiz = allQuizzes.get(i);
+//
+//            if (selectedQuiz.isComplete()) {
+//                completedQuizzes.add(selectedQuiz.getQuizName());
+//            }
+//        }
+//        return completedQuizzes;
+//    }
 
     public String getAverageGrade(ArrayList<Quiz> allQuizzes) {
         double totalGrade = 0;

@@ -1,4 +1,4 @@
-package comp3350.ASS.tests.object;
+package comp3350.AAS.tests.object;
 
 import junit.framework.TestCase;
 import org.junit.Assert;

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 import comp3350.AAS.application.services;
 import comp3350.AAS.object.cardFolder;
 

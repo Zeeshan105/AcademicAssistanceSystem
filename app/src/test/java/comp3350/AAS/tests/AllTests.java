@@ -1,14 +1,13 @@
-package comp3350.ASS.tests;
+package comp3350.AAS.tests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import comp3350.ASS.tests.business.CalculateTest;
-import comp3350.ASS.tests.object.CardFolderTest;
-import comp3350.ASS.tests.object.FlashCardTest;
-import comp3350.ASS.tests.object.QuestionTest;
-import comp3350.ASS.tests.object.QuizTest;
-import comp3350.ASS.tests.persistance.DataAccessTest;
+import comp3350.AAS.tests.business.CalculateTest;
+import comp3350.AAS.tests.object.CardFolderTest;
+import comp3350.AAS.tests.object.FlashCardTest;
+import comp3350.AAS.tests.object.QuestionTest;
+import comp3350.AAS.tests.object.QuizTest;
+import comp3350.AAS.tests.database.DataAccessTest;
 
 public class AllTests {
     public static TestSuite suite;

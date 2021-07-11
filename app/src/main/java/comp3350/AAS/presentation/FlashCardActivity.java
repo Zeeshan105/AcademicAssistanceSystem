@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import comp3350.AAS.database.*;
 import comp3350.AAS.application.*;
-import comp3350.ASS.R;
+import comp3350.AAS.R;
 
 public class FlashCardActivity extends AppCompatActivity {
     private String cardTitle, cardDescription,folderName;
