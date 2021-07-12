@@ -21,15 +21,16 @@ import java.util.ArrayList;
 
 public class CardListActivity extends AppCompatActivity {
     static int folderIndex = -1;
-    private AccessFolder accessFolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_list);
 
-        accessFolder = new AccessFolder();
-        ArrayList<CardFolder> folders = accessFolder.getFolderList();
+        AccessFolder accessFolder = new AccessFolder();
+        ArrayList<CardFolder> folders=new ArrayList<>();
+        accessFolder.getFolderList(folders);
+
 
         //change the name of the text view
         TextView textview = findViewById(R.id.textViewFolderName);

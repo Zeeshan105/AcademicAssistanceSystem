@@ -18,12 +18,13 @@ public class AccessFolder {
         folder = null;
     }
 
-    public ArrayList<CardFolder> getFolderList(){
-        return dataAccess.getFolders();
+    public void addCard(String title,String desc, String folderName){
+        dataAccess.addCard(title, desc, folderName);
     }
 
-    public ArrayList<String> getFolderName(){
-        return dataAccess.getFolderNames();
+    public void getFolderList(ArrayList<CardFolder> folders){
+        folders.clear();
+        dataAccess.getFolderList(folders);
     }
 
     public void deleteFolder(int index){

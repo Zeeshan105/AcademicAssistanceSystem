@@ -30,7 +30,9 @@ public class DataAccessTest extends TestCase {
 //        dataAccess = new DataAccessObject(Main.dbName);
 //        dataAccess.open(Main.getDbPathName());
 
-        folderList = dataAccess.getFolders();
+        folderList=new ArrayList<>();
+        dataAccess.getFolderList(folderList);
+
         quizList = dataAccess.getQuizList();
     }
 
@@ -93,11 +95,12 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddToSameFolderWithSameDescription(){
+        folderList = new ArrayList<>();
         dataAccess.addCard("title1", "description", "newFolder");
         dataAccess.addCard("title2", "description", "newFolder");
         dataAccess.addCard("title3", "description", "newFolder");
 
-        folderList = dataAccess.getFolders();
+        dataAccess.getFolderList(folderList);
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
@@ -115,11 +118,12 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddToSameFolderWithVaryDescription(){
+        folderList = new ArrayList<>();
         dataAccess.addCard("title1", "description1", "newFolder");
         dataAccess.addCard("title2", "description2", "newFolder");
         dataAccess.addCard("title3", "description3", "newFolder");
 
-        folderList = dataAccess.getFolders();
+        dataAccess.getFolderList(folderList);
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
@@ -137,11 +141,12 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddToDifferentFolder(){
+        folderList = new ArrayList<>();
         dataAccess.addCard("title1", "description", "newFolder1");
         dataAccess.addCard("title2", "description", "newFolder2");
         dataAccess.addCard("title3", "description", "newFolder3");
 
-        folderList = dataAccess.getFolders();
+        dataAccess.getFolderList(folderList);
 
         CardFolder folders;
 

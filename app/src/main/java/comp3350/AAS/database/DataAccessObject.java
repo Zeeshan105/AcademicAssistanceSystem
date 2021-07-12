@@ -86,28 +86,7 @@ public class DataAccessObject implements DataAccess {
         }
     }
 
-    public ArrayList<String> getFolderNames(){
-        ArrayList<String> folderNameList = new ArrayList<>();
-
-        try {
-            cmdString = "SELECT FOLDERNAME FROM FLASHCARD JOIN FOLDER ON FLASHCARD.TITLE = FOLDER.TITLE";
-            rs1 = st1.executeQuery(cmdString);
-
-            while (rs1.next()){
-                String folderName = rs1.getString("FOLDERNAME");
-
-                if(!folderNameList.contains(folderName)){
-                    folderNameList.add(folderName);
-                }
-            }
-        }catch (Exception e){
-            System.out.println(processSQLError(e));
-        }
-        return folderNameList;
-    }
-
-    public ArrayList<CardFolder> getFolders(){
-        ArrayList<CardFolder> folderList = new ArrayList<>();
+    public void getFolderList(ArrayList<CardFolder> folderList) {
         ArrayList<String> existingFolder = new ArrayList<>();
 
         try {   // create all folders objects
@@ -135,17 +114,23 @@ public class DataAccessObject implements DataAccess {
         }catch (Exception e){
             System.out.println(processSQLError(e));
         }
-        return folderList;
     }
 
     public void deleteFolder(int index){
         String folderName;
         ArrayList<String> titles;
+        ArrayList<CardFolder> folderList = new ArrayList<>();
+        ArrayList<String> folderNames= new ArrayList<>();
+        getFolderList(folderList);
         result = null;
 
+        for (int i = 0; i < folderList.size(); i++) {
+            folderNames.add(folderList.get(i).getFolderName());
+        }
+
         try {
-            folderName = getFolderNames().get(index);
-            titles = getFolders().get(index).getCardTitles();
+            folderName = folderNames.get(index);
+            titles = folderList.get(index).getCardTitles();
 
             cmdString = "DELETE FROM FOLDER WHERE FOLDERNAME='" +folderName+"'";
             System.out.println(cmdString);

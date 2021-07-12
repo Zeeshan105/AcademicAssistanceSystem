@@ -89,17 +89,8 @@ public class DataAccessStub implements DataAccess {
         }
     }
 
-    public ArrayList<CardFolder> getFolders() {
-        return folderList;
-    }
-
-    public ArrayList<String> getFolderNames() {
-        ArrayList<String> folderNames = new ArrayList<>();
-
-        for (int i = 0; i < folderList.size(); i++) {
-            folderNames.add(folderList.get(i).getFolderName());
-        }
-        return folderNames;
+    public void getFolderList(ArrayList<CardFolder> folders) {
+        folders.addAll(folderList);
     }
 
     public void deleteFolder(int index) {

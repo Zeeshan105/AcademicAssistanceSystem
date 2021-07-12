@@ -13,10 +13,9 @@ public interface DataAccess {
 
     void close();
 // from original Card DataBase
-    ArrayList<CardFolder> getFolders();
-    ArrayList<String> getFolderNames();
-    void deleteFolder(int index);
     void addCard(String title,String desc, String folderName);
+    void getFolderList(ArrayList<CardFolder> folders);
+    void deleteFolder(int index);
 
 // from original Quiz Database
     void addQuiz(Question question, String name);

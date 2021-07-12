@@ -12,9 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import comp3350.AAS.application.*;
 import comp3350.AAS.R;
+import comp3350.AAS.object.CardFolder;
 
 public class FolderListActivity extends AppCompatActivity {
-    private AccessFolder accessFolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,14 @@ public class FolderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_folder_list);
 
         //get the list of folder from the data base
-        accessFolder = new AccessFolder();
-        ArrayList<String> folderNames = accessFolder.getFolderName();
+        AccessFolder accessFolder = new AccessFolder();
+        ArrayList<String> folderNames= new ArrayList<>();
+        ArrayList<CardFolder> folders = new ArrayList<>();
+        accessFolder.getFolderList(folders);
+
+        for (int i = 0; i < folders.size(); i++) {
+            folderNames.add(folders.get(i).getFolderName());
+        }
 
 
         ListView listview = findViewById(R.id.folderListView);

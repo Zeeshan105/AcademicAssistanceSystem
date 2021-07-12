@@ -7,14 +7,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import comp3350.AAS.business.AccessCard;
-import comp3350.AAS.database.*;
-import comp3350.AAS.application.*;
+import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.R;
 
 public class FlashCardActivity extends AppCompatActivity {
-    private AccessCard accessCard;
     private String cardTitle, cardDescription,folderName;
     private EditText titleInput, descriptionInput,folderNameInput;
 
@@ -40,7 +36,7 @@ public class FlashCardActivity extends AppCompatActivity {
             if(folderName.equals("") || cardTitle.equals("") || cardDescription.equals("")){
                 showToast("Error! Fields cannot be empty!");
             }else{
-                accessCard = new AccessCard();
+                AccessFolder accessCard = new AccessFolder();
                 accessCard.addCard(cardTitle, cardDescription, folderName);
 
                 //reset the "EditText" fields
