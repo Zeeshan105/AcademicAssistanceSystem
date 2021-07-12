@@ -12,6 +12,7 @@ public class DataAccessStub implements DataAccess {
     private String dbType = "stub";
     private ArrayList<Quiz> quizList;
     private ArrayList<CardFolder> folderList;
+    private ArrayList<String> completedQuizList;// = new ArrayList<String>();
     private int completedQuizzes;
 
 
@@ -141,7 +142,8 @@ public class DataAccessStub implements DataAccess {
     }
 
     public ArrayList<String> generateQuizGradesList() {
-        ArrayList<String> completedQuizList = new ArrayList<String>();
+//        ArrayList<String> completedQuizList = new ArrayList<String>();
+        completedQuizList = new ArrayList<String>();
         for (int i = 0; i < quizList.size(); i++) {
             if (quizList.get(i).isComplete()) {
                 completedQuizList.add( quizList.get(i).getQuizName() + "\nMark: " + (int)quizList.get(i).getQuizResult() + "/" + quizList.get(i).getQuestionCount() );
@@ -154,11 +156,11 @@ public class DataAccessStub implements DataAccess {
         return completedQuizzes;
     }
 
-    public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes){
+    public String numberCompletedQuizzes(){
         int numberCompleted = 0;
 
-        for (int i = 0; i < allQuizzes.size(); i++) {
-            Quiz selectedQuiz = allQuizzes.get(i);
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
 
             if (selectedQuiz.isComplete()) {
                 numberCompleted++;
@@ -168,4 +170,21 @@ public class DataAccessStub implements DataAccess {
         completedQuizzes = numberCompleted;
         return "" + numberCompleted;
     }
+
+    public void resetQuizzes(){
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
+
+            if (selectedQuiz.isComplete()) {
+                selectedQuiz.setCompleteStatus(false);
+            }
+        }
+
+        for (int i = 0; i < quizList.size(); i++) {
+            quizList.get(i).setQuizResult(0);
+        }
+
+        completedQuizList.clear();
+    }
+
 }

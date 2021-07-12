@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import comp3350.AAS.application.Main;
+import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.R;
 import comp3350.AAS.application.Services;
@@ -20,14 +21,15 @@ import java.util.ArrayList;
 
 public class CardListActivity extends AppCompatActivity {
     static int folderIndex = -1;
+    private AccessFolder accessFolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_list);
 
-        DataAccess db = Services.getDataAccess(Main.dbName);
-        ArrayList<CardFolder> folders = db.getFolders();
+        accessFolder = new AccessFolder();
+        ArrayList<CardFolder> folders = accessFolder.getFolderList();
 
         //change the name of the text view
         TextView textview = findViewById(R.id.textViewFolderName);
@@ -60,7 +62,6 @@ public class CardListActivity extends AppCompatActivity {
 
             builder1.setNeutralButton("Edit", (dialog, which) -> {
                 //edit the card
-
 
             });
             AlertDialog alert1 = builder1.create();

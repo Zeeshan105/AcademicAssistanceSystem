@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
+import comp3350.AAS.business.AccessQuiz;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.R;
 
@@ -22,12 +24,14 @@ public class SelectQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_quiz);
 
         init();
+
+        Button viewStats = findViewById(R.id.ViewStats);
+        viewStats.setOnClickListener(v -> openStats());
     }
 
     public void init(){
-
-        DataAccess database= Services.getDataAccess(Main.dbName);
-        ArrayList<String> quizNames = database.getAllQuizName();
+        AccessQuiz accessQuiz = new AccessQuiz();
+        ArrayList<String> quizNames = accessQuiz.getQuizNames();
 
         ArrayList<String> remainQuizList=new ArrayList<>();
         for (int i=0; i<quizNames.size(); i++) {
@@ -59,6 +63,11 @@ public class SelectQuizActivity extends AppCompatActivity {
 
     private void startQuiz(){
         Intent intent = new Intent(this, StartQuizActivity.class);
+        startActivity(intent);
+    }
+
+    public void openStats(){
+        Intent intent = new Intent(this, ViewStatsActivity.class);
         startActivity(intent);
     }
 

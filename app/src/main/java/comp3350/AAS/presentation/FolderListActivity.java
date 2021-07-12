@@ -3,6 +3,8 @@ package comp3350.AAS.presentation;
 import java.util.ArrayList;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.database.*;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import comp3350.AAS.application.*;
 import comp3350.AAS.R;
 
 public class FolderListActivity extends AppCompatActivity {
+    private AccessFolder accessFolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,9 @@ public class FolderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_folder_list);
 
         //get the list of folder from the data base
-        DataAccess database = Services.getDataAccess(Main.dbName);
-        ArrayList<String> folderNames = database.getFolderNames();
+        accessFolder = new AccessFolder();
+        ArrayList<String> folderNames = accessFolder.getFolderName();
+
 
         ListView listview = findViewById(R.id.folderListView);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, folderNames);
@@ -37,8 +41,7 @@ public class FolderListActivity extends AppCompatActivity {
             });
 
             builder1.setPositiveButton("Delete folder", (dialog, which) -> {
-
-                database.deleteFolder(position);
+                accessFolder.deleteFolder(position);
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);

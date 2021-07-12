@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import comp3350.AAS.R;
+import comp3350.AAS.business.AccessQuiz;
 
 
 public class QuizHomeActivity extends AppCompatActivity {
@@ -21,9 +22,6 @@ public class QuizHomeActivity extends AppCompatActivity {
         Button startQuiz = findViewById(R.id.StartQuiz);
         startQuiz.setOnClickListener(v -> doQuizzes());
 
-        Button viewStats = findViewById(R.id.ViewStats);
-        viewStats.setOnClickListener(v -> openStats());
-
         Button viewKey = findViewById(R.id.ViewQuizAnswer);
         viewKey.setOnClickListener(v -> viewAnswer());
     }
@@ -35,11 +33,6 @@ public class QuizHomeActivity extends AppCompatActivity {
 
     public void doQuizzes(){
         Intent intent = new Intent(this, SelectQuizActivity.class);
-        startActivity(intent);
-    }
-
-    public void openStats(){
-        Intent intent = new Intent(this, ViewStatsActivity.class);
         startActivity(intent);
     }
 

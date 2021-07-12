@@ -303,8 +303,12 @@ public class DataAccessObject implements DataAccess {
         return numCompleted;
     }
 
-    public String numberCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
+    public String numberCompletedQuizzes() {
         return null;
+    }
+
+    public void resetQuizzes() {
+
     }
 
     public String checkWarning(Statement st, int updateCount) {

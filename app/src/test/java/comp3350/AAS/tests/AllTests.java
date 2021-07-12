@@ -16,7 +16,7 @@ public class AllTests {
         suite = new TestSuite("All tests");
         testObjects();
         testBusiness();
-        testPersistence();
+        testDatabase();
         return suite;
     }
 
@@ -31,7 +31,7 @@ public class AllTests {
         suite.addTestSuite(CalculateTest.class);
     }
 
-    private static void testPersistence() {
+    private static void testDatabase() {
         suite.addTestSuite(DataAccessTest.class);
     }
 }

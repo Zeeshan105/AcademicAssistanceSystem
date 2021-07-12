@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import comp3350.AAS.application.Main;
+import comp3350.AAS.business.AccessQuiz;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.R;
@@ -46,8 +47,8 @@ public class MakeQuizActivity extends AppCompatActivity {
             }else{
                 Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
 
-                DataAccess database= Services.getDataAccess(Main.dbName);
-                database.addQuiz(newQuestion, quizName);
+                AccessQuiz accessQuiz = new AccessQuiz();
+                accessQuiz.addQuiz(newQuestion, quizName);
 
                 //reset the "EditText" fields
                 questionInput.setText("");

@@ -116,4 +116,21 @@
         android:layout_marginBottom="219dp"
         android:textSize="34sp" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backToQuizHome"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="790dp"
+        android:backgroundTint="#1AEF87"
+        android:gravity="center"
+        android:scaleX="0.75"
+        android:scaleY="0.7"
+        android:text="End Quizzes tests"
+        android:textColor="#000000"
+        android:textSize="50sp" />
+
 </RelativeLayout>
