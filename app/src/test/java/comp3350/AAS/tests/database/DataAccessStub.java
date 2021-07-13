@@ -89,6 +89,19 @@ public class DataAccessStub implements DataAccess {
         }
     }
 
+    public void deleteCard(String folderName, String title){
+        for(int i = 0; i < folderList.size();i++){
+            if(folderList.get(i).getFolderName().equals(folderName)){
+                for(int j =0; j < folderList.get(i).getCardList().size();i++){
+                    if(folderList.get(i).getCardList().get(j).getTitle().equals(title)){
+                        folderList.get(i).getCardList().remove(j);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
     public void getFolderList(ArrayList<CardFolder> folders) {
         folders.addAll(folderList);
     }

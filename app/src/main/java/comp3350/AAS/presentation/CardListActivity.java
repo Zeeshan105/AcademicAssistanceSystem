@@ -53,7 +53,8 @@ public class CardListActivity extends AppCompatActivity {
             builder1.setCancelable(true);
 
             builder1.setNegativeButton("Delete", (dialog, which) -> {
-                folders.get(folderIndex).removeCard(position);
+
+                accessFolder.deleteCard(folders.get(folderIndex).getFolderName(),folders.get(folderIndex).getCardTitles().get(position));
 
                 Intent intent = getIntent();
                 finish();
