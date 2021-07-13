@@ -1,7 +1,7 @@
 package comp3350.AAS.application;
 
 public class Main {
-    public static final String dbUsage = "stub";   //which database to use, "real" or "stub"
+    public static final String dbUsage = "real";   //which database to use, "real" or "stub"
     public static final String dbName = "DB";
     private static String dbPathName = "database/DB";
 
@@ -27,6 +27,11 @@ public class Main {
         } else {
             return dbPathName;
         }
+    }
+
+    public static void setDBPathName(String pathName) {
+        System.out.println("Setting DB path to: " + pathName);
+        dbPathName = pathName;
     }
 
 }
