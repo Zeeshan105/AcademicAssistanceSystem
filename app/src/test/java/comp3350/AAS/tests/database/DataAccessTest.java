@@ -12,6 +12,8 @@ import comp3350.AAS.object.CardFolder;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.database.DataAccess;
 
+import static org.junit.Assert.assertNotNull;
+
 public class DataAccessTest extends TestCase {
     private DataAccess dataAccess;
     private ArrayList<CardFolder> folderList;
@@ -45,6 +47,7 @@ public class DataAccessTest extends TestCase {
 
     public void testFirstFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(0).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Geographic_Knowledge", folderList.get(0).getFolderName());
 
         FlashCard flashCard;
@@ -62,6 +65,7 @@ public class DataAccessTest extends TestCase {
 
     public void testSecondFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(1).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Historical_Event", folderList.get(1).getFolderName());
 
         FlashCard flashCard;
@@ -79,6 +83,7 @@ public class DataAccessTest extends TestCase {
 
     public void testThirdFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(2).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Math_Practice", folderList.get(2).getFolderName());
 
         FlashCard flashCard;
@@ -101,7 +106,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description", "newFolder");
 
         dataAccess.getFolderList(folderList);
-
+        assertNotNull(folderList);
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
         assertEquals("newFolder", folders.getFolderName());
@@ -124,6 +129,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description3", "newFolder");
 
         dataAccess.getFolderList(folderList);
+        assertNotNull(folderList);
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
@@ -147,7 +153,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description", "newFolder3");
 
         dataAccess.getFolderList(folderList);
-
+        assertNotNull(folderList);
         CardFolder folders;
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
@@ -280,7 +286,7 @@ public class DataAccessTest extends TestCase {
         Question newQuestion = new Question("When Canada was founded?","1868","1867","1888","1867");
         dataAccess.addQuiz(newQuestion, "add new Quiz 3");
         ArrayList<Quiz> newQuiz = dataAccess.getQuizList();
-
+        assertNotNull(newQuiz);
         assertEquals("When Canada was founded?",newQuiz.get(3).getQuestionList().get(0).getQuestion());
         assertEquals("1868",newQuiz.get(3).getQuestionList().get(0).getOption1());
         assertEquals("1867",newQuiz.get(3).getQuestionList().get(0).getOption2());
@@ -290,7 +296,6 @@ public class DataAccessTest extends TestCase {
         newQuestion = new Question("What is the population of Canada?","3759","3770","4029","3359");
 
         dataAccess.addQuiz(newQuestion, "add new Quiz 3");
-
         assertEquals("What is the population of Canada?",newQuiz.get(3).getQuestionList().get(1).getQuestion());
         assertEquals("3759",newQuiz.get(3).getQuestionList().get(1).getOption1());
         assertEquals("3770",newQuiz.get(3).getQuestionList().get(1).getOption2());
@@ -299,8 +304,19 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("\tPASS test add Question!");
     }
+    public void testDB(){
+        assertNotNull(dataAccess.generateQuizGradesList());
+        System.out.println("\tPASS test DB!");
+    }
     public void testUpdateQuiz(){
-        dataAccess.updateQuiz("Math",0.0);
+        Question newQuestion = new Question("??????","aaaa","bbbb","vvvv","bbbb");
+        dataAccess.addQuiz(newQuestion, "Quiz - test to Update");
+        dataAccess.getQuizList().get(3).setQuizResult(2);
+        dataAccess.updateQuiz("Quiz - test to Update",3);
+        assertEquals(3.0,dataAccess.getQuizList().get(3).getQuizResult());
+        System.out.println("\tPASS test Complete Quiz!");
+
+
     }
 
 
