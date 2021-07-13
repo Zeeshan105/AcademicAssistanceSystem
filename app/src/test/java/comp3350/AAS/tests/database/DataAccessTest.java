@@ -172,7 +172,23 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("\tPASS test add to different folder!");
     }
-
+    public void testDeleteCardAndfolderInf(){
+        folderList = new ArrayList<>();
+        dataAccess.addCard("addNew CardA", "descriptionA", "newCard");
+        dataAccess.addCard("addNew CardB", "descriptionB", "newCard");
+        dataAccess.getFolderList(folderList);
+        assertNotNull(folderList);
+        CardFolder folders;
+        folders = folderList.get(3);
+        assertEquals("addNew CardA",folders.getCardTitles().get(0));
+        assertEquals("descriptionA",folders.getCardDescription().get(0));
+        assertEquals("newCard",folders.getFolderName());
+        dataAccess.deleteCard("newCard","addNew CardA");
+        assertEquals("addNew CardB",folders.getCardTitles().get(0));
+        assertEquals("descriptionB",folders.getCardDescription().get(0));
+        assertEquals("newCard",folders.getFolderName());
+        System.out.println("\tPASS test Delete Card!");
+    }
 
     public void testQuizName(){
         ArrayList<String> quizNameList = dataAccess.getAllQuizName();
