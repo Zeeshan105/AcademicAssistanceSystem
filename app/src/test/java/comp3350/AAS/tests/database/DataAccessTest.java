@@ -277,22 +277,27 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddQuestion() {
-//        quizList.add(new Quiz("add new Quiz 2"));
-//        quizList.get(3).addQuestion(new Question("What is the population of Canada?","3759","3800","4059","3759"));
-//        quizList.get(3).addQuestion(new Question("When Canada was founded?","1868","1867","1888","1867"));
-//        assertEquals("What is the population of Canada?",quizList.get(3).getQuestionList().get(0).getQuestion());
-//        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getOption1());
-//        assertEquals("3800",quizList.get(3).getQuestionList().get(0).getOption2());
-//        assertEquals("4059",quizList.get(3).getQuestionList().get(0).getOption3());
-//        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getKey());
-//
-//        assertEquals("When Canada was founded?",quizList.get(3).getQuestionList().get(1).getQuestion());
-//        assertEquals("1868",quizList.get(3).getQuestionList().get(1).getOption1());
-//        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getOption2());
-//        assertEquals("1888",quizList.get(3).getQuestionList().get(1).getOption3());
-//        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getKey());
+        Question newQuestion = new Question("When Canada was founded?","1868","1867","1888","1867");
+        dataAccess.addQuiz(newQuestion, "add new Quiz 3");
+        ArrayList<Quiz> newQuiz = dataAccess.getQuizList();
 
-        System.out.println("\tPASS test add Quiz!");
+        assertEquals("When Canada was founded?",newQuiz.get(3).getQuestionList().get(0).getQuestion());
+        assertEquals("1868",newQuiz.get(3).getQuestionList().get(0).getOption1());
+        assertEquals("1867",newQuiz.get(3).getQuestionList().get(0).getOption2());
+        assertEquals("1888",newQuiz.get(3).getQuestionList().get(0).getOption3());
+        assertEquals("1867",newQuiz.get(3).getQuestionList().get(0).getKey());
+
+        newQuestion = new Question("What is the population of Canada?","3759","3770","4029","3359");
+
+        dataAccess.addQuiz(newQuestion, "add new Quiz 3");
+
+        assertEquals("What is the population of Canada?",newQuiz.get(3).getQuestionList().get(1).getQuestion());
+        assertEquals("3759",newQuiz.get(3).getQuestionList().get(1).getOption1());
+        assertEquals("3770",newQuiz.get(3).getQuestionList().get(1).getOption2());
+        assertEquals("4029",newQuiz.get(3).getQuestionList().get(1).getOption3());
+        assertEquals("3359",newQuiz.get(3).getQuestionList().get(1).getKey());
+
+        System.out.println("\tPASS test add Question!");
     }
     public void testUpdateQuiz(){
         dataAccess.updateQuiz("Math",0.0);
