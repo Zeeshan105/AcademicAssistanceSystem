@@ -46,4 +46,6 @@ public class AccessQuiz {
     public void resetQuizzes(){
         dataAccess.resetQuizzes();
     }
+
+    public void updateGrade(String quizName, double result) { dataAccess.updateQuiz(quizName, result); }
 }
