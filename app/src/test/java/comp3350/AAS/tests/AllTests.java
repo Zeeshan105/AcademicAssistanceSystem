@@ -7,6 +7,7 @@ import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.tests.business.AccessFolderTest;
 import comp3350.AAS.tests.business.AccessQuizTest;
 import comp3350.AAS.tests.business.CalculateTest;
+import comp3350.AAS.tests.business.ValidateTest;
 import comp3350.AAS.tests.object.CardFolderTest;
 import comp3350.AAS.tests.object.FlashCardTest;
 import comp3350.AAS.tests.object.QuestionTest;
@@ -33,8 +34,9 @@ public class AllTests {
 
     private static void testBusiness() {
         suite.addTestSuite(AccessFolderTest.class);
-        suite.addTestSuite(AccessQuizTest.class);
+//        suite.addTestSuite(AccessQuizTest.class);
         suite.addTestSuite(CalculateTest.class);
+        suite.addTestSuite(ValidateTest.class);
     }
 
     private static void testDatabase() {
