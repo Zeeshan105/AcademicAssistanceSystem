@@ -1,5 +1,6 @@
 package comp3350.AAS.database;
 
+import java.sql.Array;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,6 +23,8 @@ public class DataAccessObject implements DataAccess {
     private String dbType;
 
     private String cmdString;
+    private String cmdStringB;
+    private String cmdStringC;
     private int updateCount;
     private String result;
     private static String EOF = "  ";
@@ -339,29 +342,37 @@ public class DataAccessObject implements DataAccess {
 
     public String getAverageGrade(){
         int numCompleted = 0;
-        double totalScore=0;
-        double averageGrade;
+        double totalScore= 0;
+        double averageGrade = 0;
+        int questionNum = 0;
 
         try{
-            cmdString = "SELECT COUNT(*) AS NUMCOMPLETED FROM QUIZ WHERE COMPLETE = TRUE";
+            cmdString = "SELECT COUNT(DISTINCT QUIZNAME) AS NUMCOMPLETED FROM (SELECT * FROM QUIZ WHERE COMPLETE = TRUE)";
             rs1 = st1.executeQuery(cmdString);
+            rs1.next();
+            numCompleted = rs1.getInt("NUMCOMPLETED");
 
-            while(rs1.next()){
-                numCompleted = rs1.getInt("NUMCOMPLETED");
+
+            cmdStringB = "SELECT DISTINCT QUIZNAME, RESULT FROM QUIZ WHERE COMPLETE = TRUE";
+            rs2 = st2.executeQuery(cmdStringB);
+            while(rs2.next()) {
+                String name = rs2.getString("QUIZNAME");
+                totalScore = rs2.getDouble("RESULT");
+
+                cmdStringC = "SELECT COUNT(*) AS COUNTS FROM QUIZ WHERE QUIZNAME = '" + name + "'";
+                rs3 = st3.executeQuery(cmdStringC);
+                while (rs3.next()){
+                    questionNum = rs3.getInt("COUNTS");
+                }
+                averageGrade += totalScore/questionNum;
             }
 
-            cmdString = "SELECT DISTINCT QUIZNAME, RESULT FROM QUIZ WHERE COMPLETE = TRUE";
-            rs1 = st1.executeQuery(cmdString);
 
-            while(rs1.next()){
-                String name = rs1.getString("QUIZNAME");
-                totalScore += rs1.getDouble("RESULT");
-            }
         }catch(Exception e){
             System.out.println(processSQLError(e));
         }
 
-        averageGrade = (totalScore / numCompleted) * 100.0;
+        averageGrade = averageGrade/ numCompleted* 100.0;
         return String.format("%.2f", averageGrade)+"%";
     }
 
