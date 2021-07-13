@@ -153,7 +153,7 @@ public class DataAccessObject implements DataAccess {
     }
     public void deleteCard(String folderName, String title){
         try{
-            cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be chnaged later
+            cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be changed later
             System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1,updateCount);

@@ -61,4 +61,15 @@ public class FlashCardActivity extends AppCompatActivity {
     private void showToast(String text){
         Toast.makeText(FlashCardActivity.this,text, Toast.LENGTH_SHORT).show();
     }
+
+    public void openMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        openMain();
+        super.onBackPressed();
+    }
 }
