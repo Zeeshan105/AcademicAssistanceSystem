@@ -179,8 +179,10 @@ public class DataAccessStub implements DataAccess {
         completedQuizList.clear();
     }
     public void updateQuiz(String quizName, double grade){
-     //TODO
-        // need to write it for stub also
+        if (quizList.contains(quizName)){
+            int quizIndex = quizList.indexOf(quizName);
+            quizList.get(quizIndex).setQuizResult(grade);
+        }
     }
 
 }

@@ -38,8 +38,8 @@ public class DataAccessTest extends TestCase {
 
     public void tearDown() {
         dataAccess.close();
-//        System.out.println("Finished Persistence test DataAccess (using stub)");
-        System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
+        System.out.println("Finished Persistence test DataAccess (using stub)");
+//        System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
     }
 
 
