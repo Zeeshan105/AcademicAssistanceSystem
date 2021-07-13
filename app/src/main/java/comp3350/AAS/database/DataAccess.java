@@ -25,4 +25,5 @@ public interface DataAccess {
     int getCompletedQuizzes();
     String numberCompletedQuizzes();
     void resetQuizzes();
+    void updateQuiz(String quizName, double grade);
 }

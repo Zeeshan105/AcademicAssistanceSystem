@@ -178,5 +178,9 @@ public class DataAccessStub implements DataAccess {
 
         completedQuizList.clear();
     }
+    public void updateQuiz(String quizName, double grade){
+     //TODO
+        // need to write it for stub also
+    }
 
 }

@@ -22,13 +22,13 @@ public class DataAccessTest extends TestCase {
     }
 
     public void setUp() {
-        System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        dataAccess = new DataAccessStub();
-        dataAccess.open("stub");
+        //System.out.println("\nStarting Persistence test DataAccess (using stub)");
+        //dataAccess = new DataAccessStub();
+        //dataAccess.open("stub");
 
-//        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-//        dataAccess = new DataAccessObject(Main.dbName);
-//        dataAccess.open(Main.getDbPathName());
+        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
+        dataAccess = new DataAccessObject(Main.dbName);
+        dataAccess.open(Main.getDbPathName());
 
         folderList=new ArrayList<>();
         dataAccess.getFolderList(folderList);
@@ -290,6 +290,9 @@ public class DataAccessTest extends TestCase {
 //        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getKey());
 
         System.out.println("\tPASS test add Quiz!");
+    }
+    public void testUpdateQuiz(){
+        dataAccess.updateQuiz("Math",0.0);
     }
 
 

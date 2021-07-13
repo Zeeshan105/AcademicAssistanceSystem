@@ -177,5 +177,8 @@ public class DataAccessStub implements DataAccess {
 
         completedQuizList.clear();
     }
+    public void updateQuiz(String quizName, double grade){
+
+    }
 
 }

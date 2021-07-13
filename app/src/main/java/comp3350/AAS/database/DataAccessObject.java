@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLWarning;
 import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import comp3350.AAS.application.Services;
 import comp3350.AAS.object.*;
@@ -294,6 +295,16 @@ public class DataAccessObject implements DataAccess {
 
     public void resetQuizzes() {
 
+    }
+    public void updateQuiz(String quizName, double grade){
+        try{
+            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + "WHERE QUIZNAME = '" + quizName + "'";
+            System.out.println(cmdString + "in dataaccessobject");
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
     }
 
     public String checkWarning(Statement st, int updateCount) {
