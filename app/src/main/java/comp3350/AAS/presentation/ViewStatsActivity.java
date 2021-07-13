@@ -50,7 +50,8 @@ public class ViewStatsActivity extends AppCompatActivity{
         TextView highestGrade =  findViewById(R.id.highest_grade);
         TextView lowestGrade = findViewById(R.id.lowest_grade);
 
-        completedQuizzes.setText(accessQuiz.numberCompletedQuizzes());
+//        completedQuizzes.setText(accessQuiz.numberCompletedQuizzes());
+        completedQuizzes.setText(""+(accessQuiz.getCompletedQuizzes()-1));
 
         if (accessQuiz.getCompletedQuizzes() > 0) {
             averageGrade.setText(cal.getAverageGrade(accessQuiz.getQuizList()));
@@ -60,10 +61,10 @@ public class ViewStatsActivity extends AppCompatActivity{
     }
 
     public void backToHome(){
-//        accessQuiz.resetQuizzes();
-
         ArrayList<Quiz> quizArrayList = accessQuiz.getQuizList();
         for (int i = 0; i < quizArrayList.size(); i++) {
+//            quizArrayList.get(i).setCompleteStatus(false);
+//            accessQuiz.resetQuizzes(quizArrayList.get(i).getQuizName());
             accessQuiz.updateGrade(quizArrayList.get(i).getQuizName(), 0);
         }
 
