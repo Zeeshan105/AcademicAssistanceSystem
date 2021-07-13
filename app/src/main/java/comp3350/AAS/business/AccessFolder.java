@@ -31,5 +31,7 @@ public class AccessFolder {
         dataAccess.deleteFolder(index);
     }
 
+    public void deleteCard(String folderName, String title){dataAccess.deleteCard(folderName,title);}
+
 }
 

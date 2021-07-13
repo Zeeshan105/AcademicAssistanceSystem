@@ -151,6 +151,21 @@ public class DataAccessObject implements DataAccess {
             System.out.println(result);
         }
     }
+    public void deleteCard(String folderName, String title){
+        try{
+            cmdString = "DELETE FROM FOLDER WHERE TITLE = '" + title +"' AND FOLDERNAME = ' " +folderName +"'";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1,updateCount);
+            cmdString = "DELETE FROM FLASHCARD WHERE TITLE = '" + title +"'";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1,updateCount);
+
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+    }
 
 
     public void addQuiz(Question question, String name) {
