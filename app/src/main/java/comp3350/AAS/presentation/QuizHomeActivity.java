@@ -24,6 +24,9 @@ public class QuizHomeActivity extends AppCompatActivity {
 
         Button viewKey = findViewById(R.id.ViewQuizAnswer);
         viewKey.setOnClickListener(v -> viewAnswer());
+
+        Button home = findViewById(R.id.homePage);
+        home.setOnClickListener(v -> backToHome());
     }
 
     public void createQuizzes(){
@@ -38,6 +41,11 @@ public class QuizHomeActivity extends AppCompatActivity {
 
     public void viewAnswer(){
         Intent intent = new Intent(this, ViewQuizAnswerActivity.class);
+        startActivity(intent);
+    }
+
+    public void backToHome(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
