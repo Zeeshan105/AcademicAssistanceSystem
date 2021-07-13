@@ -25,6 +25,7 @@ public class Calculate {
         selectedQuiz.setQuizResult(currentGrade);
     }
 
+    /*
     public String getAverageGrade(ArrayList<Quiz> allQuizzes) {
         double totalGrade = 0;
         int quizzesCompleted = 0;
@@ -74,5 +75,5 @@ public class Calculate {
         String rounded = String.format("%.2f", lowestGrade * 100.0);
         return rounded + "%";
     }
-
+*/
 }

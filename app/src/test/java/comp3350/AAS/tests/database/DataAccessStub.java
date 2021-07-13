@@ -13,8 +13,7 @@ public class DataAccessStub implements DataAccess {
     private String dbType = "stub";
     private ArrayList<Quiz> quizList;
     private ArrayList<CardFolder> folderList;
-    private ArrayList<String> completedQuizList;// = new ArrayList<String>();
-    private int completedQuizzes;
+    private ArrayList<String> completedQuizList;
 
 
     public DataAccessStub(String dbName) {
@@ -29,7 +28,7 @@ public class DataAccessStub implements DataAccess {
         Quiz quiz;
         Question question;
         CardFolder cardFolder;
-        completedQuizzes=0;
+
 
         quizList = new ArrayList<Quiz>();
         quiz = new Quiz("Historical");
@@ -144,11 +143,7 @@ public class DataAccessStub implements DataAccess {
         return completedQuizList;
     }
 
-    public int getCompletedQuizzes() {
-        return completedQuizzes;
-    }
-/*
-    public String numberCompletedQuizzes(){
+    public String getNumCompletedQuiz(){
         int numberCompleted = 0;
 
         for (int i = 0; i < quizList.size(); i++) {
@@ -158,26 +153,20 @@ public class DataAccessStub implements DataAccess {
                 numberCompleted++;
             }
         }
-
-        completedQuizzes = numberCompleted;
         return "" + numberCompleted;
     }
-    public void resetQuizzes(String quizName){
+
+    public void resetQuizStatus(String quizName, String status){
         for (int i = 0; i < quizList.size(); i++) {
             Quiz selectedQuiz = quizList.get(i);
 
             if (selectedQuiz.getQuizName().equals(quizName)) {
-                selectedQuiz.setCompleteStatus(false);
+                selectedQuiz.setCompleteStatus(Boolean.parseBoolean(status));
             }
         }
-
-        for (int i = 0; i < quizList.size(); i++) {
-            quizList.get(i).setQuizResult(0);
-        }
-
         completedQuizList.clear();
     }
-*/
+
 
     public void updateQuiz(String quizName, double grade){
         for (int i = 0; i < quizList.size(); i++) {
@@ -187,6 +176,56 @@ public class DataAccessStub implements DataAccess {
                 selectedQuiz.setQuizResult(grade);
             }
         }
+    }
+
+    public String getAverageGrade(){
+        double totalGrade = 0;
+        int quizzesCompleted = 0;
+
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
+
+            if (selectedQuiz.isComplete()) {
+                totalGrade += selectedQuiz.getQuizResult() / selectedQuiz.getQuestionCount();
+                quizzesCompleted++;
+            }
+        }
+
+        double averageGrade = (totalGrade / quizzesCompleted) * 100.0;
+        String rounded = String.format("%.2f", averageGrade);
+        return rounded + "%";
+    }
+
+    public String getHighestGrade(){
+        double highestGrade = Double.NEGATIVE_INFINITY; // Place holder value that is updated if there is a completed quiz.
+
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
+            double newGrade = selectedQuiz.getQuizResult() / selectedQuiz.getQuestionCount();
+
+            if (selectedQuiz.isComplete() && newGrade > highestGrade) {
+                highestGrade = newGrade;
+            }
+        }
+
+        String rounded = String.format("%.2f", highestGrade * 100.0);
+        return rounded + "%";
+    }
+
+    public String getLowestGrade(){
+        double lowestGrade = Double.POSITIVE_INFINITY; // Place holder value that is updated if there is a completed quiz.
+
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
+            double newGrade = selectedQuiz.getQuizResult() / selectedQuiz.getQuestionCount();
+
+            if (quizList.get(i).isComplete() && newGrade < lowestGrade) {
+                lowestGrade = newGrade;
+            }
+        }
+
+        String rounded = String.format("%.2f", lowestGrade * 100.0);
+        return rounded + "%";
     }
 
 }

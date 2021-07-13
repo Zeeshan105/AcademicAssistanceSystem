@@ -29,7 +29,7 @@ public class StartQuizActivity extends AppCompatActivity {
     private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
     private Quiz selectedQuiz;  // To store all questions on a quiz list
     private AccessQuiz accessQuiz;
-    private final Calculate cal = new Calculate();
+    private Calculate cal = new Calculate();
     private String selectedAnswer;
 
     @Override
@@ -100,7 +100,9 @@ public class StartQuizActivity extends AppCompatActivity {
             generateQuestion();
         } else  {
             selectedQuiz.setCompleteStatus(true);
+            accessQuiz.updateStatus(selectedQuiz.getQuizName(), "TRUE");
             accessQuiz.updateGrade(selectedQuiz.getQuizName(), selectedQuiz.getQuizResult());
+
             builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
                     .setPositiveButton("Close", (dialog, which) -> StartQuizActivity.this.finish());
             AlertDialog alert = builder.create();
