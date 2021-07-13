@@ -147,7 +147,7 @@ public class DataAccessStub implements DataAccess {
     public int getCompletedQuizzes() {
         return completedQuizzes;
     }
-
+/*
     public String numberCompletedQuizzes(){
         int numberCompleted = 0;
 
@@ -162,12 +162,11 @@ public class DataAccessStub implements DataAccess {
         completedQuizzes = numberCompleted;
         return "" + numberCompleted;
     }
-
-    public void resetQuizzes(){
+    public void resetQuizzes(String quizName){
         for (int i = 0; i < quizList.size(); i++) {
             Quiz selectedQuiz = quizList.get(i);
 
-            if (selectedQuiz.isComplete()) {
+            if (selectedQuiz.getQuizName().equals(quizName)) {
                 selectedQuiz.setCompleteStatus(false);
             }
         }
@@ -178,10 +177,15 @@ public class DataAccessStub implements DataAccess {
 
         completedQuizList.clear();
     }
+*/
+
     public void updateQuiz(String quizName, double grade){
-        if (quizList.contains(quizName)){
-            int quizIndex = quizList.indexOf(quizName);
-            quizList.get(quizIndex).setQuizResult(grade);
+        for (int i = 0; i < quizList.size(); i++) {
+            Quiz selectedQuiz = quizList.get(i);
+
+            if (selectedQuiz.getQuizName().equals(quizName)) {
+                selectedQuiz.setQuizResult(grade);
+            }
         }
     }
 

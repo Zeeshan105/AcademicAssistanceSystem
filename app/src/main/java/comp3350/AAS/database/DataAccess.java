@@ -23,7 +23,7 @@ public interface DataAccess {
     ArrayList<String> getAllQuizName();
     ArrayList<String> generateQuizGradesList();
     int getCompletedQuizzes();
-    String numberCompletedQuizzes();
-    void resetQuizzes();
+//    String numberCompletedQuizzes();
+//    void resetQuizzes(String quizName);
     void updateQuiz(String quizName, double grade);
 }

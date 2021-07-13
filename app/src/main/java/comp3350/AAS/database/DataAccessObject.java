@@ -181,9 +181,8 @@ public class DataAccessObject implements DataAccess {
                 System.out.println(cmdString);
                 updateCount = st1.executeUpdate(cmdString);
                 result = checkWarning(st1, updateCount);
-            }
-            else {
-                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "', TRUE, 0.0)";
+            } else {
+                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "', FALSE, 0.0)";
                 System.out.println(cmdString);
                 updateCount = st1.executeUpdate(cmdString);
                 result = checkWarning(st1, updateCount);
@@ -289,16 +288,41 @@ public class DataAccessObject implements DataAccess {
         return numCompleted;
     }
 
+    /*
     public String numberCompletedQuizzes() {
-        return null;
-    }
+//        return null;
+        int numCompleted = 0;
 
-    public void resetQuizzes() {
+        try{
+            cmdString = "SELECT COUNT(*) AS NUMCOMPLETED FROM QUIZ WHERE COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
 
+            while(rs1.next()){
+                numCompleted = rs1.getInt("NUMCOMPLETED");
+            }
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
+
+        return ""+numCompleted;
     }
+    public void resetQuizzes(String quizName) {
+        try{
+            cmdString = "UPDATE QUIZ SET COMPLETE = TRUE WHERE QUIZNAME = '" + quizName + "'";
+            System.out.println(cmdString + "in dataaccessobject");
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+            System.out.println(result);
+        }
+    }
+    */
+
+
     public void updateQuiz(String quizName, double grade){
         try{
-            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + "WHERE QUIZNAME = '" + quizName + "'";
+            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + " WHERE QUIZNAME = '" + quizName + "'";
             System.out.println(cmdString + "in dataaccessobject");
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);

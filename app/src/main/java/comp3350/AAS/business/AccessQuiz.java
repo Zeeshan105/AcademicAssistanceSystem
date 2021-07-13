@@ -15,7 +15,7 @@ public class AccessQuiz {
 
     public AccessQuiz(){
         dataAccess = Services.getDataAccess(Main.dbName);
-        quizList = dataAccess.getQuizList();
+//        quizList = dataAccess.getQuizList();
         quiz = null;
     }
 
@@ -24,7 +24,7 @@ public class AccessQuiz {
     }
 
     public ArrayList<Quiz> getQuizList(){
-        return quizList;
+        return dataAccess.getQuizList();
     }
 
     public ArrayList<String> getQuizNames(){
@@ -39,13 +39,19 @@ public class AccessQuiz {
         return dataAccess.getCompletedQuizzes();
     }
 
+
+    /*
     public String numberCompletedQuizzes(){
         return dataAccess.numberCompletedQuizzes();
     }
-
-    public void resetQuizzes(){
-        dataAccess.resetQuizzes();
+    public void resetQuizzes(String quizName){
+        dataAccess.resetQuizzes(quizName);
     }
+*/
 
-    public void updateGrade(String quizName, double result) { dataAccess.updateQuiz(quizName, result); }
+
+
+    public void updateGrade(String quizName, double result) {
+        dataAccess.updateQuiz(quizName, result);
+    }
 }
