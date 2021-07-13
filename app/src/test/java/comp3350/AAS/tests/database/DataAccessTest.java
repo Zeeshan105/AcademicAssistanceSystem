@@ -22,13 +22,13 @@ public class DataAccessTest extends TestCase {
     }
 
     public void setUp() {
-        //System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        //dataAccess = new DataAccessStub();
-        //dataAccess.open("stub");
+        System.out.println("\nStarting Persistence test DataAccess (using stub)");
+        dataAccess = new DataAccessStub();
+        dataAccess.open("stub");
 
-        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-        dataAccess = new DataAccessObject(Main.dbName);
-        dataAccess.open(Main.getDbPathName());
+        //System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
+        //dataAccess = new DataAccessObject(Main.dbName);
+        //dataAccess.open(Main.getDbPathName());
 
         folderList=new ArrayList<>();
         dataAccess.getFolderList(folderList);
@@ -267,9 +267,12 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddQuiz() {
-//        quizList.add(new Quiz("add new Quiz"));
-//        assertEquals("add new Quiz",quizList.get(3).getQuizName());
-//
+        Question newQuestion = new Question("What is the population of Canada?","3759","3800","4059","3759");
+        dataAccess.addQuiz(newQuestion, "add new Quiz");
+        ArrayList<Quiz> newQuiz = dataAccess.getQuizList();
+        assertEquals("add new Quiz",newQuiz.get(3).getQuizName());
+        dataAccess.addQuiz(newQuestion, "add new Quiz 2");
+        assertEquals("add new Quiz 2",newQuiz.get(4).getQuizName());
         System.out.println("\tPASS test add Quiz!");
     }
 
