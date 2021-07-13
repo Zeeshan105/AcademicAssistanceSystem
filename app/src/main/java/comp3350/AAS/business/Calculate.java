@@ -25,19 +25,6 @@ public class Calculate {
         selectedQuiz.setQuizResult(currentGrade);
     }
 
-//    public ArrayList<String> getCompletedQuizzes(ArrayList<Quiz> allQuizzes) {
-//        ArrayList<String> completedQuizzes = new ArrayList<>();
-//
-//        for (int i = 0; i < allQuizzes.size(); i++) {
-//            Quiz selectedQuiz = allQuizzes.get(i);
-//
-//            if (selectedQuiz.isComplete()) {
-//                completedQuizzes.add(selectedQuiz.getQuizName());
-//            }
-//        }
-//        return completedQuizzes;
-//    }
-
     public String getAverageGrade(ArrayList<Quiz> allQuizzes) {
         double totalGrade = 0;
         int quizzesCompleted = 0;
