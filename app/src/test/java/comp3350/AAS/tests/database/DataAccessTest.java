@@ -311,7 +311,7 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testUpdateQuiz(){
-        Question newQuestion = new Question("??????","aaaa","bbbb","vvvv","bbbb");
+        Question newQuestion = new Question("Testing update grade","A","B","C","A");
         dataAccess.addQuiz(newQuestion, "Quiz - test to Update");
 
         dataAccess.getQuizList().get(3).setQuizResult(10086);
@@ -320,6 +320,12 @@ public class DataAccessTest extends TestCase {
         dataAccess.updateQuiz("Quiz - test to Update",3);
         assertEquals(3.0, dataAccess.getQuizList().get(3).getQuizResult());
 
+        dataAccess.updateQuiz("Quiz - test to Update",1);
+        assertEquals(1.0, dataAccess.getQuizList().get(3).getQuizResult());
+
+        assertEquals(0.0, dataAccess.getQuizList().get(0).getQuizResult());
+        dataAccess.updateQuiz(dataAccess.getQuizList().get(0).getQuizName(), 1);
+        assertEquals(1.0, dataAccess.getQuizList().get(0).getQuizResult());
         System.out.println("\tPASS test Complete Quiz!");
     }
 
