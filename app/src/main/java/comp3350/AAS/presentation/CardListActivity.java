@@ -56,9 +56,7 @@ public class CardListActivity extends AppCompatActivity {
 
                 accessFolder.deleteCard(folders.get(folderIndex).getFolderName(),folders.get(folderIndex).getCardTitles().get(position));
 
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                openFolders();
             });
 
 
@@ -71,6 +69,15 @@ public class CardListActivity extends AppCompatActivity {
         });
     }
 
+    public void openFolders(){
+        Intent intent = new Intent(this, FolderListActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public void onBackPressed() {
+        openFolders();
+        super.onBackPressed();
 
+    }
 }

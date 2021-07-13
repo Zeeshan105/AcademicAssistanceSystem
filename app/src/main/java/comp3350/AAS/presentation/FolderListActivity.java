@@ -65,4 +65,15 @@ public class FolderListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CardListActivity.class);
         startActivity(intent);
     }
+
+    public void openFlashCards(){
+        Intent intent = new Intent(this, FlashCardActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        openFlashCards();
+        super.onBackPressed();
+    }
 }
