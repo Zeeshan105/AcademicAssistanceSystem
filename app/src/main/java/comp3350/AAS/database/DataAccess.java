@@ -22,8 +22,12 @@ public interface DataAccess {
     ArrayList<Quiz> getQuizList();
     ArrayList<String> getAllQuizName();
     ArrayList<String> generateQuizGradesList();
-    int getCompletedQuizzes();
-    String numberCompletedQuizzes();
-    void resetQuizzes();
+    String getNumCompletedQuiz();
+    void resetQuizStatus(String quizName, String status);
     void updateQuiz(String quizName, double grade);
+
+    String getAverageGrade();
+    String getHighestGrade();
+    String getLowestGrade();
+
 }

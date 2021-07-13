@@ -8,15 +8,19 @@ import android.widget.Toast;
 
 import comp3350.AAS.application.Main;
 import comp3350.AAS.business.AccessQuiz;
+import comp3350.AAS.business.Calculate;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.R;
+import comp3350.AAS.business.Validate;
 import comp3350.AAS.application.Services;
 
 
 public class MakeQuizActivity extends AppCompatActivity {
+
     private String quizQuestion, optionA,optionB, optionC, answer, quizName;
     private EditText questionInput, firstOption, secondOption, thirdOption, keyOption, quizIndex;
+    private final Validate val = new Validate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +44,10 @@ public class MakeQuizActivity extends AppCompatActivity {
             answer = keyOption.getText().toString();
             quizName = quizIndex.getText().toString();
 
-            if(quizQuestion.equals("") || optionA.equals("") || optionB.equals("") || optionC.equals("") || answer.equals("") || quizName.equals("")) {
+            if(!val.isValidInput(quizQuestion, optionA, optionB, optionC, answer, quizName)) {
                 showToast("Error! Must define a question and three options!");
-            } else if ( !(answer.equals(optionA) || answer.equals(optionB) || answer.equals(optionC)) ){
+            }
+            else if (!val.containsAnswer(optionA, optionB, optionC, answer)){
                 showToast("Error! Must define a valid answer!");
             }else{
                 Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);

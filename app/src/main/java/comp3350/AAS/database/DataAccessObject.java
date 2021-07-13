@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import comp3350.AAS.application.Services;
+import comp3350.AAS.business.Calculate;
 import comp3350.AAS.object.*;
 
 public class DataAccessObject implements DataAccess {
@@ -196,9 +197,8 @@ public class DataAccessObject implements DataAccess {
                 System.out.println(cmdString);
                 updateCount = st1.executeUpdate(cmdString);
                 result = checkWarning(st1, updateCount);
-            }
-            else {
-                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "', TRUE, 0.0)";
+            } else {
+                cmdString = "INSERT INTO QUIZ VALUES('" + name + "','" + question.getQuestion() + "', FALSE, 0.0)";
                 System.out.println(cmdString);
                 updateCount = st1.executeUpdate(cmdString);
                 result = checkWarning(st1, updateCount);
@@ -287,33 +287,37 @@ public class DataAccessObject implements DataAccess {
         return gradeList;
     }
 
-    public int getCompletedQuizzes() {
+    public String getNumCompletedQuiz() {
         int numCompleted = 0;
 
         try{
-            cmdString = "SELECT COUNT(*) AS ANSWER FROM (SELECT COUNT(*) AS COUNTS, COUNT(QUIZNAME) AS QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY COMPLETE, RESULT HAVING COMPLETE = TRUE)";
+            cmdString = "SELECT COUNT(DISTINCT QUIZNAME) AS NUMCOMPLETED FROM (SELECT * FROM QUIZ WHERE COMPLETE = TRUE)";
             rs1 = st1.executeQuery(cmdString);
 
             while(rs1.next()){
-                numCompleted = rs1.getInt("ANSWER");
+                numCompleted = rs1.getInt("NUMCOMPLETED");
             }
         }catch(Exception e){
             System.out.println(processSQLError(e));
         }
-
-        return numCompleted;
+        return ""+numCompleted;
     }
 
-    public String numberCompletedQuizzes() {
-        return null;
+    public void resetQuizStatus(String quizName, String status) {
+        try{
+            cmdString = "UPDATE QUIZ SET COMPLETE = "+status+" WHERE QUIZNAME = '" + quizName + "'";
+            System.out.println(cmdString + "in dataaccessobject");
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+            System.out.println(result);
+        }
     }
 
-    public void resetQuizzes() {
-
-    }
     public void updateQuiz(String quizName, double grade){
         try{
-            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + "WHERE QUIZNAME = '" + quizName + "'";
+            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + " WHERE QUIZNAME = '" + quizName + "'";
             System.out.println(cmdString + "in dataaccessobject");
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -321,6 +325,98 @@ public class DataAccessObject implements DataAccess {
             System.out.println(processSQLError(e));
         }
     }
+
+
+    public String getAverageGrade(){
+        int numCompleted = 0;
+        double totalScore=0;
+        double averageGrade;
+
+        try{
+            cmdString = "SELECT COUNT(*) AS NUMCOMPLETED FROM QUIZ WHERE COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while(rs1.next()){
+                numCompleted = rs1.getInt("NUMCOMPLETED");
+            }
+
+            cmdString = "SELECT DISTINCT QUIZNAME, RESULT FROM QUIZ WHERE COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while(rs1.next()){
+                String name = rs1.getString("QUIZNAME");
+                totalScore += rs1.getDouble("RESULT");
+            }
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
+
+        averageGrade = (totalScore / numCompleted) * 100.0;
+        return String.format("%.2f", averageGrade)+"%";
+    }
+
+    public String getHighestGrade(){
+        double highestGradeRate = -1;
+
+        try{
+            cmdString = "SELECT DISTINCT QUIZNAME, RESULT FROM QUIZ WHERE COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while(rs1.next()){
+                String name = rs1.getString("QUIZNAME");
+                double currScore = rs1.getDouble("RESULT");
+
+                cmdString = "SELECT COUNT(QUIZNAME) AS NUMQUESTION FROM QUIZ WHERE QUIZNAME='"+name+"'";
+                rs2 = st2.executeQuery(cmdString);
+
+                int count = -1;
+                while(rs2.next()){
+                    count = rs2.getInt("NUMQUESTION");
+                }
+                System.out.println(currScore+"    "+count);
+                double newGradeRate = currScore/count;
+
+                if (newGradeRate > highestGradeRate){
+                    highestGradeRate = newGradeRate;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return String.format("%.2f", highestGradeRate*100)+"%";
+    }
+
+    public String getLowestGrade(){
+        double lowestGradeRate = Double.POSITIVE_INFINITY;
+
+        try{
+            cmdString = "SELECT DISTINCT QUIZNAME, RESULT FROM QUIZ WHERE COMPLETE = TRUE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while(rs1.next()){
+                String name = rs1.getString("QUIZNAME");
+                double currScore = rs1.getDouble("RESULT");
+
+                cmdString = "SELECT COUNT(QUIZNAME) AS NUMQUESTION FROM QUIZ WHERE QUIZNAME='"+name+"'";
+                rs2 = st2.executeQuery(cmdString);
+
+                int count = -1;
+                while(rs2.next()){
+                    count = rs2.getInt("NUMQUESTION");
+                }
+
+                double newGradeRate = currScore/count;
+
+                if (newGradeRate < lowestGradeRate){
+                    lowestGradeRate = newGradeRate;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return String.format("%.2f", lowestGradeRate*100)+"%";
+    }
+
 
     public String checkWarning(Statement st, int updateCount) {
         String result = null;

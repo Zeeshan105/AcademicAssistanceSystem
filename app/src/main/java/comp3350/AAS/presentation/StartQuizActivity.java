@@ -28,7 +28,8 @@ public class StartQuizActivity extends AppCompatActivity {
     static int currPosition;
     private ArrayList<Question> questionArrayList;  // To store all questions on a quiz list
     private Quiz selectedQuiz;  // To store all questions on a quiz list
-    private final Calculate cal = new Calculate();
+    private AccessQuiz accessQuiz;
+    private Calculate cal = new Calculate();
     private String selectedAnswer;
 
     @Override
@@ -37,7 +38,7 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         // To get all quizzes
-        AccessQuiz accessQuiz = new AccessQuiz();
+        accessQuiz = new AccessQuiz();
         ArrayList<Quiz> quizArrayList = accessQuiz.getQuizList();
 
         // To get selected quiz list
@@ -99,6 +100,8 @@ public class StartQuizActivity extends AppCompatActivity {
             generateQuestion();
         } else  {
             selectedQuiz.setCompleteStatus(true);
+            accessQuiz.updateStatus(selectedQuiz.getQuizName(), "TRUE");
+            accessQuiz.updateGrade(selectedQuiz.getQuizName(), selectedQuiz.getQuizResult());
 
             builder.setMessage("You have completed the quiz. Results can be viewed in the statistics page")
                     .setPositiveButton("Close", (dialog, which) -> StartQuizActivity.this.finish());

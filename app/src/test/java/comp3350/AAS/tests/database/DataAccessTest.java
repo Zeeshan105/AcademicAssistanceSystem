@@ -12,23 +12,23 @@ import comp3350.AAS.object.CardFolder;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.database.DataAccess;
 
+import static org.junit.Assert.assertNotNull;
+
 public class DataAccessTest extends TestCase {
     private DataAccess dataAccess;
     private ArrayList<CardFolder> folderList;
     private ArrayList<Quiz> quizList;
+    private Quiz quiz1, quiz2, quiz3, quiz4;
+    private Question question;
 
     public DataAccessTest(String arg0) {
         super(arg0);
     }
 
     public void setUp() {
-        //System.out.println("\nStarting Persistence test DataAccess (using stub)");
-        //dataAccess = new DataAccessStub();
-        //dataAccess.open("stub");
-
-        System.out.println("\nStarting Persistence test DataAccess (using HSQLDB)");
-        dataAccess = new DataAccessObject(Main.dbName);
-        dataAccess.open(Main.getDbPathName());
+        System.out.println("\nStarting Persistence test DataAccess (using stub)");
+        dataAccess = new DataAccessStub();
+        dataAccess.open("stub");
 
         folderList=new ArrayList<>();
         dataAccess.getFolderList(folderList);
@@ -38,13 +38,13 @@ public class DataAccessTest extends TestCase {
 
     public void tearDown() {
         dataAccess.close();
-//        System.out.println("Finished Persistence test DataAccess (using stub)");
-        System.out.println("Finished Persistence test DataAccess (using HSQLDB)");
+        System.out.println("Finished Persistence test DataAccess (using stub)");
     }
 
 
     public void testFirstFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(0).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Geographic_Knowledge", folderList.get(0).getFolderName());
 
         FlashCard flashCard;
@@ -62,6 +62,7 @@ public class DataAccessTest extends TestCase {
 
     public void testSecondFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(1).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Historical_Event", folderList.get(1).getFolderName());
 
         FlashCard flashCard;
@@ -79,6 +80,7 @@ public class DataAccessTest extends TestCase {
 
     public void testThirdFolder(){
         ArrayList<FlashCard> flashCards = folderList.get(2).getCardList();
+        assertNotNull(flashCards);
         assertEquals("Math_Practice", folderList.get(2).getFolderName());
 
         FlashCard flashCard;
@@ -101,7 +103,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description", "newFolder");
 
         dataAccess.getFolderList(folderList);
-
+        assertNotNull(folderList);
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
         assertEquals("newFolder", folders.getFolderName());
@@ -124,6 +126,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description3", "newFolder");
 
         dataAccess.getFolderList(folderList);
+        assertNotNull(folderList);
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
         CardFolder folders= folderList.get(3);
@@ -147,7 +150,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.addCard("title3", "description", "newFolder3");
 
         dataAccess.getFolderList(folderList);
-
+        assertNotNull(folderList);
         CardFolder folders;
 
         // There are 3 original folders in database, so testing will start in 4th folder (index: 3) for adding and deleting
@@ -267,33 +270,263 @@ public class DataAccessTest extends TestCase {
     }
 
     public void testAddQuiz() {
-//        quizList.add(new Quiz("add new Quiz"));
-//        assertEquals("add new Quiz",quizList.get(3).getQuizName());
-//
+        Question newQuestion = new Question("What is the population of Canada?","3759","3800","4059","3759");
+        dataAccess.addQuiz(newQuestion, "add new Quiz");
+        ArrayList<Quiz> newQuiz = dataAccess.getQuizList();
+        assertEquals("add new Quiz",newQuiz.get(3).getQuizName());
+        dataAccess.addQuiz(newQuestion, "add new Quiz 2");
+        assertEquals("add new Quiz 2",newQuiz.get(4).getQuizName());
         System.out.println("\tPASS test add Quiz!");
     }
 
     public void testAddQuestion() {
-//        quizList.add(new Quiz("add new Quiz 2"));
-//        quizList.get(3).addQuestion(new Question("What is the population of Canada?","3759","3800","4059","3759"));
-//        quizList.get(3).addQuestion(new Question("When Canada was founded?","1868","1867","1888","1867"));
-//        assertEquals("What is the population of Canada?",quizList.get(3).getQuestionList().get(0).getQuestion());
-//        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getOption1());
-//        assertEquals("3800",quizList.get(3).getQuestionList().get(0).getOption2());
-//        assertEquals("4059",quizList.get(3).getQuestionList().get(0).getOption3());
-//        assertEquals("3759",quizList.get(3).getQuestionList().get(0).getKey());
-//
-//        assertEquals("When Canada was founded?",quizList.get(3).getQuestionList().get(1).getQuestion());
-//        assertEquals("1868",quizList.get(3).getQuestionList().get(1).getOption1());
-//        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getOption2());
-//        assertEquals("1888",quizList.get(3).getQuestionList().get(1).getOption3());
-//        assertEquals("1867",quizList.get(3).getQuestionList().get(1).getKey());
+        Question newQuestion;
 
-        System.out.println("\tPASS test add Quiz!");
+        newQuestion = new Question("When Canada was founded?","1868","1867","1888","1867");
+        dataAccess.addQuiz(newQuestion, "add new Quiz 3");
+
+        ArrayList<Quiz> newQuiz = dataAccess.getQuizList();
+        assertNotNull(newQuiz);
+        assertEquals("When Canada was founded?",newQuiz.get(3).getQuestionList().get(0).getQuestion());
+        assertEquals("1868",newQuiz.get(3).getQuestionList().get(0).getOption1());
+        assertEquals("1867",newQuiz.get(3).getQuestionList().get(0).getOption2());
+        assertEquals("1888",newQuiz.get(3).getQuestionList().get(0).getOption3());
+        assertEquals("1867",newQuiz.get(3).getQuestionList().get(0).getKey());
+
+        newQuestion = new Question("What is the population of Canada?","3759","3770","4029","3359");
+        dataAccess.addQuiz(newQuestion, "add new Quiz 3");
+
+        assertEquals("What is the population of Canada?",newQuiz.get(3).getQuestionList().get(1).getQuestion());
+        assertEquals("3759",newQuiz.get(3).getQuestionList().get(1).getOption1());
+        assertEquals("3770",newQuiz.get(3).getQuestionList().get(1).getOption2());
+        assertEquals("4029",newQuiz.get(3).getQuestionList().get(1).getOption3());
+        assertEquals("3359",newQuiz.get(3).getQuestionList().get(1).getKey());
+
+        System.out.println("\tPASS test add Question!");
     }
+
+    public void testDB(){
+        assertNotNull(dataAccess.generateQuizGradesList());
+        System.out.println("\tPASS test DB!");
+    }
+
     public void testUpdateQuiz(){
-        dataAccess.updateQuiz("Math",0.0);
+        Question newQuestion = new Question("??????","aaaa","bbbb","vvvv","bbbb");
+        dataAccess.addQuiz(newQuestion, "Quiz - test to Update");
+
+        dataAccess.getQuizList().get(3).setQuizResult(10086);
+        assertEquals(10086.0, dataAccess.getQuizList().get(3).getQuizResult());
+
+        dataAccess.updateQuiz("Quiz - test to Update",3);
+        assertEquals(3.0, dataAccess.getQuizList().get(3).getQuizResult());
+
+        System.out.println("\tPASS test Complete Quiz!");
     }
 
+    public void testOneZeroGrade(){
+        quiz1 = new Quiz("quiz1");
+        quiz1.setCompleteStatus(true);
+        quiz1.setQuizResult(0);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        assertEquals("0.00%", dataAccess.getAverageGrade());
+        assertEquals("0.00%", dataAccess.getHighestGrade());
+        assertEquals("0.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testOneTypicalGrade(){
+        quiz1 = new Quiz("quiz1");
+        quiz1.setCompleteStatus(true);
+        quiz1.setQuizResult(0.6);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        assertEquals("60.00%", dataAccess.getAverageGrade());
+        assertEquals("60.00%", dataAccess.getHighestGrade());
+        assertEquals("60.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testOneFullGrade(){
+        quiz1 = new Quiz("quiz1");
+        quiz1.setCompleteStatus(true);
+        quiz1.setQuizResult(1);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        assertEquals("100.00%", dataAccess.getAverageGrade());
+        assertEquals("100.00%", dataAccess.getHighestGrade());
+        assertEquals("100.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testTwoZeroQuizGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+
+        quiz1.setQuizResult(0);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(0);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        assertEquals("0.00%", dataAccess.getAverageGrade());
+        assertEquals("0.00%", dataAccess.getHighestGrade());
+        assertEquals("0.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testTwoTypicalGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+
+        quiz1.setQuizResult(0.8);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(0.5);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        assertEquals("65.00%", dataAccess.getAverageGrade());
+        assertEquals("80.00%", dataAccess.getHighestGrade());
+        assertEquals("50.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testTwoFullGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+
+        quiz1.setQuizResult(1);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(1);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        assertEquals("100.00%", dataAccess.getAverageGrade());
+        assertEquals("100.00%", dataAccess.getHighestGrade());
+        assertEquals("100.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testMultiZeroQuizGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+        quiz3=new Quiz("quiz3");
+        quiz4=new Quiz("quiz4");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+        quiz3.setCompleteStatus(true);
+        quiz4.setCompleteStatus(true);
+
+        quiz1.setQuizResult(0);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(0);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        quiz3.setQuizResult(0);
+        quiz3.addQuestion(question);
+        quizList.add(quiz3);
+
+        quiz4.setQuizResult(0);
+        quiz4.addQuestion(question);
+        quizList.add(quiz4);
+
+        assertEquals("0.00%", dataAccess.getAverageGrade());
+        assertEquals("0.00%", dataAccess.getHighestGrade());
+        assertEquals("0.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testMultiTypicalGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+        quiz3=new Quiz("quiz3");
+        quiz4=new Quiz("quiz4");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+        quiz3.setCompleteStatus(true);
+        quiz4.setCompleteStatus(true);
+
+        quiz1.setQuizResult(0.2);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(0.75);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        quiz3.setQuizResult(0.98);
+        quiz3.addQuestion(question);
+        quizList.add(quiz3);
+
+        quiz4.setQuizResult(0.5);
+        quiz4.addQuestion(question);
+        quizList.add(quiz4);
+
+        assertEquals("60.75%", dataAccess.getAverageGrade());
+        assertEquals("98.00%", dataAccess.getHighestGrade());
+        assertEquals("20.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testMultiFullGrade(){
+        quiz1=new Quiz("quiz1");
+        quiz2=new Quiz("quiz2");
+        quiz3=new Quiz("quiz3");
+        quiz4=new Quiz("quiz4");
+
+        quiz1.setCompleteStatus(true);
+        quiz2.setCompleteStatus(true);
+        quiz3.setCompleteStatus(true);
+        quiz4.setCompleteStatus(true);
+
+        quiz1.setQuizResult(1);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        quiz2.setQuizResult(1);
+        quiz2.addQuestion(question);
+        quizList.add(quiz2);
+
+        quiz3.setQuizResult(1);
+        quiz3.addQuestion(question);
+        quizList.add(quiz3);
+
+        quiz4.setQuizResult(1);
+        quiz4.addQuestion(question);
+        quizList.add(quiz4);
+
+        assertEquals("100.00%", dataAccess.getAverageGrade());
+        assertEquals("100.00%", dataAccess.getHighestGrade());
+        assertEquals("100.00%", dataAccess.getLowestGrade());
+    }
+
+    public void testInvalidGrade(){
+        quiz1=new Quiz("quiz1");
+
+        quiz1.setCompleteStatus(true);
+
+        quiz1.setQuizResult(-999);
+        quiz1.addQuestion(question);
+        quizList.add(quiz1);
+
+        assertEquals("0.00%", dataAccess.getAverageGrade());
+        assertEquals("0.00%", dataAccess.getHighestGrade());
+        assertEquals("0.00%", dataAccess.getLowestGrade());
+    }
 
 }

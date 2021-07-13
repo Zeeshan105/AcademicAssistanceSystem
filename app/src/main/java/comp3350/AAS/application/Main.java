@@ -13,7 +13,10 @@ public class Main {
     }
 
     public static void startUp(){
-
+        //Dependency Injection - There are 2 createDataAccess methods
+        //each with a different signature.
+        //You can switch between the real and stub dataBase by
+        //providing the signature for the other createDataAccess method
         Services.createDataAccess(dbName);
     }
 
