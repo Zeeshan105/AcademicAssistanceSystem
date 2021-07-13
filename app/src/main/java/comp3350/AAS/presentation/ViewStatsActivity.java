@@ -19,6 +19,7 @@ import comp3350.AAS.business.AccessQuiz;
 import comp3350.AAS.business.Calculate;
 import comp3350.AAS.database.DataAccess;
 import comp3350.AAS.R;
+import comp3350.AAS.object.Quiz;
 
 public class ViewStatsActivity extends AppCompatActivity{
     private final Calculate cal = new Calculate();
@@ -59,7 +60,13 @@ public class ViewStatsActivity extends AppCompatActivity{
     }
 
     public void backToHome(){
-        accessQuiz.resetQuizzes();
+//        accessQuiz.resetQuizzes();
+
+        ArrayList<Quiz> quizArrayList = accessQuiz.getQuizList();
+        for (int i = 0; i < quizArrayList.size(); i++) {
+            accessQuiz.updateGrade(quizArrayList.get(i).getQuizName(), 0);
+        }
+
         Intent intent = new Intent(this, QuizHomeActivity.class);
         startActivity(intent);
     }

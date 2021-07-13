@@ -296,9 +296,10 @@ public class DataAccessObject implements DataAccess {
     public void resetQuizzes() {
 
     }
+
     public void updateQuiz(String quizName, double grade){
         try{
-            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + "WHERE QUIZNAME = '" + quizName + "'";
+            cmdString = "UPDATE QUIZ SET RESULT = "+ grade + " WHERE QUIZNAME = '" + quizName + "'";
             System.out.println(cmdString + "in dataaccessobject");
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);

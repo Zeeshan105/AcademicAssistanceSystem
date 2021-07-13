@@ -47,5 +47,7 @@ public class AccessQuiz {
         dataAccess.resetQuizzes();
     }
 
-    public void updateGrade(String quizName, double result) { dataAccess.updateQuiz(quizName, result); }
+    public void updateGrade(String quizName, double result) {
+        dataAccess.updateQuiz(quizName, result);
+    }
 }
