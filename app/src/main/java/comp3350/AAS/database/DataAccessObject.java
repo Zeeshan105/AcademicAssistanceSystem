@@ -153,15 +153,25 @@ public class DataAccessObject implements DataAccess {
     }
     public void deleteCard(String folderName, String title){
         try{
+            cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be chnaged later
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1,updateCount);
+
             cmdString = "DELETE FROM FOLDER WHERE TITLE = '" + title +"' AND FOLDERNAME = ' " +folderName +"'";
             System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1,updateCount);
+
             cmdString = "DELETE FROM FLASHCARD WHERE TITLE = '" + title +"'";
             System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1,updateCount);
 
+            cmdString = "SET REFERENTIAL_INTEGRITY TRUE";      // make it back to true
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1,updateCount);
         }catch (Exception e){
             System.out.println(processSQLError(e));
         }
