@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademicAssistanceSystem">
+        <activity android:name=".presentation.MakeTfQuizActivity"></activity>
         <activity android:name=".presentation.ViewQuizAnswerActivity" />
         <activity android:name=".presentation.QuizHomeActivity" />
         <activity android:name=".presentation.SelectQuizActivity" />
         <activity android:name=".presentation.ViewStatsActivity" />
-        <activity android:name=".presentation.AnswerActivity"/>
-        <activity android:name=".presentation.MakeQuizActivity" />
+        <activity android:name=".presentation.AnswerActivity" />
+        <activity android:name=".presentation.MakeMcqQuizActivity" />
         <activity android:name=".presentation.StartQuizActivity" />
         <activity android:name=".presentation.CardListActivity" />
         <activity android:name=".presentation.FolderListActivity" />

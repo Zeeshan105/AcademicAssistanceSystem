@@ -1,13 +1,8 @@
 package comp3350.AAS.business;
 
-import java.util.ArrayList;
-
-import comp3350.AAS.object.Quiz;
-import comp3350.AAS.object.Question;
 
 public class Validate {
-
-    public boolean isValidInput(String question, String optionA, String optionB, String optionC, String answer, String quizName){
+    public boolean isValidMcqInput(String question, String optionA, String optionB, String optionC, String answer, String quizName){
         if(question.trim().isEmpty() || optionA.trim().isEmpty() || optionB.trim().isEmpty() || optionC.trim().isEmpty() || answer.trim().isEmpty() || quizName.trim().isEmpty())
             return false;
         else
@@ -21,4 +16,10 @@ public class Validate {
             return false;
     }
 
+    public boolean isValidTrueOrFalseInput(String question, String answer, String quizName){
+        if(question.trim().isEmpty() || answer.trim().isEmpty() || quizName.trim().isEmpty())
+            return false;
+        else
+            return true;
+    }
 }

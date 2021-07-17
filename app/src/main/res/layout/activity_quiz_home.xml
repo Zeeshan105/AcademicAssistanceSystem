@@ -8,7 +8,23 @@
     tools:context=".presentation.QuizHomeActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/CreateQuiz"
+        android:id="@+id/CreateMcqQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="#000000"
+        android:gravity="center"
+        android:scaleX="0.7"
+        android:scaleY="0.9"
+        android:text="Create Multi-Choice question"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/CreateTfQuiz"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_alignParentStart="true"
@@ -19,7 +35,7 @@
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.9"
-        android:text="Create quiz"
+        android:text="Create True/False question"
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 

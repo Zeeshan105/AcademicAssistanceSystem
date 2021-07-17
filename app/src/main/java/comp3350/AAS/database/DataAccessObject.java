@@ -154,6 +154,7 @@ public class DataAccessObject implements DataAccess {
             System.out.println(result);
         }
     }
+
     public void deleteCard(String folderName, String title){
         try{
             cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be changed later
@@ -237,7 +238,13 @@ public class DataAccessObject implements DataAccess {
                 String option3 = rs1.getString("OPTION3");
                 String key = rs1.getString("ANSWER");
                 String quizName = rs1.getString("QUIZNAME");
-                Question newQuestion = new Question(content,option1,option2,option3,key);
+
+                Question newQuestion;
+                if (option3.equals("")){
+                    newQuestion = new Question(content, "A."+option1, "B."+option2, "    "+option3, key);
+                }else {
+                    newQuestion = new Question(content, "A." + option1, "B." + option2, "C." + option3, key);
+                }
 
                 if( existingQuiz.contains(quizName)){
                     for( Quiz quiz : quizList) {

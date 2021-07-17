@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp3350.AAS.presentation.MakeQuizActivity">
+    tools:context="comp3350.AAS.presentation.MakeMcqQuizActivity">
 
     <TextView
         android:layout_width="match_parent"

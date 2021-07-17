@@ -26,18 +26,21 @@
             android:id="@+id/btn_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="@null"
             android:textSize="30sp" />
         <!-- button 2-->
         <RadioButton
             android:id="@+id/btn_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="@null"
             android:textSize="30sp"/>
         <!-- button 3-->
         <RadioButton
             android:id="@+id/btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="@null"
             android:textSize="30sp"/>
     </RadioGroup>
 

@@ -3,6 +3,7 @@ package comp3350.AAS.presentation;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -77,13 +78,22 @@ public class StartQuizActivity extends AppCompatActivity {
         radioGroup.setClickable(false);
         switch (checkedId){
             case R.id.btn_1:
-                selectedAnswer=button1.getText().toString();
+                selectedAnswer=button1.getText().toString().substring(2);
+                button1.setTextColor(Color.MAGENTA);
+                button2.setTextColor(Color.BLACK);
+                button3.setTextColor(Color.BLACK);
                 break;
             case R.id.btn_2:
-                selectedAnswer=button2.getText().toString();
+                selectedAnswer=button2.getText().toString().substring(2);
+                button1.setTextColor(Color.BLACK);
+                button2.setTextColor(Color.MAGENTA);
+                button3.setTextColor(Color.BLACK);
                 break;
             case R.id.btn_3:
-                selectedAnswer=button3.getText().toString();
+                selectedAnswer=button3.getText().toString().substring(2);
+                button1.setTextColor(Color.BLACK);
+                button2.setTextColor(Color.BLACK);
+                button3.setTextColor(Color.MAGENTA);
                 break;
         }
     }
@@ -95,6 +105,12 @@ public class StartQuizActivity extends AppCompatActivity {
         currIndex++;
 
         if (currIndex<questionArrayList.size()) {
+            button1.setChecked(false);
+            button2.setChecked(false);
+            button3.setChecked(false);
+            button1.setTextColor(Color.BLACK);
+            button2.setTextColor(Color.BLACK);
+            button3.setTextColor(Color.BLACK);
             radioGroup.check(0);
             showToast("New question!");
             generateQuestion();

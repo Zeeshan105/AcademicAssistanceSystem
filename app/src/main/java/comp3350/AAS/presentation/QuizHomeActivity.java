@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import comp3350.AAS.R;
-import comp3350.AAS.business.AccessQuiz;
 
 
 public class QuizHomeActivity extends AppCompatActivity {
@@ -16,8 +15,11 @@ public class QuizHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_home);
 
-        Button createQuiz = findViewById(R.id.CreateQuiz);
-        createQuiz.setOnClickListener(v -> createQuizzes());
+        Button createMcq = findViewById(R.id.CreateMcqQuiz);
+        createMcq.setOnClickListener(v -> createMcqQuizzes());
+
+        Button createTf = findViewById(R.id.CreateTfQuiz);
+        createTf.setOnClickListener(v -> createTfQuizzes());
 
         Button startQuiz = findViewById(R.id.StartQuiz);
         startQuiz.setOnClickListener(v -> doQuizzes());
@@ -29,8 +31,13 @@ public class QuizHomeActivity extends AppCompatActivity {
         home.setOnClickListener(v -> backToHome());
     }
 
-    public void createQuizzes(){
-        Intent intent = new Intent(this, MakeQuizActivity.class);
+    public void createMcqQuizzes(){
+        Intent intent = new Intent(this, MakeMcqQuizActivity.class);
+        startActivity(intent);
+    }
+
+    public void createTfQuizzes(){
+        Intent intent = new Intent(this, MakeTfQuizActivity.class);
         startActivity(intent);
     }
 
