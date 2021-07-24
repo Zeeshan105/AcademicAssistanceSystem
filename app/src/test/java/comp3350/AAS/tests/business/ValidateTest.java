@@ -19,18 +19,22 @@ public class ValidateTest extends TestCase{
         validate = new Validate();
     }
 
-    public void testUserInput(){
-        assertFalse(validate.isValidInput("","","","","",""));
-        assertFalse(validate.isValidInput(" ","","   "," ","","  "));
-        assertFalse(validate.isValidInput(" a","","   "," ","","  "));
-        assertFalse(validate.isValidInput("Valid Question","","","","",""));
-        assertFalse(validate.isValidInput("","Valid Option A","","","",""));
-        assertFalse(validate.isValidInput("Valid Question","","Valid Option B","","",""));
-        assertFalse(validate.isValidInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","",""));
-        assertFalse(validate.isValidInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Answer",""));
-        assertFalse(validate.isValidInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Answer","       "));
-        assertTrue(validate.isValidInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Option A","Valid Quiz Name"));
-        assertTrue(validate.isValidInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Invalid Answer","Valid Quiz Name"));
+    public void testMcqInput(){
+        assertFalse(validate.isValidMcqInput("","","","","",""));
+        assertFalse(validate.isValidMcqInput(" ","","   "," ","","  "));
+        assertFalse(validate.isValidMcqInput(" a","","   "," ","","  "));
+        assertFalse(validate.isValidMcqInput("Valid Question","","","","",""));
+        assertFalse(validate.isValidMcqInput("","Valid Option A","","","",""));
+        assertFalse(validate.isValidMcqInput("Valid Question","","Valid Option B","","",""));
+        assertFalse(validate.isValidMcqInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","",""));
+        assertFalse(validate.isValidMcqInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Answer",""));
+        assertFalse(validate.isValidMcqInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Answer","       "));
+        assertTrue(validate.isValidMcqInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Valid Option A","Valid Quiz Name"));
+        assertTrue(validate.isValidMcqInput("Valid Question","Valid Option A","Valid Option B","Valid Option C","Invalid Answer","Valid Quiz Name"));
+    }
+
+    public void testTfInput(){
+        //TODO
     }
 
     public void testValidAnswer(){
