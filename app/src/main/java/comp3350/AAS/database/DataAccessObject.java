@@ -157,12 +157,12 @@ public class DataAccessObject implements DataAccess {
 
     public void deleteCard(String folderName, String title){
         try{
-            cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be changed later
-            System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1,updateCount);
+//            cmdString = "SET REFERENTIAL_INTEGRITY FALSE";      // this maybe dangerous should be changed later
+//            System.out.println(cmdString);
+//            updateCount = st1.executeUpdate(cmdString);
+//            result = checkWarning(st1,updateCount);
 
-            cmdString = "DELETE FROM FOLDER WHERE TITLE = '" + title +"' AND FOLDERNAME = ' " +folderName +"'";
+            cmdString = "DELETE FROM FOLDER WHERE TITLE = '" + title +"' AND FOLDERNAME = '" +folderName +"'";
             System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1,updateCount);
@@ -172,10 +172,10 @@ public class DataAccessObject implements DataAccess {
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1,updateCount);
 
-            cmdString = "SET REFERENTIAL_INTEGRITY TRUE";      // make it back to true
-            System.out.println(cmdString);
-            updateCount = st1.executeUpdate(cmdString);
-            result = checkWarning(st1,updateCount);
+//            cmdString = "SET REFERENTIAL_INTEGRITY TRUE";      // make it back to true
+//            System.out.println(cmdString);
+//            updateCount = st1.executeUpdate(cmdString);
+//            result = checkWarning(st1,updateCount);
         }catch (Exception e){
             System.out.println(processSQLError(e));
         }
@@ -217,6 +217,44 @@ public class DataAccessObject implements DataAccess {
                 updateCount = st1.executeUpdate(cmdString);
                 result = checkWarning(st1, updateCount);
             }
+        } catch (Exception e) {
+            System.out.println(processSQLError(e));
+            System.out.println(result);
+        }
+    }
+
+    public void deleteQuiz(int index){
+        String quizName;
+        ArrayList<Question> questions;
+        ArrayList<String> questionContents = new ArrayList<>();
+        ArrayList<Quiz> quizList = getQuizList();
+        ArrayList<String> quizNames = getAllQuizName();
+        result = null;
+
+        for (int i = 0; i < quizList.size(); i++) {
+            quizNames.add(quizList.get(i).getQuizName());
+        }
+
+        try {
+            quizName = quizNames.get(index);
+            questions = quizList.get(index).getQuestionList();
+
+            for (int i = 0; i < questions.size(); i++) {
+                questionContents.add(questions.get(i).getQuestion());
+            }
+
+            cmdString = "DELETE FROM QUIZ WHERE QUIZNAME='" +quizName+"'";
+            System.out.println(cmdString);
+            updateCount = st1.executeUpdate(cmdString);
+            result = checkWarning(st1, updateCount);
+
+            for (int i = 0; i < questionContents.size(); i++) {
+                cmdString = "DELETE FROM QUESTION WHERE QUESTIONCONTENT='" +questionContents.get(i)+"'";
+                System.out.println(cmdString);
+                updateCount = st1.executeUpdate(cmdString);
+            }
+            result = checkWarning(st1, updateCount);
+
         } catch (Exception e) {
             System.out.println(processSQLError(e));
             System.out.println(result);
@@ -346,7 +384,6 @@ public class DataAccessObject implements DataAccess {
         }
     }
 
-
     public String getAverageGrade(){
         int numCompleted = 0;
         double totalScore= 0;
@@ -444,7 +481,6 @@ public class DataAccessObject implements DataAccess {
         }
         return String.format("%.2f", lowestGradeRate*100)+"%";
     }
-
 
     public String checkWarning(Statement st, int updateCount) {
         String result = null;

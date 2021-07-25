@@ -13,7 +13,6 @@ public class DataAccessStub implements DataAccess {
     private String dbType = "stub";
     private ArrayList<Quiz> quizList;
     private ArrayList<CardFolder> folderList;
-    private ArrayList<String> completedQuizList;
 
 
     public DataAccessStub(String dbName) {
@@ -27,31 +26,46 @@ public class DataAccessStub implements DataAccess {
     public void open(String string) {
         Quiz quiz;
         Question question;
-        CardFolder cardFolder;
-
 
         quizList = new ArrayList<Quiz>();
         quiz = new Quiz("Historical");
         quizList.add(quiz);
-        quiz = new Quiz("Geographic");
-        quizList.add(quiz);
         quiz = new Quiz("Math");
         quizList.add(quiz);
+        quiz = new Quiz("Geographic");
+        quizList.add(quiz);
+        quiz = new Quiz("add new Quiz 3");
+        quizList.add(quiz);
 
-        question = new Question("Number of Canadians participating in World War II", "0.5 million", "1 million", "2 million", "1 million");
+        question = new Question("Number of Canadians participating in World War II", "A.0.5 million", "B.1 million", "C.2 million", "1 million");
         addQuiz(question, "Historical");
-        question = new Question("What year was the founding of Canada?", "1867", "1887", "1787", "1867");
+        question = new Question("The capital city of Canada is Vancouver", "A.True", "B.False", "    ", "False");
         addQuiz(question, "Historical");
-        question = new Question("Which aircraft manufacture belong to Canada?", "Airbus", "Boeing", "Bombardier", "Bombardier");
+        question = new Question("The year of the founding of Canada is 1867", "A.True", "B.False", "    ", "True");
         addQuiz(question, "Historical");
-        question = new Question("What is the area of Canada in square kilometers?","9.98 million","9.60 million","9.37 million","9.98 million");
-        addQuiz(question, "Geographic");
-        question = new Question("What is the capital city of Canada?","Vancouver","Ottawa","Toronto","Ottawa");
-        addQuiz(question, "Geographic");
-        question = new Question("What is the positive result of square root of 36?", "3", "6", "9", "6");
+        question = new Question("What year was the founding of Canada?", "A.1867", "B.1887", "C.1787", "1867");
+        addQuiz(question, "Historical");
+        question = new Question("Which aircraft manufacture belong to Canada?", "A.Airbus", "B.Boeing", "C.Bombardier", "Bombardier");
+        addQuiz(question, "Historical");
+
+        question = new Question("The positive result of square root of 16 is 3", "A.True", "B.False", "    ", "False");
         addQuiz(question, "Math");
-        question = new Question("What is the result of 1+1?", "0", "1", "2", "2");
+        question = new Question("The positive result of square root of 25 is 5", "A.True", "B.False", "    ", "True");
         addQuiz(question, "Math");
+        question = new Question("What is the positive result of square root of 36?", "A.3", "B.6", "C.9", "6");
+        addQuiz(question, "Math");
+        question = new Question("What is the result of 1+1?", "A.0", "B.1", "C.2", "2");
+        addQuiz(question, "Math");
+
+        question = new Question("What is the area of Canada in square kilometers?","A.9.98 million","B.9.60 million","C.9.37 million","9.98 million");
+        addQuiz(question, "Geographic");
+        question = new Question("What is the capital city of Canada?","A.Vancouver","B.Ottawa","C.Toronto","Ottawa");
+        addQuiz(question, "Geographic");
+
+        question = new Question("What is the population of Canada?","A.3759","B.3770","C.4029","3759");
+        addQuiz(question, "add new Quiz 3");
+        question = new Question("When Canada was founded?","A.1868","B.1867","C.1868","1867");
+        addQuiz(question, "add new Quiz 3");
 
         folderList=new ArrayList<>();
 
@@ -132,6 +146,10 @@ public class DataAccessStub implements DataAccess {
         }
     }
 
+    public void deleteQuiz(int index) {
+        quizList.remove(index);
+    }
+
     public ArrayList<Quiz> getQuizList() {
         return quizList;
     }
@@ -146,7 +164,7 @@ public class DataAccessStub implements DataAccess {
     }
 
     public ArrayList<String> generateQuizGradesList() {
-//        ArrayList<String> completedQuizList = new ArrayList<String>();
+        ArrayList<String> completedQuizList = new ArrayList<String>();
         completedQuizList = new ArrayList<String>();
         for (int i = 0; i < quizList.size(); i++) {
             if (quizList.get(i).isComplete()) {
@@ -177,7 +195,6 @@ public class DataAccessStub implements DataAccess {
                 selectedQuiz.setCompleteStatus(Boolean.parseBoolean(status));
             }
         }
-        completedQuizList.clear();
     }
 
 

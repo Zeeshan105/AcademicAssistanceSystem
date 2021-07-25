@@ -20,6 +20,7 @@ public interface DataAccess {
 
 // from original Quiz Database
     void addQuiz(Question question, String name);
+    void deleteQuiz(int index);
     ArrayList<Quiz> getQuizList();
     ArrayList<String> getAllQuizName();
     ArrayList<String> generateQuizGradesList();
