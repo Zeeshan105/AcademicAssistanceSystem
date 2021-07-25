@@ -12,8 +12,11 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.not;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,15 +31,23 @@ public class CreateCardTest {
     @Rule
     public ActivityTestRule <MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+
     @Before
     public void setUp(){
         activityTestRule.launchActivity(new Intent());
     }
 
     @Test
+    public void testHomeScreen() {
+        onView(withText("Academic Assistance System")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.Button1)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.Button2)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("FLASH CARD")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("QUIZ")).check(matches(isDisplayed())).check(matches(isEnabled()));
+    }
+    @Test
     public void testAddCard() {
         onView(withText("FLASH CARD")).perform(click());
-
         onView(withId(R.id.editTextTitle)).perform(typeText("New Title"));
         onView(withId(R.id.editTextDescription)).perform(typeText("New Description"));
         onView(withId(R.id.editTextFolderName)).perform(typeText("Folder_1"));
@@ -58,7 +69,34 @@ public class CreateCardTest {
         pressBack();
         closeSoftKeyboard();
         pressBack();
-    }
 
+    }
+    /*@Test
+    public void testCreateQuiz(){
+        onView(withText("QUIZ")).perform(click());
+        onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
+
+        onView(withId(R.id.question)).perform(typeText("New Question 1"));
+        onView(withId(R.id.option_A)).perform(typeText("Q1 A"));
+        onView(withId(R.id.option_B)).perform(typeText("Q1 B"));
+        onView(withId(R.id.option_C)).perform(typeText("Q1 C"));
+        onView(withId(R.id.key)).perform(typeText("Q1 A"));
+        onView(withId(R.id.quiz_index)).perform(typeText("QUIZ 1"));
+        closeSoftKeyboard();
+
+        onView(withText("SUBMIT")).perform(click());
+        pressBack();
+
+        onView(withText("START QUIZZES")).perform(click());
+        onView(withText("START THIS QUIZ")).perform(click());
+        onView(withText("A.q1 a")).perform(click());
+        onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("CLOSE")).perform(click());
+        onView(withText("VIEW STATS")).perform(click());
+
+        onView(withText("QUIZ 1'\n'Mark: 1.0/1")).check(matches(isDisplayed())).perform(click());
+
+
+    }*/
 
 }
