@@ -46,6 +46,21 @@ public class CreateCardTest {
         onView(withText("QUIZ")).check(matches(isDisplayed())).check(matches(isEnabled()));
     }
     @Test
+    public void testSecondScreen() {
+        onView(withText("QUIZ")).perform(click());
+        onView(withId(R.id.CreateMcqQuiz)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.CreateTfQuiz)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.StartQuiz)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.ViewQuizAnswer)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.homePage)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("CREATE MULTI-CHOICE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("CREATE TRUE/FALSE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("START QUIZZES")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("VIEW QUIZ ANSWER")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("HOME")).check(matches(isDisplayed())).check(matches(isEnabled()));
+
+    }
+    @Test
     public void testAddCard() {
         onView(withText("FLASH CARD")).perform(click());
         onView(withId(R.id.editTextTitle)).perform(typeText("New Title"));
@@ -71,7 +86,7 @@ public class CreateCardTest {
         pressBack();
 
     }
-    /*@Test
+    @Test
     public void testCreateQuiz(){
         onView(withText("QUIZ")).perform(click());
         onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
@@ -97,6 +112,6 @@ public class CreateCardTest {
         onView(withText("QUIZ 1'\n'Mark: 1.0/1")).check(matches(isDisplayed())).perform(click());
 
 
-    }*/
+    }
 
 }
