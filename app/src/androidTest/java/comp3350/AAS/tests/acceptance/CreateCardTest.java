@@ -30,11 +30,11 @@ import comp3350.AAS.presentation.MainActivity;
 @LargeTest
 public class CreateCardTest {
     @Rule
-    public ActivityTestRule <MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         activityTestRule.launchActivity(new Intent());
     }
 
@@ -46,6 +46,7 @@ public class CreateCardTest {
         onView(withText("FLASH CARD")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("QUIZ")).check(matches(isDisplayed())).check(matches(isEnabled()));
     }
+
     @Test
     public void testSecondScreen() {
         onView(withText("QUIZ")).perform(click());
@@ -61,6 +62,7 @@ public class CreateCardTest {
         onView(withText("HOME")).check(matches(isDisplayed())).check(matches(isEnabled()));
 
     }
+
     @Test
     public void testAddCard() {
         onView(withText("FLASH CARD")).perform(click());
@@ -87,8 +89,9 @@ public class CreateCardTest {
         pressBack();
 
     }
+
     @Test
-    public void testCreateQuiz(){
+    public void testCreateQuiz() {
         onView(withText("QUIZ")).perform(click());
         onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
 
@@ -112,10 +115,20 @@ public class CreateCardTest {
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
         onView(withText("VIEW STATS")).perform(click());
-       // onView(withId(R.id.quizListView)).check(matches(isDisplayed())).perform(typeText("QUIZ 1'\n'Mark: 1.0/1"));
-
-
+        // onView(withId(R.id.quizListView)).check(matches(isDisplayed())).perform(typeText("QUIZ 1'\n'Mark: 1.0/1"));
+        // Check marks need to be added
 
     }
 
+    @Test
+    public void testReturnHOME() {
+        onView(withText("QUIZ")).perform(click());
+        onView(withText("HOME")).perform(click());
+        onView(withText("Academic Assistance System")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.Button1)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withId(R.id.Button2)).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("FLASH CARD")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("QUIZ")).check(matches(isDisplayed())).check(matches(isEnabled()));
+
+    }
 }
