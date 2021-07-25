@@ -11,6 +11,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -96,6 +97,8 @@ public class CreateCardTest {
         onView(withId(R.id.option_B)).perform(typeText("Q1 B"));
         onView(withId(R.id.option_C)).perform(typeText("Q1 C"));
         onView(withId(R.id.key)).perform(typeText("Q1 A"));
+        closeSoftKeyboard();
+
         onView(withId(R.id.quiz_index)).perform(typeText("QUIZ 1"));
         closeSoftKeyboard();
 
@@ -103,13 +106,14 @@ public class CreateCardTest {
         pressBack();
 
         onView(withText("START QUIZZES")).perform(click());
+        onView(withText("QUIZ 1")).perform(click());
         onView(withText("START THIS QUIZ")).perform(click());
-        onView(withText("A.q1 a")).perform(click());
+        onView(withText("A.Q1 A")).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
         onView(withText("VIEW STATS")).perform(click());
+       // onView(withId(R.id.quizListView)).check(matches(isDisplayed())).perform(typeText("QUIZ 1'\n'Mark: 1.0/1"));
 
-        onView(withText("QUIZ 1'\n'Mark: 1.0/1")).check(matches(isDisplayed())).perform(click());
 
 
     }
