@@ -10,14 +10,14 @@ import android.widget.Toast;
 import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.R;
 
-public class FlashCardActivity extends AppCompatActivity {
+public class CardHomeActivity extends AppCompatActivity {
     private String cardTitle, cardDescription,folderName;
     private EditText titleInput, descriptionInput,folderNameInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flash_cards);
+        setContentView(R.layout.activity_card_home);
 
         //get the "EditText" fields
         titleInput = findViewById(R.id.editTextTitle);
@@ -59,7 +59,7 @@ public class FlashCardActivity extends AppCompatActivity {
     }
 
     private void showToast(String text){
-        Toast.makeText(FlashCardActivity.this,text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardHomeActivity.this,text, Toast.LENGTH_SHORT).show();
     }
 
     public void openMain(){

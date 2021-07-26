@@ -20,9 +20,9 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
     Context context;
     int cardImage;
     ArrayList<String> cardTitles;
-    ArrayList<String> cardDescriptions
+    ArrayList<String> cardDescriptions;
 
-;    public FlashCardAdapter(Context context, ArrayList<String> cardTitles, ArrayList<String> cardDescriptions, int cardImage,int idx) {
+    public FlashCardAdapter(Context context, ArrayList<String> cardTitles, ArrayList<String> cardDescriptions, int cardImage,int idx) {
         super(context, R.layout.activity_single_card,R.id.textViewCardTitle,cardTitles);
         this.context = context;
         this.cardImage = cardImage;

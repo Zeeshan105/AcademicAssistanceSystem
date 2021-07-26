@@ -46,6 +46,9 @@ public class AccessQuiz {
         dataAccess.updateQuiz(quizName, result);
     }
 
+    public void deleteQuiz(int index){
+        dataAccess.deleteQuiz(index);
+    }
 
     public String getAverageGrade(){
         return dataAccess.getAverageGrade();

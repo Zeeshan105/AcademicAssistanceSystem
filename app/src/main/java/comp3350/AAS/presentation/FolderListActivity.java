@@ -5,12 +5,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import comp3350.AAS.business.AccessFolder;
-import comp3350.AAS.database.*;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import comp3350.AAS.application.*;
+
 import comp3350.AAS.R;
 import comp3350.AAS.object.CardFolder;
 
@@ -55,10 +55,7 @@ public class FolderListActivity extends AppCompatActivity {
 
             AlertDialog alert1 = builder1.create();
             alert1.show();
-
-
         });
-
     }
 
     public void openCardList(){
@@ -67,7 +64,7 @@ public class FolderListActivity extends AppCompatActivity {
     }
 
     public void openFlashCards(){
-        Intent intent = new Intent(this, FlashCardActivity.class);
+        Intent intent = new Intent(this, CardHomeActivity.class);
         startActivity(intent);
     }
 
