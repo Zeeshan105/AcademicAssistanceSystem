@@ -36,38 +36,18 @@ public class CardListActivity extends AppCompatActivity {
         TextView textview = findViewById(R.id.textViewFolderName);
         textview.setText(folders.get(folderIndex).getFolderName());
 
+
         //get all the card info
         ArrayList<String> cardTitles = folders.get(folderIndex).getCardTitles();
         ArrayList<String> cardDescriptions = folders.get(folderIndex).getCardDescription();
+        int cardImage = R.drawable.flash_card;
+
 
         //connect the cards to the list view
         ListView listView = findViewById(R.id.cardListVIew);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cardTitles);
+        FlashCardAdapter adapter = new FlashCardAdapter(this,cardTitles,cardDescriptions,cardImage,folderIndex);
         listView.setAdapter(adapter);
 
-        //make the list clickable
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(CardListActivity.this);
-            builder1.setTitle(cardTitles.get(position));
-            builder1.setMessage(cardDescriptions.get(position));
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton("Delete", (dialog, which) -> {
-
-                accessFolder.deleteCard(folders.get(folderIndex).getFolderName(),folders.get(folderIndex).getCardTitles().get(position));
-
-//                openFolders();
-                openCardList();
-            });
-
-
-            builder1.setNeutralButton("Edit", (dialog, which) -> {
-                //edit the card
-
-            });
-            AlertDialog alert1 = builder1.create();
-            alert1.show();
-        });
     }
 
     public void openFolders(){
