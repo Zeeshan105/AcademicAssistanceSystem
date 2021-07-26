@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openFlashCards(){
-        Intent intent = new Intent(this, FlashCardActivity.class);
+        Intent intent = new Intent(this, CardHomeActivity.class);
         startActivity(intent);
     }
 

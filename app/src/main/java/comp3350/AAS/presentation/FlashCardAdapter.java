@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,9 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
     Context context;
     int cardImage;
     ArrayList<String> cardTitles;
-    ArrayList<String> cardDescriptions
+    ArrayList<String> cardDescriptions;
 
-;    public FlashCardAdapter(Context context, ArrayList<String> cardTitles, ArrayList<String> cardDescriptions, int cardImage,int idx) {
+    public FlashCardAdapter(Context context, ArrayList<String> cardTitles, ArrayList<String> cardDescriptions, int cardImage,int idx) {
         super(context, R.layout.activity_single_card,R.id.textViewCardTitle,cardTitles);
         this.context = context;
         this.cardImage = cardImage;
@@ -62,7 +63,16 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
 
             builder1.setNegativeButton("Delete",((dialog, which) -> {
                 accessFolder.deleteCard(folders.get(folderIndex).getFolderName(),folders.get(folderIndex).getCardTitles().get(position));
-                refresh();
+
+                if(cardTitles.size() -1 >= 1){
+                    refresh();
+                    showToast("Card Deleted.");
+                }else{
+                    showToast("Empty folder deleted.");
+                    openFolders();
+
+                }
+                
             }));
 
             builder1.setNeutralButton("Edit",((dialog, which) -> {
@@ -78,5 +88,14 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
         Intent intent = new Intent(context,CardListActivity.class);
         context.startActivity(intent);
 
+    }
+
+    public void openFolders() {
+        Intent intent  = new Intent(context, FolderListActivity.class);
+        context.startActivity(intent);
+    }
+
+    private void showToast(String text){
+        Toast.makeText(context,text, Toast.LENGTH_SHORT).show();
     }
 }

@@ -47,11 +47,19 @@ public class SelectQuizActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(SelectQuizActivity.this);
 
             if (remainQuizList.contains(position+"")) {
-                builder.setNegativeButton("Start this quiz", (dialog, which) -> {
+                builder.setNegativeButton("Start", (dialog, which) -> {
                     StartQuizActivity.currPosition = position;
                     remainQuizList.remove(position + "");
                     startQuiz();
                 });
+
+                builder.setPositiveButton("Delete", (dialog, which) -> {
+                    accessQuiz.deleteQuiz(position);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                });
+
             }else {
                 builder.setNegativeButton("This quiz is done!", (dialog, which) -> {});
             }

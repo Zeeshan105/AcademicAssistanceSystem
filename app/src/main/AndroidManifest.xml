@@ -19,7 +19,7 @@
         <activity android:name=".presentation.StartQuizActivity" />
         <activity android:name=".presentation.CardListActivity" />
         <activity android:name=".presentation.FolderListActivity" />
-        <activity android:name=".presentation.FlashCardActivity" />
+        <activity android:name=".presentation.CardHomeActivity" />
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
