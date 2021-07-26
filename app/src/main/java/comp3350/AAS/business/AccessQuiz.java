@@ -11,7 +11,6 @@ import comp3350.AAS.object.Quiz;
 public class AccessQuiz {
     private DataAccess dataAccess;
     private ArrayList<Quiz> quizList;
-    private Quiz quiz;
 
     public AccessQuiz(){
         dataAccess = Services.getDataAccess(Main.dbName);
@@ -61,8 +60,6 @@ public class AccessQuiz {
     public String getLowestGrade(){
         return dataAccess.getLowestGrade();
     }
-    public void deleteQuiz(int index) {
-        dataAccess.deleteQuiz(index);
-    }
+
 }
 
