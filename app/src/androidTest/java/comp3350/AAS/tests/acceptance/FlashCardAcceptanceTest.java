@@ -55,7 +55,7 @@ public class FlashCardAcceptanceTest {
     }
 
     @Test
-    public void testCreateCard() {
+    public void testCreateAndDeleteCard() {
         onView(withText("FLASH CARD")).perform(click());
         onView(withId(R.id.editTextTitle)).perform(typeText("Title1"));
         onView(withId(R.id.editTextDescription)).perform(typeText("Description1"));
@@ -74,16 +74,13 @@ public class FlashCardAcceptanceTest {
         onView(withText("Folder_1")).check(matches(isDisplayed())).perform(click());
         onView(withText("VIEW FOLDER")).perform(click());
         onView(withText("Title1")).check(matches(isDisplayed()));
-        onView(withText("Description1")).check(matches(isDisplayed()));
+        onView(withText("Description1")).check(matches(isDisplayed())).perform(click());
+        onView(withText("DELETE")).perform(click());
         onView(withText("Title2")).check(matches(isDisplayed()));
-        onView(withText("Description2")).check(matches(isDisplayed()));
+        onView(withText("Description2")).check(matches(isDisplayed())).perform(click());
+        onView(withText("DELETE")).perform(click());
 
-        pressBack();
-        onView(withText("Folder_1")).check(matches(isDisplayed())).perform(click());
-        onView(withText("DELETE FOLDER")).perform(click());
         onView(withText("Folder_1")).check(doesNotExist());
     }
-
-
 
 }

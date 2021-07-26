@@ -176,7 +176,7 @@ public class QuizAcceptanceTest {
     }
 
     @Test
-    public void testDeleteQuiz(){
+    public void testCreateAndDeleteQuiz(){
         onView(withText("QUIZ")).perform(click());
         onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
 
