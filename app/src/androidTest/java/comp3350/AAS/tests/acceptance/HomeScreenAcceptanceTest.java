@@ -57,7 +57,7 @@ public class HomeScreenAcceptanceTest {
         onView(withId(R.id.homePage)).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("CREATE MULTI-CHOICE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("CREATE TRUE/FALSE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
-        onView(withText("START QUIZZES")).check(matches(isDisplayed())).check(matches(isEnabled()));
+        onView(withText("START_QUIZZES")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("VIEW QUIZ ANSWER")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("HOME")).check(matches(isDisplayed())).check(matches(isEnabled()));
     }
