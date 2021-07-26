@@ -32,6 +32,7 @@ public class StartQuizActivity extends AppCompatActivity {
     private AccessQuiz accessQuiz;
     private Calculate cal = new Calculate();
     private String selectedAnswer;
+    private int numRemaining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class StartQuizActivity extends AppCompatActivity {
         // To get selected quiz list
         selectedQuiz = quizArrayList.get(currPosition);
         questionArrayList = quizArrayList.get(currPosition).getQuestionList();
+        numRemaining = questionArrayList.size()-1;
 
         if (questionArrayList.size()>0){
             currIndex=0;
@@ -57,6 +59,9 @@ public class StartQuizActivity extends AppCompatActivity {
     public void generateQuestion(){
         // set id to the question and three buttons
         TextView questionText = findViewById(R.id.question_text);
+        TextView numRemain = findViewById(R.id.remain_quiz);
+        String remainQuizNum = "Remaining #: "+numRemaining;
+
         radioGroup=findViewById(R.id.choose_group);
         button1= findViewById(R.id.btn_1);
         button2=findViewById(R.id.btn_2);
@@ -66,6 +71,7 @@ public class StartQuizActivity extends AppCompatActivity {
         button1.setText(questionArrayList.get(currIndex).getOption1());
         button2.setText(questionArrayList.get(currIndex).getOption2());
         button3.setText(questionArrayList.get(currIndex).getOption3());
+        numRemain.setText(remainQuizNum);
 
         radioGroup.setOnCheckedChangeListener(this::onCheckedChanged);
 
@@ -112,9 +118,10 @@ public class StartQuizActivity extends AppCompatActivity {
             button2.setTextColor(Color.BLACK);
             button3.setTextColor(Color.BLACK);
             radioGroup.check(0);
+            numRemaining--;
             showToast("New question!");
             generateQuestion();
-        } else  {
+        } else {
             selectedQuiz.setCompleteStatus(true);
             accessQuiz.updateStatus(selectedQuiz.getQuizName(), "TRUE");
             accessQuiz.updateGrade(selectedQuiz.getQuizName(), selectedQuiz.getQuizResult());

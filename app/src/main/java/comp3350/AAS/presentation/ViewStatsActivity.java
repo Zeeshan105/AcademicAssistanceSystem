@@ -48,19 +48,23 @@ public class ViewStatsActivity extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, completedQuizzesList);
         listView.setAdapter(adapter);
 
-        TextView completedQuizzes = findViewById(R.id.completed_quizzes);
-        TextView averageGrade =  findViewById(R.id.average_grade);
-        TextView highestGrade =  findViewById(R.id.highest_grade);
-        TextView lowestGrade = findViewById(R.id.lowest_grade);
-
-        completedQuizzes.setText(accessQuiz.getNumCompletedQuiz());
+        TextView completedQuizzes = findViewById(R.id.completed_quizzes_text);
+        TextView averageGrade =  findViewById(R.id.average_grade_text);
+        TextView highestGrade =  findViewById(R.id.highest_grade_text);
+        TextView lowestGrade = findViewById(R.id.lowest_grade_text);
 
         int number=Integer.parseInt(accessQuiz.getNumCompletedQuiz());
+        String numCompleted = "Number of Completed Quizzes: "+number;
+        String average = "Average Quiz Grade: "+accessQuiz.getAverageGrade();
+        String highest = "Highest Quiz Grade: "+accessQuiz.getHighestGrade();
+        String lowest = "Lowest Quiz Grade: "+accessQuiz.getLowestGrade();
+
+        completedQuizzes.setText(numCompleted);
 
         if (number > 0) {
-            averageGrade.setText(accessQuiz.getAverageGrade());
-            highestGrade.setText(accessQuiz.getHighestGrade());
-            lowestGrade.setText(accessQuiz.getLowestGrade());
+            averageGrade.setText(average);
+            highestGrade.setText(highest);
+            lowestGrade.setText(lowest);
         }
     }
 

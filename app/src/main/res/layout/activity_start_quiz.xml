@@ -7,10 +7,12 @@
 
     <TextView
         android:id="@+id/question_text"
-        android:layout_width="wrap_content"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="30sp" />
 
     <RadioGroup
@@ -27,21 +29,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:textSize="30sp" />
+            android:textSize="35sp" />
         <!-- button 2-->
         <RadioButton
             android:id="@+id/btn_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:textSize="30sp"/>
+            android:textSize="35sp"/>
         <!-- button 3-->
         <RadioButton
             android:id="@+id/btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:textSize="30sp"/>
+            android:textSize="35sp"/>
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -59,6 +61,22 @@
         android:gravity="center"
         android:text="@string/next_question"
         android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/remain_quiz"
+        android:layout_width="247dp"
+        android:layout_height="93dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="337dp"
+        android:layout_marginTop="638dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="Remaining #: 0"
+        android:textColor="#000000"
         android:textSize="30sp" />
 
 </RelativeLayout>

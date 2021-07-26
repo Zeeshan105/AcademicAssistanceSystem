@@ -65,12 +65,14 @@ public class QuizAcceptanceTest {
         onView(withText("A.Q1 A")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
+
         onView(withText("VIEW STATS")).perform(click());
         onView(withText("QUIZ 1\nMark: 1.0/1")).check(matches(isDisplayed()));
-        onView(withText("1")).check(matches(isDisplayed()));
+        onView(withText("Number of Completed Quizzes: 1")).check(matches(isDisplayed()));
+        onView(withText("Average Quiz Grade: 100.00%")).check(matches(isDisplayed()));
+        onView(withText("Highest Quiz Grade: 100.00%")).check(matches(isDisplayed()));
+        onView(withText("Lowest Quiz Grade: 100.00%")).check(matches(isDisplayed()));
 
-        //TODO
-//        onView(withText("100.00%")).check(matches(isDisplayed()));
         onView(withText("END QUIZZES TESTS")).perform(click());
 
         onView(withText("START QUIZZES")).perform(click());
@@ -82,7 +84,7 @@ public class QuizAcceptanceTest {
     @Test
     public void testCreateTrueFalseQuiz() {
         onView(withText("QUIZ")).perform(click());
-        onView(withText("CREATE TRUE/FALSE QUESTION")).perform(click());
+        onView(withText("CREATE \nTRUE/FALSE QUESTION")).perform(click());
 
         onView(withId(R.id.TFQuestion)).perform(typeText("True/False Question 1"));
         onView(withId(R.id.True)).perform(click());
@@ -106,12 +108,13 @@ public class QuizAcceptanceTest {
         onView(withText("B.False")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
+
         onView(withText("VIEW STATS")).perform(click());
         onView(withText("QUIZ 2\nMark: 2.0/2")).check(matches(isDisplayed()));
-        onView(withText("1")).check(matches(isDisplayed()));
-
-        //TODO
-//        onView(withText("100.00%")).check(R.id.average_grade);
+        onView(withText("Number of Completed Quizzes: 1")).check(matches(isDisplayed()));
+        onView(withText("Average Quiz Grade: 100.00%")).check(matches(isDisplayed()));
+        onView(withText("Highest Quiz Grade: 100.00%")).check(matches(isDisplayed()));
+        onView(withText("Lowest Quiz Grade: 100.00%")).check(matches(isDisplayed()));
 
         onView(withText("END QUIZZES TESTS")).perform(click());
 
@@ -167,10 +170,10 @@ public class QuizAcceptanceTest {
         onView(withText("Geographic\nMark: 2.0/2")).check(matches(isDisplayed()));   // 100%
         onView(withText("Historical\nMark: 3.0/5")).check(matches(isDisplayed()));   // 60%
         onView(withText("Math\nMark: 0.0/4")).check(matches(isDisplayed()));   // 0%
-        onView(withText("3")).check(matches(isDisplayed()));
-        onView(withText("53.33%")).check(matches(isDisplayed()));  // (60%+0%+100%)/3=53.33%
-        onView(withText("100.00%")).check(matches(isDisplayed()));
-        onView(withText("0.00%")).check(matches(isDisplayed()));
+        onView(withText("Number of Completed Quizzes: 3")).check(matches(isDisplayed()));
+        onView(withText("Average Quiz Grade: 53.33%")).check(matches(isDisplayed()));   // (60%+0%+100%)/3=53.33%
+        onView(withText("Highest Quiz Grade: 100.00%")).check(matches(isDisplayed()));
+        onView(withText("Lowest Quiz Grade: 0.00%")).check(matches(isDisplayed()));
 
         onView(withText("END QUIZZES TESTS")).perform(click());
     }

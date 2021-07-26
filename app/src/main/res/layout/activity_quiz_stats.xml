@@ -5,18 +5,6 @@
     android:layout_height="match_parent"
     tools:context="comp3350.AAS.presentation.SelectQuizActivity">
 
-    <!-- The name of quiz list-->
-
-    <TextView
-        android:id="@+id/lowest_grade"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="326dp"
-        android:layout_marginBottom="149dp"
-        android:textSize="34sp" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +20,7 @@
     <ListView
         android:id="@+id/quizListView"
         android:layout_width="match_parent"
-        android:layout_height="410dp"
+        android:layout_height="480dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
@@ -41,7 +29,7 @@
 
     <TextView
         android:id="@+id/average_grade_text"
-        android:layout_width="310dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -52,7 +40,7 @@
 
     <TextView
         android:id="@+id/completed_quizzes_text"
-        android:layout_width="475dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -63,7 +51,7 @@
 
     <TextView
         android:id="@+id/lowest_grade_text"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -74,46 +62,13 @@
 
     <TextView
         android:id="@+id/highest_grade_text"
-        android:layout_width="310dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="216dp"
         android:text="@string/highest_grade"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/average_grade"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="335dp"
-        android:layout_marginBottom="289dp"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/completed_quizzes"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="498dp"
-        android:layout_marginBottom="359dp"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/highest_grade"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="335dp"
-        android:layout_marginBottom="219dp"
         android:textSize="34sp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -125,7 +80,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="808dp"
+        android:layout_marginTop="780dp"
         android:layout_marginEnd="0dp"
         android:backgroundTint="#1AEF87"
         android:gravity="center"
