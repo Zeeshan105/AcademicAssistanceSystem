@@ -58,5 +58,8 @@ public class AccessQuiz {
     public String getLowestGrade(){
         return dataAccess.getLowestGrade();
     }
-
+    public void deleteQuiz(int index) {
+        dataAccess.deleteQuiz(index);
+    }
 }
+

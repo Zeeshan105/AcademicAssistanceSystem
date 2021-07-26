@@ -14,7 +14,7 @@ INSERT INTO QUESTION VALUES('The positive result of square root of 25 is 5','Tru
 INSERT INTO QUESTION VALUES('The year of the founding of Canada is 1867','True','False','','True')
 INSERT INTO QUESTION VALUES('What is the area of Canada in square kilometers?','9.98 million','9.60 million','9.37 million','9.98 million')
 INSERT INTO QUESTION VALUES('What is the capital city of Canada?','Vancouver','Ottawa','Toronto','Ottawa')
-INSERT INTO QUESTION VALUES('What is the population of Canada?','3759','3770','4029','3759')
+INSERT INTO QUESTION VALUES('What is the population of Canada?','3759','3770','4029','3359')
 INSERT INTO QUESTION VALUES('What is the positive result of square root of 36?','3','6','9','6')
 INSERT INTO QUESTION VALUES('What is the result of 1+1?','0','1','2','2')
 INSERT INTO QUESTION VALUES('What year was the founding of Canada?','1867','1887','1787','1867')
