@@ -34,7 +34,13 @@ public class ValidateTest extends TestCase{
     }
 
     public void testTfInput(){
-        //TODO
+        assertFalse(validate.isValidTrueOrFalseInput("","",""));
+        assertFalse(validate.isValidTrueOrFalseInput(" "," ","   "));
+        assertFalse(validate.isValidTrueOrFalseInput("Valid Question","",""));
+        assertFalse(validate.isValidTrueOrFalseInput("Valid Question","T",""));
+        assertFalse(validate.isValidTrueOrFalseInput("Valid Question","F","    "));
+        assertTrue(validate.isValidTrueOrFalseInput("Valid Question","True","Valid Quiz Name"));
+        assertTrue(validate.isValidTrueOrFalseInput("Valid Question","False","Valid Quiz Name"));
     }
 
     public void testValidAnswer(){
