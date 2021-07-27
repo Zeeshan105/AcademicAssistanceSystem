@@ -9,21 +9,84 @@ import java.util.Iterator;
 
 import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
+import comp3350.AAS.business.AccessFolder;
 import comp3350.AAS.business.AccessQuiz;
 import comp3350.AAS.database.DataAccess;
+import comp3350.AAS.object.CardFolder;
+import comp3350.AAS.object.FlashCard;
 import comp3350.AAS.object.Question;
 import comp3350.AAS.object.Quiz;
 import comp3350.AAS.tests.database.DataAccessStub;
 import comp3350.AAS.tests.database.DataAccessTest;
 
-public class AccessQuizTest extends TestCase {
+public class BusinessPersistenceSeamTest extends TestCase {
     private static String dbName = Main.dbName;
 
-    public AccessQuizTest(String arg0){
+    public BusinessPersistenceSeamTest(String arg0){
         super(arg0);
     }
 
-    public void testAddAndDelete(){
+    public void testAddAndDeleteFlashCard(){
+        AccessFolder af;
+        ArrayList<String> cardTitleList;
+        ArrayList<CardFolder>cardFolders;
+
+        Services.closeDataAccess();
+        System.out.println("Started Integration test for AccessQuiz on add and delete flashCard.");
+
+        Services.createDataAccess(dbName);
+        af = new AccessFolder();
+        af.addCard("Test title1", "Test description1","New folder");
+        af.addCard("Test title2", "Test description2","New folder");
+
+        cardFolders = new ArrayList<>();
+        af.getFolderList(cardFolders);
+        cardTitleList = cardFolders.get(3).getCardTitles();
+
+        assertEquals(2, cardTitleList.size());
+        assertTrue(cardTitleList.contains("Test title1"));
+        assertTrue(cardTitleList.contains("Test title2"));
+
+        af.deleteCard("New folder", "Test title1");
+        af.getFolderList(cardFolders);
+
+        cardTitleList = cardFolders.get(3).getCardTitles();
+        assertEquals(1, cardTitleList.size());
+        assertFalse(cardTitleList.contains("Test title1"));
+        assertTrue(cardTitleList.contains("Test title2"));
+        af.deleteFolder(3);
+        assertFalse(cardFolders.contains("New folder"));
+
+        Services.closeDataAccess();
+
+
+        Services.createDataAccess(new DataAccessStub());
+        af = new AccessFolder();
+        af.addCard("Test title1", "Test description1","New folder");
+        af.addCard("Test title2", "Test description2","New folder");
+
+        cardFolders = new ArrayList<>();
+        af.getFolderList(cardFolders);
+        cardTitleList = cardFolders.get(3).getCardTitles();
+
+        assertEquals(2, cardTitleList.size());
+        assertTrue(cardTitleList.contains("Test title1"));
+        assertTrue(cardTitleList.contains("Test title2"));
+
+        af.deleteCard("New folder", "Test title1");
+        af.getFolderList(cardFolders);
+
+        cardTitleList = cardFolders.get(3).getCardTitles();
+        assertEquals(1, cardTitleList.size());
+        assertFalse(cardTitleList.contains("Test title1"));
+        assertTrue(cardTitleList.contains("Test title2"));
+        af.deleteFolder(3);
+        assertFalse(cardFolders.contains("New folder"));
+
+        Services.closeDataAccess();
+    }
+
+    public void testAddAndDeleteQuiz(){
         AccessQuiz aq;
         ArrayList<String> quizNameList;
         Question tempQuestion = new Question("Test Question","A","B","C","A");
@@ -56,7 +119,7 @@ public class AccessQuizTest extends TestCase {
         Services.closeDataAccess();
     }
 
-    public void testChangingCompleteStatus(){
+    public void testChangingQuizCompleteStatus(){
         AccessQuiz aq;
         int count;
         Services.closeDataAccess();
@@ -95,7 +158,7 @@ public class AccessQuizTest extends TestCase {
         Services.closeDataAccess();
     }
 
-    public void testChangingGrades(){
+    public void testChangingQuizGrades(){
         AccessQuiz aq;
         ArrayList<String> gradeList;
         Services.closeDataAccess();
@@ -142,6 +205,5 @@ public class AccessQuizTest extends TestCase {
         aq.updateStatus("Historical","FALSE");
         Services.closeDataAccess();
     }
-
 
 }
