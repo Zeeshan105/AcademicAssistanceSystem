@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import comp3350.AAS.application.Main;
 import comp3350.AAS.application.Services;
 import comp3350.AAS.database.DataAccess;
+import comp3350.AAS.tests.database.DataAccessStub;
 import comp3350.AAS.tests.database.DataAccessTest;
 
 public class DataAccessHSQLDBTest extends TestCase{
@@ -18,12 +19,17 @@ public class DataAccessHSQLDBTest extends TestCase{
         Services.closeDataAccess();
         System.out.println("\nStarting Integration test DataAccess (using default DB)");
 
-        // Use the following two statements to run with the real database
+        // run with the real and stub databases
         Services.createDataAccess(dbName);
         dataAccess = Services.getDataAccess(dbName);
-
         DataAccessTest.dataAccessTest(dataAccess);
         Services.closeDataAccess();
+
+        Services.createDataAccess(new DataAccessStub());
+        dataAccess = Services.getDataAccess(dbName);
+        DataAccessTest.dataAccessTest(dataAccess);
+        Services.closeDataAccess();
+
         System.out.println("Finished Integration test DataAccess (using default DB)");
     }
 

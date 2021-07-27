@@ -168,7 +168,7 @@ public class DataAccessStub implements DataAccess {
         completedQuizList = new ArrayList<String>();
         for (int i = 0; i < quizList.size(); i++) {
             if (quizList.get(i).isComplete()) {
-                completedQuizList.add( quizList.get(i).getQuizName() + "\nMark: " + (int)quizList.get(i).getQuizResult() + "/" + quizList.get(i).getQuestionCount() );
+                completedQuizList.add( quizList.get(i).getQuizName() + "\nMark: " + (int)quizList.get(i).getQuizResult() + ".0/" + quizList.get(i).getQuestionCount() );
             }
         }
         return completedQuizList;
