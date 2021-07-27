@@ -37,7 +37,7 @@
         android:gravity="center"
         android:scaleX="0.75"
         android:scaleY="0.9"
-        android:text="Create True/False question"
+        android:text="Create \nTrue/False question"
         android:textColor="#000000"
         android:textSize="30sp" />
 
@@ -53,7 +53,7 @@
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.9"
-        android:text="start_quizzes"
+        android:text="start quizzes"
         android:textColor="#000000"
         android:textSize="40sp" />
 
