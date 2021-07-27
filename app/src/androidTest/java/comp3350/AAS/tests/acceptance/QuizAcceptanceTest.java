@@ -58,7 +58,7 @@ public class QuizAcceptanceTest {
         onView(withText("SUBMIT")).perform(click());
         pressBack();
 
-        onView(withText("START_QUIZZES")).perform(click());
+        onView(withText("START QUIZZES")).perform(click());
         onView(withText("QUIZ 1")).check(matches(isDisplayed())).perform(click());
         onView(withText("START")).perform(click());
         onView(withText("New Question 1")).check(matches(isDisplayed()));
@@ -76,7 +76,7 @@ public class QuizAcceptanceTest {
 
         onView(withText("END QUIZZES TESTS")).perform(click());
 
-        onView(withText("START_QUIZZES")).perform(click());
+        onView(withText("START QUIZZES")).perform(click());
         onView(withText("QUIZ 1")).check(matches(isDisplayed())).perform(click());
         onView(withText("DELETE")).perform(click());
         onView(withText("QUIZ 1")).check(doesNotExist());
