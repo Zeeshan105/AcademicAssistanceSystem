@@ -17,7 +17,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class HomeScreenAcceptanceTest {
+public class HomeScreenTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -54,12 +54,10 @@ public class HomeScreenAcceptanceTest {
         onView(withId(R.id.CreateTfQuiz)).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withId(R.id.StartQuiz)).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withId(R.id.ViewQuizAnswer)).check(matches(isDisplayed())).check(matches(isEnabled()));
-        onView(withId(R.id.homePage)).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("CREATE MULTI-CHOICE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("CREATE \nTRUE/FALSE QUESTION")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("START QUIZZES")).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withText("VIEW QUIZ ANSWER")).check(matches(isDisplayed())).check(matches(isEnabled()));
-        onView(withText("HOME")).check(matches(isDisplayed())).check(matches(isEnabled()));
     }
 
     @Test
@@ -77,7 +75,7 @@ public class HomeScreenAcceptanceTest {
     @Test
     public void testQuizReturnHome() {
         onView(withText("QUIZ")).perform(click());
-        onView(withText("HOME")).perform(click());
+        pressBack();
         onView(withText("Academic Assistance System")).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.Button1)).check(matches(isDisplayed())).check(matches(isEnabled()));
         onView(withId(R.id.Button2)).check(matches(isDisplayed())).check(matches(isEnabled()));

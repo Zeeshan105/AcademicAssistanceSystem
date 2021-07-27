@@ -26,9 +26,6 @@ public class QuizHomeActivity extends AppCompatActivity {
 
         Button viewKey = findViewById(R.id.ViewQuizAnswer);
         viewKey.setOnClickListener(v -> viewAnswer());
-
-        Button home = findViewById(R.id.homePage);
-        home.setOnClickListener(v -> backToHome());
     }
 
     public void createMcqQuizzes(){
@@ -54,6 +51,12 @@ public class QuizHomeActivity extends AppCompatActivity {
     public void backToHome(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        backToHome();
+        super.onBackPressed();
     }
 
 }
