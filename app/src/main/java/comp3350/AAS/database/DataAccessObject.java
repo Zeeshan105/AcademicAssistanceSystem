@@ -330,6 +330,7 @@ public class DataAccessObject implements DataAccess {
 
         try {
             cmdString = "SELECT COUNT(QUESTIONCONTENT) AS COUNTS, QUIZNAME, COMPLETE, RESULT FROM QUIZ GROUP BY QUIZNAME, COMPLETE, RESULT HAVING COMPLETE = TRUE";
+            System.out.println(cmdString);
             rs1 = st1.executeQuery(cmdString);
 
             while(rs1.next()){
