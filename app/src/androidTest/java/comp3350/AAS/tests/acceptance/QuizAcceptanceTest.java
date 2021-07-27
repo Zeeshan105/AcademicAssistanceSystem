@@ -67,7 +67,7 @@ public class QuizAcceptanceTest {
         onView(withText("CLOSE")).perform(click());
 
         onView(withText("VIEW STATS")).perform(click());
-        onView(withText("QUIZ 1\nMark: 1.0/1")).inRoot(withDecorView(not(activityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+        onView(withText("QUIZ 1\nMark: 1.0/1")).check(matches(isDisplayed()));
 
         onView(withText("Number of Completed Quizzes: 1")).check(matches(isDisplayed()));
         onView(withText("Average Quiz Grade: 100.00%")).check(matches(isDisplayed()));
@@ -223,6 +223,10 @@ public class QuizAcceptanceTest {
         onView(withText("QUIZ")).check(doesNotExist());
 
         onView(withText("VIEW STATS")).perform(click());
+        onView(withText("Number of Completed Quizzes: 0")).check(matches(isDisplayed()));
+        onView(withText("Average Quiz Grade: 0.00%")).check(matches(isDisplayed()));   // (60%+0%+100%)/3=53.33%
+        onView(withText("Highest Quiz Grade: 0.00%")).check(matches(isDisplayed()));
+        onView(withText("Lowest Quiz Grade: 0.00%")).check(matches(isDisplayed()));
         onView(withText("END QUIZZES TESTS")).perform(click());
         onView(withText("HOME")).perform(click());
     }
