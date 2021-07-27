@@ -125,46 +125,63 @@ public class QuizAcceptanceTest {
     }
 
     @Test
-    public void testMultiQuizScore() {
+    public void testMultiQuizScoreAndRemainNum() {
         onView(withText("QUIZ")).perform(click());
         onView(withText("START QUIZZES")).perform(click());
 
         // we make 60% percent of this quiz
         onView(withText("Historical")).check(matches(isDisplayed())).perform(click());
         onView(withText("START")).perform(click());
+        onView(withText("Remaining #: 4")).check(matches(isDisplayed()));
         onView(withText("B.1 million")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 3")).check(matches(isDisplayed()));
         onView(withText("B.False")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 2")).check(matches(isDisplayed()));
         onView(withText("A.True")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 1")).check(matches(isDisplayed()));
         onView(withText("C.1787")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 0")).check(matches(isDisplayed()));
         onView(withText("B.Boeing")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
+        onView(withText("Historical")).check(matches(isDisplayed())).perform(click());
+        onView(withText("THIS QUIZ IS DONE!")).check(matches(isDisplayed())).perform(click());
 
         // we make all wrong answer which is 0%
         onView(withText("Math")).check(matches(isDisplayed())).perform(click());
         onView(withText("START")).perform(click());
+        onView(withText("Remaining #: 3")).check(matches(isDisplayed()));
         onView(withText("A.True")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 2")).check(matches(isDisplayed()));
         onView(withText("B.False")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 1")).check(matches(isDisplayed()));
         onView(withText("C.9")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 0")).check(matches(isDisplayed()));
         onView(withText("A.0")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
+        onView(withText("Math")).check(matches(isDisplayed())).perform(click());
+        onView(withText("THIS QUIZ IS DONE!")).check(matches(isDisplayed())).perform(click());
 
         // we make all correct answer which is 100%
         onView(withText("Geographic")).check(matches(isDisplayed())).perform(click());
         onView(withText("START")).perform(click());
+        onView(withText("Remaining #: 1")).check(matches(isDisplayed()));
         onView(withText("A.9.98 million")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("Remaining #: 0")).check(matches(isDisplayed()));
         onView(withText("B.Ottawa")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
+        onView(withText("Geographic")).check(matches(isDisplayed())).perform(click());
+        onView(withText("THIS QUIZ IS DONE!")).check(matches(isDisplayed())).perform(click());
 
         onView(withText("VIEW STATS")).perform(click());
         onView(withText("Geographic\nMark: 2.0/2")).check(matches(isDisplayed()));   // 100%

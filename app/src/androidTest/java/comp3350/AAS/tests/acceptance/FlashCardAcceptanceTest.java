@@ -83,4 +83,35 @@ public class FlashCardAcceptanceTest {
         onView(withText("Folder_1")).check(doesNotExist());
     }
 
+    @Test
+    public void testInitialCard() {
+        onView(withText("FLASH CARD")).perform(click());
+        closeSoftKeyboard();
+        onView(withText("VIEW FOLDERS")).perform(click());
+
+        onView(withText("Geographic_Knowledge")).check(matches(isDisplayed())).perform(click());
+        onView(withText("VIEW FOLDER")).perform(click());
+        onView(withText("National Land Area Descending Order")).check(matches(isDisplayed()));
+        onView(withText("Russia>Canada>China>America>Brazil...")).check(matches(isDisplayed()));
+        onView(withText("Temperature Distributed")).check(matches(isDisplayed()));
+        onView(withText("Decreasing from low latitude to high latitude")).check(matches(isDisplayed()));
+        pressBack();
+
+        onView(withText("Historical_Event")).check(matches(isDisplayed())).perform(click());
+        onView(withText("VIEW FOLDER")).perform(click());
+        onView(withText("First World War")).check(matches(isDisplayed()));
+        onView(withText("The World War I break out in 1914")).check(matches(isDisplayed()));
+        onView(withText("Second World War")).check(matches(isDisplayed()));
+        onView(withText("The World War II break out in 1939")).check(matches(isDisplayed()));
+        pressBack();
+
+        onView(withText("Math_Practice")).check(matches(isDisplayed())).perform(click());
+        onView(withText("VIEW FOLDER")).perform(click());
+        onView(withText("Addition and subtraction within 10")).check(matches(isDisplayed()));
+        onView(withText("1+1=2, 2+2=4")).check(matches(isDisplayed()));
+        onView(withText("Calculate square root")).check(matches(isDisplayed()));
+        onView(withText("sqrt(1)=+-1, sqrt(16)=+-4, sqrt(36)=+-6, sqrt(-1)=undefined")).check(matches(isDisplayed()));
+
+    }
+
 }
