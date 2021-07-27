@@ -36,7 +36,7 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         AccessFolder accessFolder = new AccessFolder();
-        ArrayList<CardFolder> folders=new ArrayList<>();
+        ArrayList<CardFolder> folders = new ArrayList<>();
         accessFolder.getFolderList(folders);
 
 

@@ -31,31 +31,12 @@ public class FolderListActivity extends AppCompatActivity {
             folderNames.add(folders.get(i).getFolderName());
         }
 
+        int folderImage = R.drawable.ic_baseline_folder_24;
 
         ListView listview = findViewById(R.id.folderListView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, folderNames);
+        CardFolderAdapter adapter = new CardFolderAdapter(this, folderNames, folderImage);
         listview.setAdapter(adapter);
 
-        listview.setOnItemClickListener((parent, view, position, id) -> {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(FolderListActivity.this);
-            builder1.setMessage("Would you like to view this folder or delete this folder?");
-            builder1.setCancelable(true);
-
-            builder1.setNegativeButton("View folder", (dialog, which) -> {
-                CardListActivity.folderIndex = position;
-                openCardList();
-            });
-
-            builder1.setPositiveButton("Delete folder", (dialog, which) -> {
-                accessFolder.deleteFolder(position);
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-            });
-
-            AlertDialog alert1 = builder1.create();
-            alert1.show();
-        });
     }
 
     public void openCardList(){
