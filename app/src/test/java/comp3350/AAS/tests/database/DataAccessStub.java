@@ -64,7 +64,7 @@ public class DataAccessStub implements DataAccess {
 
         question = new Question("What is the population of Canada?","A.3759","B.3770","C.4029","3759");
         addQuiz(question, "add new Quiz 3");
-        question = new Question("When Canada was founded?","A.1868","B.1867","C.1868","1867");
+        question = new Question("When Canada was founded?","A.1868","B.1867","C.1888","1867");
         addQuiz(question, "add new Quiz 3");
 
         folderList=new ArrayList<>();

@@ -224,7 +224,7 @@ public class QuizAcceptanceTest {
 
         onView(withText("VIEW STATS")).perform(click());
         onView(withText("Number of Completed Quizzes: 0")).check(matches(isDisplayed()));
-        onView(withText("Average Quiz Grade: 0.00%")).check(matches(isDisplayed()));   // (60%+0%+100%)/3=53.33%
+        onView(withText("Average Quiz Grade: 0.00%")).check(matches(isDisplayed()));
         onView(withText("Highest Quiz Grade: 0.00%")).check(matches(isDisplayed()));
         onView(withText("Lowest Quiz Grade: 0.00%")).check(matches(isDisplayed()));
         onView(withText("END QUIZZES TESTS")).perform(click());

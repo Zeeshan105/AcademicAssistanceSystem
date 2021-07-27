@@ -272,7 +272,7 @@ public class DataAccessTest extends TestCase {
         assertEquals("Historical", quizNameList.get(0));
         assertEquals("Math", quizNameList.get(1));
         assertEquals("Geographic", quizNameList.get(2));
-
+        assertEquals("add new Quiz 3", quizNameList.get(3));
         System.out.println("\tPASS test quiz name!");
     }
 
