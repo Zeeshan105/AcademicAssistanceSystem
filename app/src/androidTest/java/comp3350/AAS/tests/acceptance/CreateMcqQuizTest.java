@@ -42,8 +42,8 @@ public class CreateMcqQuizTest {
     @Test
     public void testCreateMcqQuiz() {
         onView(withText("QUIZ")).perform(click());
-        onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
 
+        onView(withText("CREATE MULTI-CHOICE QUESTION")).perform(click());
         onView(withId(R.id.question)).perform(typeText("New Question 1"));
         onView(withId(R.id.option_A)).perform(typeText("Q1 A"));
         onView(withId(R.id.option_B)).perform(typeText("Q1 B"));
@@ -52,8 +52,18 @@ public class CreateMcqQuizTest {
         closeSoftKeyboard();
         onView(withId(R.id.quiz_index)).perform(typeText("QUIZ 1"));
         closeSoftKeyboard();
-
         onView(withText("SUBMIT")).perform(click());
+
+        onView(withId(R.id.question)).perform(typeText("New Question 2"));
+        onView(withId(R.id.option_A)).perform(typeText("Q1 A"));
+        onView(withId(R.id.option_B)).perform(typeText("Q1 B"));
+        onView(withId(R.id.option_C)).perform(typeText("Q1 C"));
+        onView(withId(R.id.key)).perform(typeText("Q1 A"));
+        closeSoftKeyboard();
+        onView(withId(R.id.spinner_quiz_name)).perform(click());
+        onView(withText("QUIZ 1")).check(matches(isDisplayed())).perform(click());
+        onView(withText("SUBMIT")).perform(click());
+        closeSoftKeyboard();
         pressBack();
 
         onView(withText("START QUIZZES")).perform(click());
@@ -62,10 +72,13 @@ public class CreateMcqQuizTest {
         onView(withText("New Question 1")).check(matches(isDisplayed()));
         onView(withText("A.Q1 A")).check(matches(isDisplayed())).perform(click());
         onView(withText("NEXT QUESTION")).perform(click());
+        onView(withText("New Question 2")).check(matches(isDisplayed()));
+        onView(withText("A.Q1 A")).check(matches(isDisplayed())).perform(click());
+        onView(withText("NEXT QUESTION")).perform(click());
         onView(withText("CLOSE")).perform(click());
 
         onView(withText("VIEW STATS")).perform(click());
-        onView(withText("QUIZ 1\nMark: 1.0/1")).check(matches(isDisplayed()));
+        onView(withText("QUIZ 1\nMark: 2.0/2")).check(matches(isDisplayed()));
 
         onView(withText("Number of Completed Quizzes: 1")).check(matches(isDisplayed()));
         onView(withText("Average Quiz Grade: 100.00%")).check(matches(isDisplayed()));

@@ -47,11 +47,14 @@ public class CreateTfQuizTest {
         onView(withId(R.id.quiz_belong)).perform(typeText("QUIZ 2"));
         closeSoftKeyboard();
         onView(withText("SUBMIT")).perform(click());
+
         onView(withId(R.id.TFQuestion)).perform(typeText("True/False Question 2"));
         onView(withId(R.id.False)).perform(click());
-        onView(withId(R.id.quiz_belong)).perform(typeText("QUIZ 2"));
+        onView(withId(R.id.spinner_quiz_name_2)).perform(click());
+        onView(withText("QUIZ 2")).check(matches(isDisplayed())).perform(click());
         closeSoftKeyboard();
         onView(withText("SUBMIT")).perform(click());
+        closeSoftKeyboard();
         pressBack();
 
         onView(withText("START QUIZZES")).perform(click());

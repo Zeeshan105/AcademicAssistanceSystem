@@ -59,33 +59,59 @@
 
     </RadioGroup>
 
+
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="330dp"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="5"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="Select existing Quiz: "
+            android:textSize="25sp" />
+
+        <Spinner
+            android:id="@+id/spinner_quiz_name_2"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="4"
+            android:background="@null" >
+        </Spinner>
+    </LinearLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="50dp"
-        android:text="@string/you_will_send_this_question_above_to_the_quiz_list_by_given_quiz_name_below"
+        android:text="If you want to send to a NEW quiz name, \nType new quiz name below \n(and ignore selected exist quiz name above)"
         android:textColor="#000000"
-        android:textSize="25sp"
-        />
+        android:textSize="25sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/quiz_belong"
         android:layout_width="500dp"
         android:layout_height="60dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="510dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
         android:backgroundTint="#453F3F"
-        android:ems="10"
         android:foregroundTint="#000000"
-        android:hint="@string/quiz_name_eg_quiz1_quiz2"
+        android:hint="Alternative NEW Quiz name  (OPTIONAL)"
         android:inputType="textPersonName"
-        android:scaleY="1.25"
         android:textColor="#000000"
         android:textColorHint="#989898" />
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submit_Btn"

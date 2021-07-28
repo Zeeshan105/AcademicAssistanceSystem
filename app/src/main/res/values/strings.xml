@@ -20,8 +20,6 @@
     <string name="next_question">Next Question</string>
     <string name="type_your_question">Type your question</string>
     <string name="the_key">The key</string>
-    <string name="you_will_send_this_question_above_to_the_quiz_list_by_given_quiz_name_below">You will send this question above to the quiz list by given quiz name below:</string>
-    <string name="quiz_name_eg_quiz1_quiz2">Quiz name (eg. quiz1, quiz2...)</string>
     <string name="create_a_question_for_quiz">Create a Question for Quiz</string>
     <string name="quiz_list">Quiz List</string>
     <string name="view_stats">View Stats</string>

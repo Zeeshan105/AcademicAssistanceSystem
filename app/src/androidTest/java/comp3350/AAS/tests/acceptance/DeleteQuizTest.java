@@ -48,6 +48,7 @@ public class DeleteQuizTest {
         closeSoftKeyboard();
 
         onView(withText("SUBMIT")).perform(click());
+        closeSoftKeyboard();
         pressBack();
     }
 
