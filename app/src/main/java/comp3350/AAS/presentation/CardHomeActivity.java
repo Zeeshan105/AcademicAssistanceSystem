@@ -35,7 +35,17 @@ public class CardHomeActivity extends AppCompatActivity {
             //check if they gave a folder
             if(folderName.equals("") || cardTitle.equals("") || cardDescription.equals("")){
                 showToast("Error! Fields cannot be empty!");
-            }else{
+            }
+            else if (folderName.length() > 33){
+                showToast("Error! The folder name is too long!");
+            }
+            else if (cardTitle.length() > 70){
+                showToast("Error! The flashcard title is too long!");
+            }
+            else if (cardDescription.length() > 280){
+                showToast("Error! The flashcard description is too long!");
+            }
+            else{
                 AccessFolder accessCard = new AccessFolder();
                 accessCard.addCard(cardTitle, cardDescription, folderName);
 
