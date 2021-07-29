@@ -74,10 +74,6 @@ public class FlashCardAdapter extends ArrayAdapter<String> {
                 }
                 
             }));
-
-            builder1.setNeutralButton("Edit",((dialog, which) -> {
-
-            }));
             AlertDialog alert1 = builder1.create();
             alert1.show();
         });

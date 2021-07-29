@@ -19,11 +19,12 @@ import comp3350.AAS.business.Validate;
 
 
 public class MakeMcqQuizActivity extends AppCompatActivity {
-    private String quizQuestion, optionA,optionB, optionC, answer, quizName;
+    private String quizQuestion, optionA,optionB, optionC, answer, typedQuizName, selectedQuizName;
     private EditText questionInput, firstOption, secondOption, thirdOption, keyOption, quizIndex;
     private Validate val;
     private AccessQuiz accessQuiz;
     private ArrayList<String> quizNameList;
+    private boolean quizSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,11 @@ public class MakeMcqQuizActivity extends AppCompatActivity {
         spinnerQuizName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                quizName = parent.getItemAtPosition(position).toString();
+                selectedQuizName = parent.getItemAtPosition(position).toString();
+                quizSelected = true;
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) { quizSelected = false; }
         });
 
         questionInput= findViewById(R.id.question);
@@ -61,19 +63,18 @@ public class MakeMcqQuizActivity extends AppCompatActivity {
             optionB = secondOption.getText().toString();
             optionC = thirdOption.getText().toString();
             answer = keyOption.getText().toString();
-            String typedName = quizIndex.getText().toString();
+            typedQuizName = quizIndex.getText().toString();
 
-            if (!typedName.equals("")){
-                quizName = typedName;
-            }
-
-            if(!val.isValidMcqInput(quizQuestion, optionA, optionB, optionC, answer, quizName)) {
-                showToast("Error! Must define a question and three options!");
-            } else if (!val.containsAnswer(optionA, optionB, optionC, answer)){
-                showToast("Error! Must define a valid answer!");
-            } else {
-                Question newQuestion=new Question(quizQuestion, optionA, optionB, optionC, answer);
-                accessQuiz.addQuiz(newQuestion, quizName);
+            if(!quizSelected){
+                if(!val.isValidMcqInput(quizQuestion, optionA, optionB, optionC, answer, typedQuizName)) {
+                    showToast("Error! Fields cannot be empty!");
+                }
+                else if (!val.containsAnswer(optionA, optionB, optionC, answer)) {
+                    showToast("Error! Must define a valid answer!");
+                }
+                else {
+                Question newQuestion = new Question(quizQuestion, optionA, optionB, optionC, answer);
+                accessQuiz.addQuiz(newQuestion, typedQuizName);
 
                 //reset the "EditText" fields
                 questionInput.setText("");
@@ -83,13 +84,61 @@ public class MakeMcqQuizActivity extends AppCompatActivity {
                 keyOption.setText("");
                 quizIndex.setText("");
                 showToast("Question Added!");
+                refresh();
+                }
             }
-            startActivity(new Intent(this, MakeMcqQuizActivity.class));
+            else{
+                if(!val.isValidMcqInput(quizQuestion, optionA, optionB, optionC, answer)) {
+                    showToast("Error! The question, options, and answer fields cannot be empty!");
+                }
+                else if (!val.containsAnswer(optionA, optionB, optionC, answer)) {
+                    showToast("Error! Must define a valid answer!");
+                }
+                else if (typedQuizName.isEmpty()){
+                    Question newQuestion = new Question(quizQuestion, optionA, optionB, optionC, answer);
+                    accessQuiz.addQuiz(newQuestion, selectedQuizName);
+
+                    //reset the "EditText" fields
+                    questionInput.setText("");
+                    firstOption.setText("");
+                    secondOption.setText("");
+                    thirdOption.setText("");
+                    keyOption.setText("");
+                    quizIndex.setText("");
+                    showToast("Question Added!");
+                    refresh();
+                }
+                else {
+                    if (quizNameList.contains(typedQuizName)) {
+                        quizIndex.setText("");
+                        showToast("Error! This quiz already exists, select it using the dropdown menu");
+                    }
+                    else {
+                    Question newQuestion = new Question(quizQuestion, optionA, optionB, optionC, answer);
+                    accessQuiz.addQuiz(newQuestion, typedQuizName);
+
+                    //reset the "EditText" fields
+                    questionInput.setText("");
+                    firstOption.setText("");
+                    secondOption.setText("");
+                    thirdOption.setText("");
+                    keyOption.setText("");
+                    quizIndex.setText("");
+                    showToast("Question Added!");
+                    refresh();
+                    }
+                }
+            }
         });
     }
 
     private void showToast(String text){
         Toast.makeText(MakeMcqQuizActivity.this,text, Toast.LENGTH_SHORT).show();
+    }
+
+    public void refresh(){
+        Intent intent = new Intent(this, MakeMcqQuizActivity.class);
+        startActivity(intent);
     }
 
     public void backToQuizHome(){

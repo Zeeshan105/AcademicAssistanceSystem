@@ -22,12 +22,13 @@ import comp3350.AAS.business.Validate;
 import comp3350.AAS.object.Question;
 
 public class MakeTfQuizActivity extends AppCompatActivity {
-    private String quizQuestion, quizName;
-    private String answer;
+    private String quizQuestion, selectedQuizName, typedQuizName, answer;
     private EditText tfQuestion, quizBelong;
     private RadioGroup radioGroup;
     private Validate val;
     private AccessQuiz accessQuiz;
+    private ArrayList<String> quizNameList;
+    private boolean quizSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MakeTfQuizActivity extends AppCompatActivity {
     public void init(){
         val = new Validate();
         accessQuiz = new AccessQuiz();
-        ArrayList<String> quizNameList = accessQuiz.getQuizNames();
+        quizNameList = accessQuiz.getQuizNames();
         Spinner spinnerQuizName = findViewById(R.id.spinner_quiz_name_2);
         ArrayAdapter<String> adapterQuizName = new ArrayAdapter<>(this, android.R.layout.simple_selectable_list_item, quizNameList);
 
@@ -48,10 +49,11 @@ public class MakeTfQuizActivity extends AppCompatActivity {
         spinnerQuizName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                quizName = parent.getItemAtPosition(position).toString();
+                selectedQuizName = parent.getItemAtPosition(position).toString();
+                quizSelected = true;
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {quizSelected = false;}
         });
 
         answer = "";
@@ -65,25 +67,57 @@ public class MakeTfQuizActivity extends AppCompatActivity {
         submitButton.setOnClickListener(v -> {
             //store the text into variables
             quizQuestion = tfQuestion.getText().toString();
-            String typedName = quizBelong.getText().toString();
+            typedQuizName = quizBelong.getText().toString();
 
-            if (!typedName.equals("")){
-                quizName = typedName;
+            if (!quizSelected) {
+                if(!val.isValidTrueOrFalseInput(quizQuestion, answer, typedQuizName)) {
+                    showToast("Error! Fields cannot be empty!");
+                }
+                else {
+                    Question newQuestion = new Question(quizQuestion, "True", "False", "", answer);
+                    accessQuiz.addQuiz(newQuestion, typedQuizName);
+
+                    //reset the "EditText" fields
+                    tfQuestion.setText("");
+                    radioGroup.check(0);
+                    quizBelong.setText("");
+                    showToast("Question Added!");
+                    refresh();
+                }
             }
+            else {
+                if(!val.isValidTrueOrFalseInput(quizQuestion, answer)) {
+                    showToast("Error! Question and answer fields cannot be empty!");
+                }
+                else if (typedQuizName.isEmpty()){
+                    Question newQuestion = new Question(quizQuestion, "True", "False", "", answer);
+                    accessQuiz.addQuiz(newQuestion, selectedQuizName);
 
-            if(!val.isValidTrueOrFalseInput(quizQuestion, answer, quizName)) {
-                showToast("Error! Must define a question and True or False");
-            }else{
-                Question newQuestion = new Question(quizQuestion, "True", "False", "", answer);
-                accessQuiz.addQuiz(newQuestion, quizName);
+                    //reset the "EditText" fields
+                    tfQuestion.setText("");
+                    radioGroup.check(0);
+                    quizBelong.setText("");
+                    showToast("Question Added!");
+                    refresh();
+                }
+                else {
+                    if (quizNameList.contains(typedQuizName)) {
+                        quizBelong.setText("");
+                        showToast("Error! This quiz already exists, select it using the dropdown menu");
+                    }
+                    else {
+                        Question newQuestion = new Question(quizQuestion, "True", "False", "", answer);
+                        accessQuiz.addQuiz(newQuestion, typedQuizName);
 
-                //reset the "EditText" fields
-                tfQuestion.setText("");
-                radioGroup.check(0);
-                quizBelong.setText("");
-                showToast("Question Added!");
+                        //reset the "EditText" fields
+                        tfQuestion.setText("");
+                        radioGroup.check(0);
+                        quizBelong.setText("");
+                        showToast("Question Added!");
+                        refresh();
+                    }
+                }
             }
-            startActivity(new Intent(this, MakeTfQuizActivity.class));
         });
     }
 
@@ -103,6 +137,10 @@ public class MakeTfQuizActivity extends AppCompatActivity {
         Toast.makeText(MakeTfQuizActivity.this,text, Toast.LENGTH_SHORT).show();
     }
 
+    public void refresh(){
+        Intent intent = new Intent(this, MakeTfQuizActivity.class);
+        startActivity(intent);
+    }
 
     public void backToQuizHome(){
         Intent intent = new Intent(this, QuizHomeActivity.class);

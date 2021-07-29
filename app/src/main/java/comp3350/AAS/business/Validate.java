@@ -10,6 +10,13 @@ public class Validate {
             return true;
     }
 
+    public boolean isValidMcqInput(String question, String optionA, String optionB, String optionC, String answer){
+        if(question.trim().isEmpty() || optionA.trim().isEmpty() || optionB.trim().isEmpty() || optionC.trim().isEmpty() || answer.trim().isEmpty())
+            return false;
+        else
+            return true;
+    }
+
     public boolean isValidCardInput(String cardTitle, String description, String folderName){
         if(cardTitle.trim().isEmpty() || description.trim().isEmpty() || folderName.trim().isEmpty())
             return false;
@@ -33,6 +40,13 @@ public class Validate {
 
     public boolean isValidTrueOrFalseInput(String question, String answer, String quizName){
         if(question.trim().isEmpty() || answer.trim().isEmpty() || quizName.trim().isEmpty())
+            return false;
+        else
+            return true;
+    }
+
+    public boolean isValidTrueOrFalseInput(String question, String answer){
+        if(question.trim().isEmpty() || answer.trim().isEmpty())
             return false;
         else
             return true;
