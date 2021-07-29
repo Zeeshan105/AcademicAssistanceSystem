@@ -121,6 +121,29 @@ public class DataAccessObject implements DataAccess {
         }
     }
 
+    public ArrayList<String> getFolderNames() {
+        ArrayList<String> folderNameList = new ArrayList<>();
+
+        try {
+            cmdString = "SELECT FOLDERNAME FROM FLASHCARD JOIN FOLDER ON FLASHCARD.TITLE = FOLDER.TITLE";
+            rs1 = st1.executeQuery(cmdString);
+
+            while (rs1.next()){
+                String folderName = rs1.getString("FOLDERNAME");
+
+                if(!folderNameList.contains(folderName)){
+                    folderNameList.add(folderName);
+                }
+            }
+
+        }catch (Exception e){
+            System.out.println(processSQLError(e));
+        }
+        return folderNameList;
+    }
+
+
+
     public void deleteFolder(int index){
         String folderName;
         ArrayList<String> titles;
@@ -287,7 +310,7 @@ public class DataAccessObject implements DataAccess {
                 if( existingQuiz.contains(quizName)){
                     for( Quiz quiz : quizList) {
                         if( quiz.getQuizName().equals(quizName)){
-                           quiz.addQuestion(newQuestion);
+                            quiz.addQuestion(newQuestion);
                         }
                     }
                 } else {

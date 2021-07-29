@@ -12,13 +12,14 @@ public interface DataAccess {
     void open(String string);
 
     void close();
-// from original Card DataBase
+    // from original Card DataBase
     void addCard(String title,String desc, String folderName);
     void getFolderList(ArrayList<CardFolder> folders);
+    ArrayList<String> getFolderNames();
     void deleteFolder(int index);
     void deleteCard(String folderName, String title);
 
-// from original Quiz Database
+    // from original Quiz Database
     void addQuiz(Question question, String name);
     void deleteQuiz(int index);
     ArrayList<Quiz> getQuizList();

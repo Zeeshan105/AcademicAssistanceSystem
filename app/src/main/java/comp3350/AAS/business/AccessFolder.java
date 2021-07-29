@@ -27,6 +27,10 @@ public class AccessFolder {
         dataAccess.getFolderList(folders);
     }
 
+    public ArrayList<String> getFolderNames(){
+        return dataAccess.getFolderNames();
+    }
+
     public void deleteFolder(int index){
         dataAccess.deleteFolder(index);
     }
