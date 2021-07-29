@@ -9,11 +9,14 @@
 
 - Major Features
     - Flashcard - Can be accessed from the home page when you open the app by pressing the “Flash Card” button.
-       - To create a flash card, input a title and description, and specify the folder (category) it belongs to, and press “Submit”. If the folder name already exists in the              database, the flashcard will be added to it directly, otherwise a new folder is created.  
+       - To create a flash card, input a title and description, and specify the folder to which you want to add the card to. If the folder already exists, you can pick it from a 
+         drop down menu, if the folder does not exist, you can type the name of the folder in the text field. Then press "submit" to add the flash card.
        - The “View Folders” button shows all created flashcard folders, which can be opened to view any flashcards inside of it.  
+       - You can tap an individual flash card to open a menu that allows you to delete the flash card.
     - Quizzing System - Can be accessed from the home page when you open the app by pressing the “Quiz” button.
-       - To create a quiz, press on the create quiz button and input a question, three possible options, and a valid answer, and the quiz name it belongs to, and press submit.            If the provided quiz name already exists in the database, the question is added to it directly, otherwise a new quiz is created.
+       - To create a quiz, press on the create quiz button and select the type of question you would like to create (MCQs to TF). Then fill in the question and its appropriate            answers, then pick a quiz to add the question to. If the quiz already exists, you can select it from a drop down menu. If the quiz does not exit, you can type the name          of the quiz to add it to the list.
        - To start quizzes, press the “Start Quizzes” button on the quiz home page, and select the appropriate quiz and press “Start Quiz” on the alert.
+       - After completing the quiz, you can view your stats, if you did not get a staficatory grade, You may re-take the quiz and try agian.
     - Quiz Statistics  - Can be accessed from the start quizzes activity by pressing the “View Stats” button.
        - The statistics page will show a list of all individual quizzes and their respective marks, along with general statistics about number of completed quizzes, average              grade, as well as highest and lowest grade. 
        - If no quizzes have been completed, the statistics page will not show any statistics beside specifying that 0 quizzes have been completed.
@@ -39,16 +42,23 @@
         - Quiz.java
     - presentation
         - AnswerActivity.java
+        - CardFolderAdapter.java
+        - CardHomeActivity.java
         - CardListActivity.java
-        - FlashCardActivity.java
+        - CardViewHolder.java
+        - FlashCardAdapter.java
         - FolderListActivity.java
+        - FolderViewHolder.java
         - MainActivity.java
-        - MakeQuizActivity.java
+        - MakeMcqQuizActivity.java
+        - MakeTfQuizActivity.java
         - QuizHomeActivity.java
         - SelectQuizActivity.java
         - StartQuizActivity.java
-        - ViewQuizAnswerActivity.java
+        - ViewQuizAnswersActivity.java
         - ViewStatsActivity.java
+
+        
 
 
 - Coding standards our group agreed to follow
