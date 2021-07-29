@@ -16,6 +16,7 @@
     - Quizzing System - Can be accessed from the home page when you open the app by pressing the “Quiz” button.
        - To create a quiz, press on the create quiz button and select the type of question you would like to create (MCQs to TF). Then fill in the question and its appropriate            answers, then pick a quiz to add the question to. If the quiz already exists, you can select it from a drop down menu. If the quiz does not exit, you can type the name          of the quiz to add it to the list.
        - To start quizzes, press the “Start Quizzes” button on the quiz home page, and select the appropriate quiz and press “Start Quiz” on the alert.
+       - After completing the quiz, you can view your stats, if you did not get a staficatory grade, You may re-take the quiz and try agian.
     - Quiz Statistics  - Can be accessed from the start quizzes activity by pressing the “View Stats” button.
        - The statistics page will show a list of all individual quizzes and their respective marks, along with general statistics about number of completed quizzes, average              grade, as well as highest and lowest grade. 
        - If no quizzes have been completed, the statistics page will not show any statistics beside specifying that 0 quizzes have been completed.
