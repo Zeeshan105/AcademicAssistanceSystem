@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MakeTfQuizActivity"
-    android:background="@drawable/create_true_false">
+    tools:context=".presentation.MakeTfQuizActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,10 +12,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@color/cardview_shadow_end_color"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:gravity="center"
-        android:text="create a True or False question"
-        android:textColor="#FFFFFF"
+        android:text="Create a True or False question"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="40sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -31,14 +31,16 @@
         android:hint="@string/type_your_question"
         android:inputType="textPersonName"
         android:scaleY="1.25"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#989898" />
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColorHint="#B5B5B5" />
 
     <RadioGroup
         android:id="@+id/makeTFQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="210dp"
         android:layout_marginStart="60dp"
         android:orientation="horizontal">
 
@@ -47,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="True"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="30sp" />
 
         <RadioButton
@@ -55,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="False"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="30sp" />
 
     </RadioGroup>
@@ -65,7 +67,7 @@
     <LinearLayout
         android:layout_width="500dp"
         android:layout_height="60dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="310dp"
         android:background="@color/white"
         android:layout_centerHorizontal="true"
 
@@ -79,6 +81,7 @@
             android:padding="10dp"
             android:textColor="@color/black"
             android:text="Select existing Quiz: "
+            android:textStyle="bold"
             android:textSize="25sp" />
 
         <Spinner
@@ -96,11 +99,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="390dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="casual"
         android:text="If you want to send to a NEW quiz name, \nType new quiz name below \n(and ignore selected exist quiz name above)"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -109,13 +112,14 @@
         android:layout_width="500dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="510dp"
+        android:layout_marginTop="500dp"
         android:backgroundTint="#453F3F"
         android:foregroundTint="#000000"
         android:hint="Alternative NEW Quiz name  (OPTIONAL)"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#989898" />
+        android:textColor="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="22sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submit_Btn"
@@ -126,7 +130,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="680dp"
+        android:layout_marginTop="720dp"
         android:layout_marginEnd="-1dp"
         android:backgroundTint="#FFC107"
         android:gravity="center"

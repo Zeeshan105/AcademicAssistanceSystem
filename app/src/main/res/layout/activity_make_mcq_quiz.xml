@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp3350.AAS.presentation.MakeMcqQuizActivity"
-    android:background="@drawable/create_question">
+    tools:context="comp3350.AAS.presentation.MakeMcqQuizActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@color/cardview_shadow_end_color"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/create_a_question_for_quiz"
         android:textColor="#000000"
@@ -34,7 +33,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -49,7 +49,8 @@
         android:hint="@string/option_a"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -66,7 +67,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -83,7 +85,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -100,7 +103,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColorHint="#B5B5B5"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
@@ -121,7 +125,7 @@
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="690dp"
+        android:layout_marginTop="700dp"
         android:backgroundTint="#453F3F"
         android:ems="10"
         android:foregroundTint="#000000"
@@ -129,6 +133,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="22sp"
         android:textColorHint="#989898" />
 
     <LinearLayout
