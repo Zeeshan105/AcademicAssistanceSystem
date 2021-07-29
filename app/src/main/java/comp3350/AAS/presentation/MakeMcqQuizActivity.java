@@ -112,20 +112,20 @@ public class MakeMcqQuizActivity extends AppCompatActivity {
                     if (quizNameList.contains(typedQuizName)) {
                         quizIndex.setText("");
                         showToast("Error! This quiz already exists, select it using the dropdown menu");
-                    }
-                    else {
-                    Question newQuestion = new Question(quizQuestion, optionA, optionB, optionC, answer);
-                    accessQuiz.addQuiz(newQuestion, typedQuizName);
+                    } else {
+                        Question newQuestion = new Question(quizQuestion, optionA, optionB, optionC, answer);
+                        accessQuiz.addQuiz(newQuestion, typedQuizName);
 
-                    //reset the "EditText" fields
-                    questionInput.setText("");
-                    firstOption.setText("");
-                    secondOption.setText("");
-                    thirdOption.setText("");
-                    keyOption.setText("");
-                    quizIndex.setText("");
-                    showToast("Question Added!");
-                    refresh();
+                        //reset the "EditText" fields
+                        questionInput.setText("");
+                        firstOption.setText("");
+                        secondOption.setText("");
+                        thirdOption.setText("");
+                        keyOption.setText("");
+                        quizIndex.setText("");
+                        showToast("Question Added!");
+                        refresh();
+
                     }
                 }
             }

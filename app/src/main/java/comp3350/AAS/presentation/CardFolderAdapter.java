@@ -75,17 +75,8 @@ public class CardFolderAdapter extends ArrayAdapter<String>  {
         return singleFolder;
     }
 
-    private void showToast(String text){
-        Toast.makeText(context,text, Toast.LENGTH_SHORT).show();
-    }
-
     public void openCardList(){
         Intent intent = new Intent(context, CardListActivity.class);
-        context.startActivity(intent);
-    }
-
-    public void openFlashCards(){
-        Intent intent = new Intent(context, CardHomeActivity.class);
         context.startActivity(intent);
     }
 

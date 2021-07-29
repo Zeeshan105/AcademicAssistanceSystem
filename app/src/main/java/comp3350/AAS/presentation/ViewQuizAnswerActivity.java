@@ -48,8 +48,5 @@ public class ViewQuizAnswerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showToast(String text){
-        Toast.makeText(ViewQuizAnswerActivity.this,text, Toast.LENGTH_SHORT).show();
-    }
 
 }

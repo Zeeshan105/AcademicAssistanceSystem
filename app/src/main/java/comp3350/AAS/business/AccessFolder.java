@@ -9,13 +9,9 @@ import comp3350.AAS.object.CardFolder;
 
 public class AccessFolder {
     private DataAccess dataAccess;
-    private ArrayList<CardFolder> folderList;
-    private CardFolder folder;
 
     public AccessFolder(){
         dataAccess = Services.getDataAccess(Main.dbName);
-        folderList = null;
-        folder = null;
     }
 
     public void addCard(String title,String desc, String folderName){

@@ -39,10 +39,6 @@ public class FolderListActivity extends AppCompatActivity {
 
     }
 
-    public void openCardList(){
-        Intent intent = new Intent(this, CardListActivity.class);
-        startActivity(intent);
-    }
 
     public void openFlashCards(){
         Intent intent = new Intent(this, CardHomeActivity.class);
