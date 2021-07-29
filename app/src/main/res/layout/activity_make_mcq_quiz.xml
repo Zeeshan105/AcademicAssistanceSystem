@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp3350.AAS.presentation.MakeMcqQuizActivity">
+    tools:context="comp3350.AAS.presentation.MakeMcqQuizActivity"
+    android:background="@drawable/create_question">
 
     <TextView
         android:layout_width="match_parent"
@@ -11,13 +12,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#D32401"
-        android:fontFamily="casual"
+        android:background="@color/cardview_shadow_end_color"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="@string/create_a_question_for_quiz"
-        android:textColor="#E4E2E2"
-        android:textStyle="bold"
-        android:textSize="45sp" />
+        android:textColor="#000000"
+        android:textSize="45sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/question"
@@ -33,8 +34,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:textColorHint="#989898" />
+        android:textColorHint="#000000"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_A"
@@ -48,8 +49,8 @@
         android:hint="@string/option_a"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:textColorHint="#989898" />
+        android:textColorHint="#000000"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_B"
@@ -65,8 +66,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:textColorHint="#989898" />
+        android:textColorHint="#000000"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/option_C"
@@ -82,8 +83,8 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:textColorHint="#989898" />
+        android:textColorHint="#000000"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/key"
@@ -99,14 +100,14 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:textColorHint="#989898" />
+        android:textColorHint="#000000"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="590dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="590dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="casual"
         android:text="If you want to send to a NEW quiz name, \nType new quiz name below \n(and ignore selected exist quiz name above)"
@@ -128,7 +129,6 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
-        android:textSize="22sp"
         android:textColorHint="#989898" />
 
     <LinearLayout
@@ -179,6 +179,6 @@
         android:scaleY="0.9"
         android:text="@string/submit"
         android:textColor="#000000"
-        android:textSize="35sp" />
+        android:textSize="30sp" />
 
 </RelativeLayout>

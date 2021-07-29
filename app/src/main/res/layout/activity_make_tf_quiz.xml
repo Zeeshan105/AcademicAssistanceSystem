@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MakeTfQuizActivity">
+    tools:context=".presentation.MakeTfQuizActivity"
+    android:background="@drawable/create_true_false">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,12 +12,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#D32401"
-        android:fontFamily="casual"
+        android:background="@color/cardview_shadow_end_color"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="create a True or False question"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
         android:textSize="40sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -32,8 +31,7 @@
         android:hint="@string/type_your_question"
         android:inputType="textPersonName"
         android:scaleY="1.25"
-        android:textColor="#000000"
-        android:textSize="25sp"
+        android:textColor="#FFFFFF"
         android:textColorHint="#989898" />
 
     <RadioGroup
@@ -49,16 +47,16 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="True"
-            android:textSize="30sp"
-            />
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
 
         <RadioButton
             android:id="@+id/False"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="False"
-            android:textSize="30sp"
-            />
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
 
     </RadioGroup>
 
@@ -80,7 +78,6 @@
             android:fontFamily="casual"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:text="Select existing Quiz: "
             android:textSize="25sp" />
 
@@ -103,7 +100,7 @@
         android:layout_marginEnd="50dp"
         android:fontFamily="casual"
         android:text="If you want to send to a NEW quiz name, \nType new quiz name below \n(and ignore selected exist quiz name above)"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -111,14 +108,13 @@
         android:id="@+id/quiz_belong"
         android:layout_width="500dp"
         android:layout_height="60dp"
-        android:layout_marginTop="510dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="510dp"
         android:backgroundTint="#453F3F"
         android:foregroundTint="#000000"
         android:hint="Alternative NEW Quiz name  (OPTIONAL)"
         android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textSize="22sp"
+        android:textColor="#FFFFFF"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -138,7 +134,7 @@
         android:scaleY="0.9"
         android:text="@string/submit"
         android:textColor="#000000"
-        android:textSize="35sp" />
+        android:textSize="30sp" />
 
 
 </RelativeLayout>

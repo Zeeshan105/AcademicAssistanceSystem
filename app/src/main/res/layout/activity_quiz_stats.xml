@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp3350.AAS.presentation.SelectQuizActivity">
+    tools:context="comp3350.AAS.presentation.SelectQuizActivity"
+    android:background="@drawable/mark">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,10 +13,13 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="1dp"
-        android:background="#3F51B5"
+        android:background="@color/cardview_shadow_end_color"
+        android:fontFamily="cursive"
         android:text=" Completed Quizzes"
+        android:textAllCaps="true"
         android:textColor="#000000"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
 
     <ListView
         android:id="@+id/quizListView"
@@ -35,8 +39,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="290dp"
+        android:fontFamily="casual"
         android:text="@string/average_grade"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/completed_quizzes_text"
@@ -46,8 +52,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="360dp"
+        android:fontFamily="casual"
         android:text="@string/completed_quizzes"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/lowest_grade_text"
@@ -57,8 +65,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="150dp"
+        android:fontFamily="casual"
         android:text="@string/lowest_grade"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/highest_grade_text"
@@ -68,8 +78,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="216dp"
+        android:fontFamily="casual"
         android:text="@string/highest_grade"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/backToQuizHome"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/answer">
 
     <TextView
         android:id="@+id/viewQuestion"
@@ -11,9 +12,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="1dp"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/question"
@@ -30,9 +31,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="396dp"
+        android:layout_marginEnd="0dp"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/answer"
