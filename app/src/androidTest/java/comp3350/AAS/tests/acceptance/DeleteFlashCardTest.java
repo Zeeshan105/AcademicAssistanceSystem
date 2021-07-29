@@ -43,9 +43,12 @@ public class DeleteFlashCardTest {
 
         onView(withId(R.id.editTextTitle)).perform(typeText("Title2"));
         onView(withId(R.id.editTextDescription)).perform(typeText("Description2"));
-        onView(withId(R.id.editTextFolderName)).perform(typeText("Folder_1"));
+        closeSoftKeyboard();
+        onView(withId(R.id.spinner_folder_name)).perform(click());
+        onView(withText("Folder_1")).check(matches(isDisplayed())).perform(click());
         closeSoftKeyboard();
         onView(withText("SUBMIT")).perform(click());
+        closeSoftKeyboard();
     }
 
     @Test
