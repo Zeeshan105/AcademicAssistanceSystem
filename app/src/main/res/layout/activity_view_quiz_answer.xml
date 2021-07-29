@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ViewQuizAnswerActivity">
+    android:background="@drawable/view_solution"
+tools:context=".presentation.ViewQuizAnswerActivity">
 
     <TextView
         android:id="@+id/viewQuizSolution"
@@ -17,13 +18,14 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="0dp"
-        android:background="#453F3F"
+        android:background="@android:color/transparent"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/view_solutions"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

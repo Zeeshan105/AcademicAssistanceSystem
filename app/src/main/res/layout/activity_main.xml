@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:background="@mipmap/night_sky"
+    android:background="@drawable/sea"
     tools:context="comp3350.AAS.presentation.MainActivity">
 
     <TextView
@@ -16,12 +16,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="2dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/academic_assistance_system"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textColor="#ffffff"
-        android:textSize="40sp"
+        android:textColor="#4CAF50"
+        android:textSize="55sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,13 +37,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="@color/material_on_primary_disabled"
+        android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.8"
         android:text="@string/flash_cards"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp" />
+        android:textColor="#1C1A1A"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Button2"
@@ -52,13 +55,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="430dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="@color/material_on_primary_disabled"
+        android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.8"
         android:text="@string/quiz"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp" />
+        android:textColor="#232020"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
 
 
 </RelativeLayout>

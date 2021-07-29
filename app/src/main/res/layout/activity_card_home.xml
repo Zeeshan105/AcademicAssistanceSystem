@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
+    android:background="@drawable/create_flashcard"
     tools:context="comp3350.AAS.presentation.MainActivity">
 
     <TextView
@@ -15,14 +16,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="69dp"
-        android:background="#453F3F"
+        android:layout_marginTop="70dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/create_a_flash_card"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -85,13 +88,15 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="469dp"
         android:layout_marginEnd="-1dp"
-        android:backgroundTint="#453F3F"
+        android:backgroundTint="@color/material_on_primary_disabled"
+        android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.5"
         android:scaleY="0.9"
         android:text="@string/submit"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/viewFoldersButton"
@@ -103,12 +108,15 @@
         android:layout_marginStart="-2dp"
         android:layout_marginTop="551dp"
         android:layout_marginEnd="-1dp"
-        android:backgroundTint="#453F3F"
+        android:backgroundTint="@color/material_on_primary_disabled"
+        android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.5"
         android:scaleY="0.9"
         android:text="@string/view_folders"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
 
 </RelativeLayout>

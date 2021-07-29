@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_answer.xml" value="0.1" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_card_home.xml" value="0.4466666666666667" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_card_list.xml" value="0.3333333333333333" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_folder_list.xml" value="0.3333333333333333" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_make_mcq_quiz.xml" value="0.16666666666666666" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_make_tf_quiz.xml" value="0.22" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_select_quiz.xml" value="0.3333333333333333" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_single_card.xml" value="0.1" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_single_folder.xml" value="0.33177083333333335" />
+        <entry key="..\:/OneDrive/Study/COMP 3350/Academic/app/src/main/res/layout/activity_view_quiz_answer.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

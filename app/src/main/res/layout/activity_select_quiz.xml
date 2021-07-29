@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp3350.AAS.presentation.SelectQuizActivity">
+    android:background="@drawable/quiz_list"
+tools:context="comp3350.AAS.presentation.SelectQuizActivity">
 
     <!-- The name of quiz list-->
     <TextView
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/quiz_list"
         android:layout_centerHorizontal="true"
+        android:fontFamily="cursive"
         android:textColor="#000000"
         android:textSize="50sp"
         />

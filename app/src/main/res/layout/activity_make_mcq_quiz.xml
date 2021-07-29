@@ -12,9 +12,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="#D32401"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="@string/create_a_question_for_quiz"
-        android:textColor="#FFFFFF"
+        android:textColor="#E4E2E2"
         android:textSize="45sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -101,10 +102,11 @@
         android:layout_marginTop="590dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="casual"
         android:text="If you want to send to a NEW quiz name, \nType new quiz name below \n(and ignore selected exist quiz name above)"
         android:textColor="#000000"
         android:textSize="25sp"
-        />
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/quiz_index"
@@ -135,10 +137,12 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="5"
+            android:fontFamily="casual"
             android:padding="10dp"
             android:textColor="@color/black"
             android:text="Select existing Quiz: "
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
         <Spinner
             android:id="@+id/spinner_quiz_name"
