@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AcademicAssistanceSystem</string>
     <string name="your_folders">Your Folders</string>
-    <string name="folder_name">folder name</string>
+    <string name="folder_name">Alternative folder name (OPTIONAL)</string>
     <string name="create_a_flash_card">Create a Flash Card</string>
     <string name="description">Description</string>
     <string name="title">Title</string>

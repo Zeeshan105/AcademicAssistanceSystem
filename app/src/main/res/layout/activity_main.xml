@@ -37,14 +37,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
-        android:backgroundTint="@color/material_on_primary_disabled"
+        android:backgroundTint="#B2FFFFFF"
         android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.8"
         android:text="@string/flash_cards"
         android:textColor="#1C1A1A"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textStyle="bold|italic" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -55,14 +55,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="430dp"
-        android:backgroundTint="@color/material_on_primary_disabled"
+        android:backgroundTint="#B2FFFFFF"
         android:fontFamily="casual"
         android:gravity="center"
         android:scaleX="0.7"
         android:scaleY="0.8"
         android:text="@string/quiz"
         android:textColor="#232020"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textStyle="bold|italic" />
 
 

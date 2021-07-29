@@ -12,7 +12,7 @@ tools:context="comp3350.AAS.presentation.SelectQuizActivity">
         android:layout_height="wrap_content"
         android:text="@string/quiz_list"
         android:layout_centerHorizontal="true"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:textColor="#000000"
         android:textSize="50sp"
         />
@@ -29,7 +29,7 @@ tools:context="comp3350.AAS.presentation.SelectQuizActivity">
         android:id="@+id/tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="590dp"
         android:layout_centerHorizontal="true"
         android:text="You are in the testing of quizzes...\n\nPlease click VIEW STATS to see statistic and quit testing"
         android:textColor="#000000"
@@ -52,6 +52,6 @@ tools:context="comp3350.AAS.presentation.SelectQuizActivity">
         android:scaleY="0.9"
         android:text="@string/view_stats"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
 
 </RelativeLayout>

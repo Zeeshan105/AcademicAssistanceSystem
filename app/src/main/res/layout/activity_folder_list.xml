@@ -20,7 +20,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="0dp"
         android:background="@color/cardview_shadow_end_color"
-        android:fontFamily="cursive"
+        android:fontFamily="monospace"
         android:gravity="center"
         android:scaleX="0.9"
         android:text="@string/your_folders"

@@ -13,10 +13,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="#D32401"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:gravity="center"
         android:text="create a True or False question"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:textSize="40sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -32,6 +33,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <RadioGroup
@@ -78,6 +80,7 @@
             android:fontFamily="casual"
             android:padding="10dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="Select existing Quiz: "
             android:textSize="25sp" />
 
@@ -115,6 +118,7 @@
         android:hint="Alternative NEW Quiz name  (OPTIONAL)"
         android:inputType="textPersonName"
         android:textColor="#000000"
+        android:textSize="22sp"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -134,7 +138,7 @@
         android:scaleY="0.9"
         android:text="@string/submit"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
 
 
 </RelativeLayout>

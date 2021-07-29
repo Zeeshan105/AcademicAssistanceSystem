@@ -12,10 +12,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="#D32401"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/create_a_question_for_quiz"
         android:textColor="#E4E2E2"
+        android:textStyle="bold"
         android:textSize="45sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -32,6 +33,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -46,6 +48,7 @@
         android:hint="@string/option_a"
         android:inputType="textPersonName"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -62,6 +65,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -78,6 +82,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -94,6 +99,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="25sp"
         android:textColorHint="#989898" />
 
     <TextView
@@ -122,6 +128,7 @@
         android:inputType="textPersonName"
         android:scaleY="1.25"
         android:textColor="#000000"
+        android:textSize="22sp"
         android:textColorHint="#989898" />
 
     <LinearLayout
@@ -172,6 +179,6 @@
         android:scaleY="0.9"
         android:text="@string/submit"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
 
 </RelativeLayout>
