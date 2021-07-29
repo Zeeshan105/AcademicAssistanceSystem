@@ -116,6 +116,10 @@ public class DataAccessStub implements DataAccess {
         }
     }
 
+    public ArrayList<String> getFolderNames(){
+        return null;
+    }
+
     public void getFolderList(ArrayList<CardFolder> folders) {
         folders.addAll(folderList);
     }
