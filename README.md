@@ -27,16 +27,12 @@
 	<span>
 		<img src="/screenshots/home.png" width="300">
 		<img src="/screenshots/flashcard.png" width="300">
-	</span>
-	<span>
 		<img src="/screenshots/folder.png" width="300">
 		<img src="/screenshots/quiz.png" width="300">
-	</span>
-	<span>
 		<img src="/screenshots/create_question.png" width="300">
 		<img src="/screenshots/do_quiz.png" width="300">
+		<img src="/screenshots/score.png" width="300">
 	</span>
-	<img src="/screenshots/score.png" width="300">
 </center>
 
 ### Packages
