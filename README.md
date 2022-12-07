@@ -23,6 +23,15 @@
     - View Quiz Answers (new) - Can be accessed by pressing the view quiz answer button on the quiz activity.
        - The view quiz activity will show a list of all the quizzes. Press on any quiz, to view the answers to all the questions. You navigate to the next question by pressing            the next button, and return to the previous acitivity screen by pressing the back button on the android device
     
+    - Preview Images
+  ![](/screenshots/home.png)
+  ![](/screenshots/flashcard.png)
+  ![](/screenshots/folder.png)
+  ![](/screenshots/quiz.png)
+  ![](/screenshots/create_question.png)
+  ![](/screenshots/do_quiz.png)
+  ![](/screenshots/score.png)
+
 - Packages
     - application
         - Main.java
