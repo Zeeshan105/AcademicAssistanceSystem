@@ -23,7 +23,6 @@
   - The view quiz activity will show a list of all the quizzes. Press on any quiz, to view the answers to all the questions. You navigate to the next question by pressing the next button, and return to the previous activity screen by pressing the back button on the android device
 
 ### Preview Images
-```html
 <center class="half">
 	<span>
 		<img src="/screenshots/home.png" width="300">
@@ -35,7 +34,6 @@
 		<img src="/screenshots/score.png" width="300">
 	</span>
 </center>
-```
 
 ### Packages
 ```markdown
