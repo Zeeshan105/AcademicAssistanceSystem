@@ -6,6 +6,7 @@
 - Tools: Android Studio
 - Environment:  Android 6.0 (Marshmallow, API level 23)
 - Simulator: Nexus 7 tablet
+
 ### Major Features
 - Flashcard - Can be accessed from the home page when you open the app by pressing the “Flash Card” button.
   - To create a flash card, input a title and description, and specify the folder to which you want to add the card to. If the folder already exists, you can pick it from a drop down menu, if the folder does not exist, you can type the name of the folder in the text field. Then press "submit" to add the flash card.
@@ -18,7 +19,6 @@
 - Quiz Statistics - Can be accessed from the start quizzes activity by pressing the “View Stats” button.
   - The statistics page will show a list of all individual quizzes and their respective marks, along with general statistics about number of completed quizzes, average grade, as well as highest and lowest grade. 
   - If no quizzes have been completed, the statistics page will not show any statistics beside specifying that 0 quizzes have been completed.
-  
 - View Quiz Answers - Can be accessed by pressing the view quiz answer button on the quiz activity.
   - The view quiz activity will show a list of all the quizzes. Press on any quiz, to view the answers to all the questions. You navigate to the next question by pressing the next button, and return to the previous activity screen by pressing the back button on the android device
 
@@ -36,7 +36,7 @@
 </center>
 
 ### Packages
-```bash
+```markdown
 AAS
   ├─application
   │    ├─Main.java
@@ -72,6 +72,7 @@ AAS
        ├─ViewQuizAnswersActivity.java
        └─ViewStatsActivity.java
 ```
+
 ### Coding standards our group agreed to follow
 - Use ArrayList for data storage. 
 - Use camel case for variables.
